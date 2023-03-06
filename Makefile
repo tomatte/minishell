@@ -1,8 +1,12 @@
 SRC			=	main.c \
-				prompt.c 
+				prompt.c \
+				get_directory.c \
+				get_username.c \
+				get_hostname.c \
+				get_prompt_msg.c \
 
 VPATH		=	./src \
-				./src/singles \
+				./src/prompt \
 
 OBJS_DIR	=	./objects
 

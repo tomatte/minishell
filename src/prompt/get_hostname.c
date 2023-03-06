@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   get_hostname.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/06 15:40:05 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/06 19:33:50 by dbrandao         ###   ########.fr       */
+/*   Created: 2023/03/06 19:17:49 by dbrandao          #+#    #+#             */
+/*   Updated: 2023/03/06 19:18:01 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAIN_H
-# define MAIN_H
+#include "../../includes/minishell.h"
 
-# include "../libft/libftprintf.h"
-# include <readline/readline.h>
-# include <readline/history.h>
-# include <stdio.h>
-# include <unistd.h>
-# include <fcntl.h>
+char	*get_hostname(void)
+{
+	int		fd;
+	char	*hostname;
+	char	*aux;
 
-const char	*get_username(void);
-char		*get_directory(const char *username);
-char		*get_hostname(void);
-char		*get_prompt_msg(void);
-char		*prompt(void);
-
-#endif
+	fd = open("/etc/hostname", O_RDONLY);
+	if (fd == -1)
+		return (NULL);
+	aux = get_next_line(fd);
+	hostname = ft_strtrim(aux, " \n\t");
+	free(aux);
+	close(fd);
+	return (hostname);
+}
