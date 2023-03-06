@@ -2,7 +2,7 @@ SRC			=	main.c \
 				prompt.c 
 
 VPATH		=	./src \
-				./src/core \
+				./src/singles \
 
 OBJS_DIR	=	./objects
 

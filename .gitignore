@@ -5,3 +5,4 @@ learning
 *.a
 objects
 minishell
+*.o
