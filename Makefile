@@ -4,9 +4,11 @@ SRC			=	main.c \
 				get_username.c \
 				get_hostname.c \
 				get_prompt_msg.c \
+				get_operators.c \
 
 VPATH		=	./src \
 				./src/prompt \
+				./src/statics \
 
 OBJS_DIR	=	./objects
 
