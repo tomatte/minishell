@@ -1,13 +1,16 @@
 SRC			=	test_prompt.c \
 				test_prompt2.c \
+				test_state.c \
 				prompt.c \
 				get_directory.c \
 				get_username.c \
 				get_hostname.c \
+				state.c \
+
 
 VPATH		=	./src \
 				../src/prompt \
-
+				../src/statics \
 
 OBJS_DIR	=	./objects
 

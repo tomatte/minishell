@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 15:40:05 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/07 15:00:28 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/07 17:07:37 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,7 @@ char		*get_prompt_msg(void);
 char		*prompt(void);
 
 char	**get_operators(void);
+int		get_state(void);
+void	set_state(int id);
 
 #endif

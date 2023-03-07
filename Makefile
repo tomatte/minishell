@@ -5,6 +5,7 @@ SRC			=	main.c \
 				get_hostname.c \
 				get_prompt_msg.c \
 				get_operators.c \
+				state.c \
 
 VPATH		=	./src \
 				./src/prompt \
