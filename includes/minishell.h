@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 15:40:05 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/07 21:20:01 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/08 11:01:03 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,14 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include "./defines.h"
+
+typedef struct s_token
+{
+	char	*value;
+	int		type;
+	int		id;
+}	t_token;
+
 
 //PROMPT
 const char	*get_username(void);

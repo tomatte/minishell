@@ -8,21 +8,26 @@
 # define EXPANSIVE 3
 # define QUOTE 4
 
-//TO BE USED AS IDs
-# define EXEC 5
-# define ARG 6
-# define SIMPLE_QUOTES 7
-# define DOUBLE_QUOTES 8
-# define REDIR_IN 9
-# define REDIR_OUT 10
-# define HERE_DOC 11
-# define REDIR_AOUT 12
-# define PIPE 13
-# define ENV_VAR 14
-# define EXIT_STAT 15
-# define BUILTIN 16
-# define PATH_PROG 17
-# define FILE_PROG 18
+//WORD
+# define BUILTIN 0
+# define PATH_PROG 1
+# define FILE_PROG 2
+# define ARG 3
+
+//QUOTE
+# define SIMPLE_QUOTES 0
+# define DOUBLE_QUOTES 1
+
+//OPERATOR
+# define HERE_DOC 0
+# define R_APPEND_OUT 1
+# define R_INPUT 2
+# define R_OUTPUT 3
+# define PIPE 4
+
+//EXPANSIVE
+# define ENV_VAR 0
+# define EXIT_STAT 1
 
 # define OP_NUM 5
 
