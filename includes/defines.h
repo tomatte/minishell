@@ -1,5 +1,5 @@
 #ifndef DEFINES_H
-# defube DEFINES_H
+# define DEFINES_H
 
 //TO BE USED AS TYPES AND STATES
 # define NONE 0
@@ -23,5 +23,7 @@
 # define BUILTIN 16
 # define PATH_PROG 17
 # define FILE_PROG 18
+
+# define OP_NUM 5
 
 #endif

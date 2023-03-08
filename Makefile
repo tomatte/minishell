@@ -6,10 +6,12 @@ SRC			=	main.c \
 				get_prompt_msg.c \
 				operators.c \
 				state.c \
+				lexer.c \
 
 VPATH		=	./src \
 				./src/prompt \
 				./src/statics \
+				./src/lexer \
 
 OBJS_DIR	=	./objects
 
