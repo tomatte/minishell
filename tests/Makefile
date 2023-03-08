@@ -7,6 +7,8 @@ SRC			=	test_prompt.c \
 				get_hostname.c \
 				state.c \
 				test_ft_streq.c \
+				test_lexer.c \
+				operators.c \
 
 
 VPATH		=	./src \
