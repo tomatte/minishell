@@ -19,7 +19,7 @@ OBJS_DIR	=	./objects
 
 OBJS		:=	$(patsubst %.c,$(OBJS_DIR)/%.o, $(SRC))
 
-CFLAGS		=	-lcriterion -I./ -lreadline
+CFLAGS		=	-lcriterion -I./includes -lreadline
 
 NAME		=	test
 
