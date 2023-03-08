@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 08:58:08 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/06 15:42:01 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/07 17:18:35 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,35 @@ static void	is_exit(char *str)
 	}
 }
 
+static void	test_function(void)
+{
+	int	i;
+
+	i = -1;
+	while (++i < 5)
+		ft_printf("%s\t", operators()[i]);
+	ft_printf("\n");
+
+	printf("s: %d\t", get_state());
+	set_state(1);
+	printf("s: %d\t", get_state());
+	printf("s: %d\t", get_state());
+	set_state(5);
+	printf("s: %d\t", get_state());
+	set_state(-1);
+	printf("s: %d\n", get_state());
+}
+
 int	main(int argc, char const *argv[])
 {
 	char	*str;
 
+	test_function();
 	while (1)
 	{
 		str = prompt();
 		is_exit(str);
+		lexer(str);
 		free(str);
 	}
 	return (0);

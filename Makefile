@@ -7,6 +7,8 @@ SRC			=	main.c \
 				operators.c \
 				state.c \
 				lexer.c \
+				new_token.c \
+				identify_operator.c \
 
 VPATH		=	./src \
 				./src/prompt \
