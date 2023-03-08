@@ -6,6 +6,7 @@ SRC			=	test_prompt.c \
 				get_username.c \
 				get_hostname.c \
 				state.c \
+				test_ft_streq.c \
 
 
 VPATH		=	./src \
