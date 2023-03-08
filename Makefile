@@ -10,6 +10,7 @@ SRC			=	main.c \
 				new_token.c \
 				identify_operator.c \
 				identify_quotes.c \
+				identify_word.c \
 
 VPATH		=	./src \
 				./src/prompt \

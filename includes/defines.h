@@ -13,6 +13,7 @@
 # define PATH_PROG 1
 # define FILE_PROG 2
 # define ARG 3
+# define DELIMITER "$'\"<|>"
 
 //QUOTE
 # define SIMPLE_QUOTES 0
