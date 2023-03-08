@@ -9,6 +9,7 @@ SRC			=	main.c \
 				lexer.c \
 				new_token.c \
 				identify_operator.c \
+				identify_quotes.c \
 
 VPATH		=	./src \
 				./src/prompt \

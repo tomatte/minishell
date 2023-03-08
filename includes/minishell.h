@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 15:40:05 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/08 13:17:00 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/08 14:26:23 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ void	set_state(int id);
 void	lexer(char *str);
 t_token	*new_token(char *value, int type, int id);
 t_token	*identify_operator(char **str);
-
-
+t_token	*identify_quotes(char **str);
 
 #endif
