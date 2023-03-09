@@ -11,11 +11,13 @@ SRC			=	main.c \
 				identify_operator.c \
 				identify_quotes.c \
 				identify_word.c \
+				parser.c \
 
 VPATH		=	./src \
 				./src/prompt \
 				./src/statics \
 				./src/lexer \
+				./src/parser \
 
 OBJS_DIR	=	./objects
 

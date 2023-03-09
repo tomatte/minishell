@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 15:40:05 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/08 17:08:52 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/09 15:43:04 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,13 @@ int		get_state(void);
 void	set_state(int id);
 
 //LEXER
-void	lexer(char *str);
+t_list	*lexer(char *str);
 t_token	*new_token(char *value, int type, int id);
 t_token	*identify_operator(char **str);
 t_token	*identify_quotes(char **str);
 t_token	*identify_word(char **str);
+
+//PARSER
+void	parser(t_list *tokens);
 
 #endif

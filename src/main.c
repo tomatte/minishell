@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 08:58:08 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/07 17:18:35 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/09 15:45:13 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,15 @@ static void	test_function(void)
 int	main(int argc, char const *argv[])
 {
 	char	*str;
+	t_list	*tokens;
 
 	test_function();
 	while (1)
 	{
 		str = prompt();
 		is_exit(str);
-		lexer(str);
+		tokens = lexer(str);
+		parser(tokens);
 		free(str);
 	}
 	return (0);
