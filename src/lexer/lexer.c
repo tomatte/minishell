@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 17:15:54 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/08 17:30:53 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/09 15:08:57 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,18 +79,30 @@ static void	print_tokens(t_list *tokens)
 	}
 }
 
+static void	veirify_errors(char **str)
+{
+	if (get_state() <= -1)
+	{
+		ft_printf("Error\n");
+		**str = '\0';
+		set_state(1);
+	}
+}
+
 void	lexer(char *str)
 {
 	t_list	*tokens;
 
 	tokens = NULL;
 	ft_printf("Lexer started.\n");
+	set_state(1);
 	while (*str)
+	{
 		add_token(&tokens, &str);
+		veirify_errors(&str);
+	}
 	print_tokens(tokens);
-	ft_printf("s: %s\n", str);
 }
-
 
 /* 
 caso um token seja identificado:
