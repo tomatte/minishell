@@ -3,16 +3,16 @@
 
 //TO BE USED AS TYPES AND STATES
 # define NONE 0
-# define WORD 1
-# define OPERATOR 2
-# define EXPANSIVE 3
-# define QUOTE 4
+# define START 1
+# define WORD 2
+# define OPERATOR 3
+# define EXPANSIVE 4
+# define QUOTE 5
 
 //WORD
-# define BUILTIN 0
-# define PATH_PROG 1
-# define FILE_PROG 2
-# define ARG 3
+# define EXEC 0
+# define ARG 1
+# define FILE 2
 # define DELIMITER "$'\"<|>"
 
 //QUOTE

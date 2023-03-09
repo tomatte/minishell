@@ -12,6 +12,7 @@ SRC			=	main.c \
 				identify_quotes.c \
 				identify_word.c \
 				parser.c \
+				categorize_word.c \
 
 VPATH		=	./src \
 				./src/prompt \

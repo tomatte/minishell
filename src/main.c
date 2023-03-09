@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 08:58:08 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/09 15:45:13 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/09 17:55:51 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,33 @@ static void	test_function(void)
 	printf("s: %d\n", get_state());
 }
 
+static void	print_token(t_token *token)
+{
+	if (token == NULL)
+		return ;
+	ft_printf("value: %s\n", token->value);
+	if (token->type == WORD)
+		ft_printf("type: WORD\n");
+	else if (token->type == OPERATOR)
+		ft_printf("type: OPERATOR\n");
+	else if (token->type == QUOTE)
+		ft_printf("type: QUOTE\n");
+	ft_printf("id: %d\n", token->id);
+	free(token);
+}
+
+static void	print_tokens(t_list *tokens)
+{
+	if (!tokens)
+		ft_printf("null\n");
+	while (tokens)
+	{
+		ft_printf("\n\n--- TOKEN ---\n");
+		print_token(tokens->content);
+		tokens = tokens->next;
+	}
+}
+
 int	main(int argc, char const *argv[])
 {
 	char	*str;
@@ -53,6 +80,7 @@ int	main(int argc, char const *argv[])
 		is_exit(str);
 		tokens = lexer(str);
 		parser(tokens);
+		print_tokens(tokens);
 		free(str);
 	}
 	return (0);
