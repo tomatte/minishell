@@ -10,25 +10,27 @@
 # define QUOTE 5
 
 //WORD
-# define EXEC 0
-# define ARG 1
-# define FILE 2
+# define EXEC 6
+# define ARG 7
+# define IN_FILE 8
+# define OUT_FILE 9
+# define HERE_DOC_END 10
 # define DELIMITER "$'\"<|>"
 
 //QUOTE
-# define SIMPLE_QUOTES 0
-# define DOUBLE_QUOTES 1
+# define SIMPLE_QUOTES 11
+# define DOUBLE_QUOTES 12
 
 //EXPANSIVE
-# define ENV_VAR 0
-# define EXIT_STAT 1
+# define ENV_VAR 13
+# define EXIT_STAT 14
 
 //OPERATOR
-# define HERE_DOC 0
-# define R_APPEND_OUT 1
-# define R_INPUT 2
-# define R_OUTPUT 3
-# define PIPE 4
+# define HERE_DOC 15
+# define R_APPEND_OUT 16
+# define R_INPUT 17
+# define R_OUTPUT 18
+# define PIPE 19
 
 # define OP_NUM 5
 

@@ -6,35 +6,77 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 16:53:14 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/09 17:54:34 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/10 15:09:15 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-static void	decider(t_list *tokens)
+static int	is_exec(t_token *token)
 {
-	t_token	*token;
+	int	s;
 
-	token = tokens->content;
-	if (token->type == WORD && get_state() == START)
+	s = get_state();
+	if (s == START || s == PIPE)
 	{
-		set_state(WORD);
+		set_state(EXEC);
 		token->id = EXEC;
+		return (1);
 	}
-	else if (token->type == WORD && get_state() == WORD)
-	{
-		token->id = ARG;
-	}
+	return (0);
 }
 
-void	categorize_word(t_list *tokens)
+static int	is_infile(t_token *token)
 {
-	t_token	*token;
+	int	s;
 
-	while (tokens)
+	s = get_state();
+	if (s == R_INPUT || s == IN_FILE)
 	{
-		decider(tokens);
-		tokens = tokens->next;
+		set_state(IN_FILE);
+		token->id = IN_FILE;
+		return (1);
 	}
+	return (0);
+}
+
+static int	is_outfile(t_token *token)
+{
+	int	s;
+
+	s = get_state();
+	if (s == R_OUTPUT || s == R_APPEND_OUT || s == OUT_FILE)
+	{
+		set_state(OUT_FILE);
+		token->id = OUT_FILE;
+		return (1);
+	}
+	return (0);
+}
+
+static int	is_heredoc_end(t_token *token)
+{
+	if (get_state() == HERE_DOC)
+	{
+		set_state(HERE_DOC_END);
+		token->id = HERE_DOC_END;
+		return (1);
+	}
+	return (0);
+}
+
+void	categorize_word(t_token *token)
+{
+	if (token->type != WORD && token->type != QUOTE)
+		return ;
+	if (is_exec(token))
+		;
+	else if (is_infile(token))
+		;
+	else if (is_outfile(token))
+		;
+	else if (is_heredoc_end(token))
+		;
+	else if (get_state() == EXEC)
+		token->id = ARG;
 }

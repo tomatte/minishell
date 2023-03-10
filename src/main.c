@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 08:58:08 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/09 17:55:51 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/10 15:15:05 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,18 @@ static void	print_token(t_token *token)
 		ft_printf("type: OPERATOR\n");
 	else if (token->type == QUOTE)
 		ft_printf("type: QUOTE\n");
-	ft_printf("id: %d\n", token->id);
+	if (token->id == EXEC)
+		ft_printf("id: EXEC\n");
+	else if (token->id == ARG)
+		ft_printf("id: ARG\n");
+	else if (token->id == IN_FILE)
+		ft_printf("id: IN_FILE\n");
+	else if (token->id == OUT_FILE)
+		ft_printf("id: OUT_FILE\n");
+	else if (token->id == HERE_DOC_END)
+		ft_printf("id: HERE_DOC_END\n");
+	else
+		ft_printf("id: %d\n", token->id);
 	free(token);
 }
 
