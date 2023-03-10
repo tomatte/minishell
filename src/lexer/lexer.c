@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 17:15:54 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/09 17:56:54 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/10 15:42:41 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,11 @@ static void	veirify_errors(char **str, t_list **tokens)
 		//clear_tokens(tokens)
 		set_state(1);
 		*tokens = NULL;
+	}
+	if (**str == '$')
+	{
+		ft_printf("Should treat dolar sign $\n");
+		(*str)++;
 	}
 }
 
