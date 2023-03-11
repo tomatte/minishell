@@ -13,12 +13,14 @@ SRC			=	main.c \
 				identify_word.c \
 				parser.c \
 				categorize_word.c \
+				cleaner.c \
 
 VPATH		=	./src \
 				./src/prompt \
 				./src/statics \
 				./src/lexer \
 				./src/parser \
+				./src/utils \
 
 OBJS_DIR	=	./objects
 

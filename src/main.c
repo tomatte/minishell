@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 08:58:08 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/10 15:15:05 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/11 10:32:34 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ static void	print_token(t_token *token)
 		ft_printf("id: HERE_DOC_END\n");
 	else
 		ft_printf("id: %d\n", token->id);
-	free(token);
 }
 
 static void	print_tokens(t_list *tokens)
@@ -92,7 +91,7 @@ int	main(int argc, char const *argv[])
 		tokens = lexer(str);
 		parser(tokens);
 		print_tokens(tokens);
-		free(str);
+		cleaner(str, tokens);
 	}
 	return (0);
 }
