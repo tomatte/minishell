@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 15:40:05 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/13 15:15:12 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/13 17:10:11 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,12 @@ void	syntax(t_list *tokens);
 
 //UTILS
 void	cleaner(char *str, t_list *tokens);
+int		in_error(void);
 
 //ERROR
 void	nut_error(char *str);
+
+//EXECUTOR
+void	executor(t_list *tokens);
 
 #endif

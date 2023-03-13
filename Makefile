@@ -16,6 +16,8 @@ SRC			=	main.c \
 				cleaner.c \
 				syntax.c \
 				nut_error.c \
+				executor.c \
+				in_error.c \
 
 VPATH		=	./src \
 				./src/prompt \
@@ -24,6 +26,7 @@ VPATH		=	./src \
 				./src/parser \
 				./src/utils \
 				./src/error \
+				./src/executor \
 
 OBJS_DIR	=	./objects
 

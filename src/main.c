@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 08:58:08 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/13 15:47:47 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/13 17:07:47 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ int	main(void)
 		is_exit(str);
 		tokens = lexer(str);
 		parser(tokens);
+		executor(tokens);
 		print_tokens(tokens);
 		print_error();
 		cleaner(str, tokens);
