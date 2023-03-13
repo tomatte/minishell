@@ -6,27 +6,28 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 16:08:04 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/08 13:29:32 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/13 16:09:15 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-static int	state(int id)
+static int	*state(void)
 {
 	static int	s = 0;
 
-	if (id != 0)
-		s = id;
-	return (s);
+	return (&s);
 }
 
 void	set_state(int id)
 {
-	state(id);
+	int	*s;
+
+	s = state();
+	*s = id;
 }
 
 int		get_state(void)
 {
-	return (state(0));
+	return (*state());
 }
