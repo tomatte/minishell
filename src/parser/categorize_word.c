@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 16:53:14 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/10 15:09:15 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/13 16:30:34 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static int	is_infile(t_token *token)
 	int	s;
 
 	s = get_state();
-	if (s == R_INPUT || s == IN_FILE)
+	if (s == R_INPUT)
 	{
 		set_state(IN_FILE);
 		token->id = IN_FILE;
@@ -45,7 +45,7 @@ static int	is_outfile(t_token *token)
 	int	s;
 
 	s = get_state();
-	if (s == R_OUTPUT || s == R_APPEND_OUT || s == OUT_FILE)
+	if (s == R_OUTPUT || s == R_APPEND_OUT)
 	{
 		set_state(OUT_FILE);
 		token->id = OUT_FILE;
@@ -77,6 +77,6 @@ void	categorize_word(t_token *token)
 		;
 	else if (is_heredoc_end(token))
 		;
-	else if (get_state() == EXEC)
+	else
 		token->id = ARG;
 }

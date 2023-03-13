@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 08:58:08 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/11 10:32:34 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/13 15:47:47 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static void	print_token(t_token *token)
 static void	print_tokens(t_list *tokens)
 {
 	if (!tokens)
-		ft_printf("null\n");
+		ft_printf("\n");
 	while (tokens)
 	{
 		ft_printf("\n\n--- TOKEN ---\n");
@@ -78,7 +78,13 @@ static void	print_tokens(t_list *tokens)
 	}
 }
 
-int	main(int argc, char const *argv[])
+static void	print_error(void)
+{
+	if (get_state() < 0)
+		ft_printf("SYNTAX ERROR!\n");
+}
+
+int	main(void)
 {
 	char	*str;
 	t_list	*tokens;
@@ -91,6 +97,7 @@ int	main(int argc, char const *argv[])
 		tokens = lexer(str);
 		parser(tokens);
 		print_tokens(tokens);
+		print_error();
 		cleaner(str, tokens);
 	}
 	return (0);

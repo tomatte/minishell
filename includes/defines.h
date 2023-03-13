@@ -36,5 +36,6 @@
 
 //ERRORS
 # define ERR_UNCLOSED_QUOTES -2
+# define ERR_NUT -3
 
 #endif

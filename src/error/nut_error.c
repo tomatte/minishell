@@ -1,33 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   state.c                                            :+:      :+:    :+:   */
+/*   nut_error.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/07 16:08:04 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/13 16:09:15 by dbrandao         ###   ########.fr       */
+/*   Created: 2023/03/13 14:47:29 by dbrandao          #+#    #+#             */
+/*   Updated: 2023/03/13 15:26:27 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-static int	*state(void)
+//nut == Near Unexpected Token
+void	nut_error(char *str)
 {
-	static int	s = 0;
-
-	return (&s);
-}
-
-void	set_state(int id)
-{
-	int	*s;
-
-	s = state();
-	*s = id;
-}
-
-int		get_state(void)
-{
-	return (*state());
+	ft_putstr_fd("bash: syntax error near unexpected token `", 2);
+	ft_putstr_fd(str, 2);
+	ft_putstr_fd("'\n", 2);
+	set_state(ERR_NUT);
 }

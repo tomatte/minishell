@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 15:40:05 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/11 10:29:27 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/13 15:15:12 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,12 @@ t_token	*identify_word(char **str);
 //PARSER
 void	parser(t_list *tokens);
 void	categorize_word(t_token *token);
+void	syntax(t_list *tokens);
 
 //UTILS
 void	cleaner(char *str, t_list *tokens);
+
+//ERROR
+void	nut_error(char *str);
 
 #endif
