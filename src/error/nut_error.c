@@ -1,38 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.c                                           :+:      :+:    :+:   */
+/*   nut_error.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/09 15:37:32 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/13 15:11:36 by dbrandao         ###   ########.fr       */
+/*   Created: 2023/03/13 14:47:29 by dbrandao          #+#    #+#             */
+/*   Updated: 2023/03/13 15:26:27 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-static void	keep_state(t_token *token)
+//nut == Near Unexpected Token
+void	nut_error(char *str)
 {
-	if (get_state() < 0)
-		return ;
-	if (token->type == OPERATOR)
-		set_state(token->id);
-}
-
-void	parser(t_list *tokens)
-{
-	t_token	*token;
-
-	if (tokens == NULL)
-		return ;
-	ft_printf("Parser started.\n");
-	while (tokens && get_state() >= 0)
-	{
-		token = (t_token *) tokens->content;
-		categorize_word(token);
-		syntax(tokens);
-		keep_state(token);
-		tokens = tokens->next;
-	}
+	ft_putstr_fd("bash: syntax error near unexpected token `", 2);
+	ft_putstr_fd(str, 2);
+	ft_putstr_fd("'\n", 2);
+	set_state(ERR_NUT);
 }

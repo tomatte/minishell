@@ -14,6 +14,8 @@ SRC			=	main.c \
 				parser.c \
 				categorize_word.c \
 				cleaner.c \
+				syntax.c \
+				nut_error.c \
 
 VPATH		=	./src \
 				./src/prompt \
@@ -21,6 +23,7 @@ VPATH		=	./src \
 				./src/lexer \
 				./src/parser \
 				./src/utils \
+				./src/error \
 
 OBJS_DIR	=	./objects
 
