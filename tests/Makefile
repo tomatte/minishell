@@ -1,19 +1,25 @@
 SRC			=	test_prompt.c \
 				test_prompt2.c \
+				test_state.c \
 				prompt.c \
 				get_directory.c \
 				get_username.c \
 				get_hostname.c \
+				state.c \
+				test_ft_streq.c \
+				test_lexer.c \
+				operators.c \
+
 
 VPATH		=	./src \
 				../src/prompt \
-
+				../src/statics \
 
 OBJS_DIR	=	./objects
 
 OBJS		:=	$(patsubst %.c,$(OBJS_DIR)/%.o, $(SRC))
 
-CFLAGS		=	-lcriterion -I./ -lreadline
+CFLAGS		=	-lcriterion -I./includes -lreadline
 
 NAME		=	test
 

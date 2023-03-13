@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 20:27:51 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/06 15:45:27 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/07 21:00:35 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,5 +135,8 @@ int		ft_lowest(int x, int y);
 
 //returns the highest of two numbers
 int		ft_highest(int x, int y);
+
+//returns 1 if the strings are equal or 0 if not
+int	ft_streq(char *s1, char *s2);
 
 #endif

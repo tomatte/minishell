@@ -4,9 +4,23 @@ SRC			=	main.c \
 				get_username.c \
 				get_hostname.c \
 				get_prompt_msg.c \
+				operators.c \
+				state.c \
+				lexer.c \
+				new_token.c \
+				identify_operator.c \
+				identify_quotes.c \
+				identify_word.c \
+				parser.c \
+				categorize_word.c \
+				cleaner.c \
 
 VPATH		=	./src \
 				./src/prompt \
+				./src/statics \
+				./src/lexer \
+				./src/parser \
+				./src/utils \
 
 OBJS_DIR	=	./objects
 
