@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 17:06:10 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/13 17:13:34 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/13 22:10:09 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,4 @@ void	executor(t_list *tokens)
 {
 	if (in_error())
 		return ;
-	ft_printf("Start executor!\n");
 }

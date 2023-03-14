@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 15:37:32 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/13 17:14:13 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/13 21:06:07 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	parser(t_list *tokens)
 
 	if (tokens == NULL)
 		return ;
-	ft_printf("Parser started.\n");
 	while (tokens && !in_error())
 	{
 		token = (t_token *) tokens->content;

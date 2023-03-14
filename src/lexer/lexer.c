@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 17:15:54 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/10 15:42:41 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/13 22:10:32 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	add_token(t_list **tokens, char **str)
 	ft_lstadd_back(tokens, ft_lstnew(token));
 }
 
-static void	veirify_errors(char **str, t_list **tokens)
+static void	verify_errors(char **str, t_list **tokens)
 {
 	if (get_state() <= -1)
 	{
@@ -61,30 +61,11 @@ t_list	*lexer(char *str)
 	t_list	*tokens;
 
 	tokens = NULL;
-	ft_printf("Lexer started.\n");
 	set_state(START);
 	while (*str)
 	{
 		add_token(&tokens, &str);
-		veirify_errors(&str, &tokens);
+		verify_errors(&str, &tokens);
 	}
 	return (tokens);
 }
-
-/* 
-caso um token seja identificado:
-	criar um novo nó do tipo token
-		value = "string referente ao token"
-		type = tipo do token
-		id = o id do token relacionado ao seu tipo
-	avançar o ponteiro da string
-
-exemplo
-	OPERATOR identificado.
-	token = new_token()
-	token->value = "|"
-	token->type = OPERATOR
-	token->id = PIPE
-
-	str += ft_strlen(token->value)
- */
