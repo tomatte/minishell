@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 15:40:05 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/13 17:10:11 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/14 20:50:27 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,10 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <fcntl.h>
+# include <sys/types.h>
+# include <sys/stat.h>
 # include "./defines.h"
-
-typedef struct s_token
-{
-	char	*value;
-	int		type;
-	int		id;
-}	t_token;
-
+# include "./structs.h"
 
 //PROMPT
 const char	*get_username(void);
@@ -62,5 +57,7 @@ void	nut_error(char *str);
 
 //EXECUTOR
 void	executor(t_list *tokens);
+void	files_action(t_list *tokens);
+void	clear_files(t_list *files);
 
 #endif

@@ -18,6 +18,8 @@ SRC			=	main.c \
 				nut_error.c \
 				executor.c \
 				in_error.c \
+				files_action.c \
+				clear_files.c \
 
 VPATH		=	./src \
 				./src/prompt \
