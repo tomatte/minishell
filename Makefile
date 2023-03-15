@@ -22,6 +22,7 @@ SRC			=	main.c \
 				clear_files.c \
 				create_task.c \
 				command_task.c \
+				execute_task.c \
 
 VPATH		=	./src \
 				./src/prompt \
@@ -32,6 +33,7 @@ VPATH		=	./src \
 				./src/error \
 				./src/executor \
 				./src/executor/create_task \
+				./src/executor/execute_task \
 
 OBJS_DIR	=	./objects
 
