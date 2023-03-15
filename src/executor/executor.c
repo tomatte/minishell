@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 17:06:10 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/15 13:31:09 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/15 14:40:36 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,21 @@ void	executor(t_list *tokens)
 		return ;
 	files = get_files(tokens);
 	task = create_task(tokens, files);
-	ft_printf("task: %s\n", task->value);
 	free(task);
 	print_files(files);
 	clear_files(files);
 }
 
+/* SIMPLE AND IMPORTANT!!!
+	create task
+	exec task
+
+	create exec command task
+	exec command task
+
+	create pipe task
+	exec pipe task
+ */
 /* primeiramente lidar com os arquivos:
 	files_action
 	{

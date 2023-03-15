@@ -1,21 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_task.c                                         :+:      :+:    :+:   */
+/*   create_task.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 12:08:23 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/15 13:30:34 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/15 14:35:22 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
-
-static void	pipe_task(t_list *tokens, t_task *task)
-{
-
-}
+#include "../../../includes/minishell.h"
 
 static t_task	*new_task(void)
 {
@@ -31,6 +26,6 @@ t_task	*create_task(t_list *tokens, t_list *files)
 	t_task	*task;
 
 	task = new_task();
-	task->value = "meudels";
+	command_task(task, tokens);
 	return (task);
 }
