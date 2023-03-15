@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 15:40:05 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/14 22:08:44 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/15 12:12:59 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,6 @@ void	nut_error(char *str);
 void	executor(t_list *tokens);
 t_list	*get_files(t_list *tokens);
 void	clear_files(t_list *files);
+t_task	*get_task(t_list *tokens, t_list *files);
 
 #endif

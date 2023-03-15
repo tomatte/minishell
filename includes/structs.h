@@ -15,5 +15,13 @@ typedef struct s_file
 	char	*name;
 }	t_file;
 
+typedef struct s_task
+{
+	char	**args1;
+	char	**args2;
+	int		type;
+	int		file_fd;
+	char	*value;
+}	t_task;
 
 #endif
