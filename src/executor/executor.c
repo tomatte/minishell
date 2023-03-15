@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 17:06:10 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/15 16:01:01 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/15 16:04:56 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,14 @@ static void	print_files(t_list *files)
 	ft_printf("\n");
 }
 
+void	clear_task(t_task *task)
+{
+	free(task->args1);
+	if (task->value)
+		free(task->value);
+	free(task);
+}
+
 void	executor(t_list *tokens)
 {
 	t_list	*files;
@@ -35,7 +43,7 @@ void	executor(t_list *tokens)
 	files = get_files(tokens);
 	task = create_task(tokens, files);
 	execute_task(task);
-	free(task);
+	clear_task(task);
 	print_files(files);
 	clear_files(files);
 }
