@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 16:39:41 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/14 20:48:30 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/14 21:55:33 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,15 @@ static int	open_file(t_file *file)
 		fd = open(file->name, O_WRONLY);
 		if (fd < 0)
 			fd = creat(file->name, S_IWUSR | S_IWGRP);
+		if (fd < 0)
+			set_state(CREATE_FILE_ERROR);
 	}
 	else
+	{
 		fd = open(file->name, O_RDONLY);
+		if (fd < 0)
+			set_state(OPEN_FILE_ERROR);
+	}
 	return (fd);
 }
 

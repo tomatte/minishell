@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 08:58:08 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/13 22:09:15 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/14 21:58:03 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static void	print_tokens(t_list *tokens)
 static void	print_error(void)
 {
 	if (get_state() < 0)
-		ft_printf("SYNTAX ERROR!\n");
+		ft_printf("THERE'S AN ERROR!\n");
 }
 
 int	main(void)
