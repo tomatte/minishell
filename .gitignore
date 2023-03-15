@@ -7,3 +7,6 @@ objects
 minishell
 *.o
 test
+pipe_task.c
+test_prog.c
+ignored

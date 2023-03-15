@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 18:03:39 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/15 18:59:54 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/15 19:08:14 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ static void	child_code(int pid, int *pipedes, t_task *task)
 	{
 		close(pipedes[0]);
 		dup2(pipedes[1], STDOUT_FILENO);
-		execv(task->args[0], task->args);
 		close(pipedes[1]);
+		execv(task->args[0], task->args);
 	}
 }
 
