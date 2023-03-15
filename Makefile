@@ -18,7 +18,7 @@ SRC			=	main.c \
 				nut_error.c \
 				executor.c \
 				in_error.c \
-				files_action.c \
+				get_files.c \
 				clear_files.c \
 
 VPATH		=	./src \

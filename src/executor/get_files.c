@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   files_action.c                                     :+:      :+:    :+:   */
+/*   get_files.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 16:39:41 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/14 21:55:33 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/14 22:14:13 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-static t_list	*get_files(t_list *tokens)
+static t_list	*get_files_list(t_list *tokens)
 {
 	t_list	*files;
 	t_file	*file;
@@ -42,7 +42,7 @@ static int	open_file(t_file *file)
 	{
 		fd = open(file->name, O_WRONLY);
 		if (fd < 0)
-			fd = creat(file->name, S_IWUSR | S_IWGRP);
+			fd = creat(file->name, 00664);
 		if (fd < 0)
 			set_state(CREATE_FILE_ERROR);
 	}
@@ -69,25 +69,11 @@ static void	open_files(t_list *files)
 	}
 }
 
-static void	print_files(t_list *files)
-{
-	t_file	*file;
-
-	while (files)
-	{
-		file = (t_file *) files->content;
-		ft_printf("%d ", file->id);
-		files = files->next;
-	}
-	ft_printf("\n");
-}
-
-void	files_action(t_list *tokens)
+t_list	*get_files(t_list *tokens)
 {
 	t_list	*files;
 
-	files = get_files(tokens);
+	files = get_files_list(tokens);
 	open_files(files);
-	print_files(files);
-	clear_files(files);
+	return (files);
 }

@@ -6,17 +6,34 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 17:06:10 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/14 22:01:59 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/14 22:10:11 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
+static void	print_files(t_list *files)
+{
+	t_file	*file;
+
+	while (files)
+	{
+		file = (t_file *) files->content;
+		ft_printf("%d ", file->id);
+		files = files->next;
+	}
+	ft_printf("\n");
+}
+
 void	executor(t_list *tokens)
 {
+	t_list	*files;
+
 	if (in_error())
 		return ;
-	files_action(tokens);
+	files = get_files(tokens);
+	print_files(files);
+	clear_files(files);
 }
 
 /* primeiramente lidar com os arquivos:
