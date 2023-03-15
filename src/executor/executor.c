@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 17:06:10 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/14 20:07:25 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/14 22:01:59 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,6 @@
 
 void	executor(t_list *tokens)
 {
-	int	pid;
-	int	fd[2];
-
-	(void) pid;
-	(void) fd;
 	if (in_error())
 		return ;
 	files_action(tokens);
