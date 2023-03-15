@@ -17,8 +17,7 @@ typedef struct s_file
 
 typedef struct s_task
 {
-	char	**args1;
-	char	**args2;
+	char	**args;
 	int		type;
 	int		file_fd;
 	char	*value;
