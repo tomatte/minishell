@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 17:06:10 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/15 14:40:36 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/15 15:06:37 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,20 @@ static void	print_files(t_list *files)
 	ft_printf("\n");
 }
 
+static void	print_args(t_task *task)
+{
+	int	i;
+
+	i = 0;
+	ft_printf("args: ");
+	while (task->args1[i])
+	{
+		ft_printf("%s  ", task->args1[i]);
+		i++;
+	}
+	ft_printf("\n");
+}
+
 void	executor(t_list *tokens)
 {
 	t_list	*files;
@@ -34,6 +48,7 @@ void	executor(t_list *tokens)
 		return ;
 	files = get_files(tokens);
 	task = create_task(tokens, files);
+	print_args(task);
 	free(task);
 	print_files(files);
 	clear_files(files);

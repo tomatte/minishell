@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 13:54:17 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/15 14:40:26 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/15 15:07:49 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,17 +39,30 @@ static int	get_args_len(t_list *tokens)
 	return (len);
 }
 
-static void	fill_args(t_task *task, t_list *tokens)
+static char	**get_args(t_list *tokens)
 {
-	int	len;
+	t_token	*token;
+	char	**args;
+	int		len;
+	int		i;
 
 	len = get_args_len(tokens);
-	ft_printf("t_arg_len: %d\n", len);
+	args = (char **) malloc(sizeof(char *) * (len + 1));
+	i = 0;
+	while (tokens && i < len)
+	{
+		token = (t_token *) tokens->content;
+		if (token->id == ARG || token->id == EXEC)
+			args[i++] = token->value;
+		tokens = tokens->next;
+	}
+	args[len] = NULL;
+	return (args);
 }
 
 void	command_task(t_task *task, t_list *tokens)
 {
 	if (!is_command_task(tokens))
 		return ;
-	fill_args(task, tokens);
+	task->args1 = get_args(tokens);
 }
