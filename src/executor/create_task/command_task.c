@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 13:54:17 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/15 15:07:49 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/15 15:31:13 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +64,6 @@ void	command_task(t_task *task, t_list *tokens)
 {
 	if (!is_command_task(tokens))
 		return ;
+	task->type = EXEC;
 	task->args1 = get_args(tokens);
 }
