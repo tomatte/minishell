@@ -1,30 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_task.c                                      :+:      :+:    :+:   */
+/*   next_task.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/15 12:08:23 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/15 20:39:44 by dbrandao         ###   ########.fr       */
+/*   Created: 2023/03/15 20:40:05 by dbrandao          #+#    #+#             */
+/*   Updated: 2023/03/15 20:48:00 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
 
-static t_task	*new_task(void)
+static void	next_operator(t_list **tokens)
 {
-	t_task	*task;
+	t_token	*token;
 
-	task = (t_task *) malloc(sizeof(t_task));
-	ft_bzero(task, sizeof(t_task));
-	return (task);
+	while (1)
+	{
+		*tokens = (*tokens)->next;
+		token = (t_token *)(*tokens)->content;
+		if (token->type == OPERATOR)
+			break;
+	}
 }
 
-t_task	*create_task(t_list *tokens, t_list *files)
+void	next_task(t_list **tokens, t_task *task)
 {
-	t_task	*task;
-
-	task = new_task();
-	return (task);
+	command_task(task, *tokens);
+	next_operator(tokens);
 }

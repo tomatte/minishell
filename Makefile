@@ -25,6 +25,7 @@ SRC			=	main.c \
 				execute_task.c \
 				execute_command.c \
 				read_all.c \
+				next_task.c \
 
 VPATH		=	./src \
 				./src/prompt \

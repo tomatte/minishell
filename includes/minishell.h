@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 15:40:05 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/15 18:53:07 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/15 20:48:33 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void	syntax(t_list *tokens);
 //UTILS
 void	cleaner(char *str, t_list *tokens);
 int		in_error(void);
+char	*read_all(int fd);;
 
 //ERROR
 void	nut_error(char *str);
@@ -64,6 +65,6 @@ t_task	*create_task(t_list *tokens, t_list *files);
 void	command_task(t_task *task, t_list *tokens);
 void	execute_task(t_task *task);
 void	execute_command(t_task *task);
-char	*read_all(int fd);
+void	next_task(t_list **tokens, t_task *task);
 
 #endif
