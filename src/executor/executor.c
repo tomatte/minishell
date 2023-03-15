@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 17:06:10 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/15 16:04:56 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/15 19:01:41 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	print_files(t_list *files)
 
 void	clear_task(t_task *task)
 {
-	free(task->args1);
+	free(task->args);
 	if (task->value)
 		free(task->value);
 	free(task);
@@ -43,6 +43,7 @@ void	executor(t_list *tokens)
 	files = get_files(tokens);
 	task = create_task(tokens, files);
 	execute_task(task);
+	ft_printf("output: %s\n", task->value);
 	clear_task(task);
 	print_files(files);
 	clear_files(files);

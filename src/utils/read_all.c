@@ -1,32 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   execute_task.c                                     :+:      :+:    :+:   */
+/*   read_all.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/15 15:58:34 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/15 18:05:27 by dbrandao         ###   ########.fr       */
+/*   Created: 2023/03/15 18:52:44 by dbrandao          #+#    #+#             */
+/*   Updated: 2023/03/15 18:52:59 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/minishell.h"
+#include "../../includes/minishell.h"
 
-static void	print_args(t_task *task)
+static char	*join_and_free(char *s1, char *s2)
 {
-	int	i;
+	char	*result;
 
-	i = 0;
-	ft_printf("args: ");
-	while (task->args[i])
-	{
-		ft_printf("%s  ", task->args[i]);
-		i++;
-	}
-	ft_printf("\n");
+	if (s1 == NULL)
+		return (s2);
+	if (s2 == NULL)
+		return (s1);
+	result = ft_strjoin(s1, s2);
+	free(s1);
+	free(s2);
+	return (result);
 }
 
-void	execute_task(t_task *task)
+char	*read_all(int fd)
 {
-	execute_command(task);
+	char	*str;
+	char	*aux;
+
+	str = NULL;
+	while (1)
+	{
+		aux = get_next_line(fd);
+		if (!aux)
+			return (str);
+		str = join_and_free(str, aux);
+	}
 }

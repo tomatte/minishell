@@ -20,6 +20,7 @@ typedef struct s_task
 	char	**args;
 	int		type;
 	int		file_fd;
+	int		status;
 	char	*value;
 }	t_task;
 

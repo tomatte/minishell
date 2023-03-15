@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 15:40:05 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/15 15:59:25 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/15 18:53:07 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <fcntl.h>
 # include <sys/types.h>
 # include <sys/stat.h>
+# include <sys/wait.h>
 # include "./defines.h"
 # include "./structs.h"
 
@@ -62,5 +63,7 @@ void	clear_files(t_list *files);
 t_task	*create_task(t_list *tokens, t_list *files);
 void	command_task(t_task *task, t_list *tokens);
 void	execute_task(t_task *task);
+void	execute_command(t_task *task);
+char	*read_all(int fd);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 16:50:51 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/14 21:55:44 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/15 18:55:32 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,9 @@
 # define R_INPUT 17
 # define R_OUTPUT 18
 # define PIPE 19
+
+//UTILS
+# define NEXT 20
 
 # define OP_NUM 5
 
