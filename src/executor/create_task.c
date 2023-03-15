@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 12:08:23 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/15 12:35:46 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/15 13:30:34 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static t_task	*new_task(void)
 	return (task);
 }
 
-t_task	*get_task(t_list *tokens, t_list *files)
+t_task	*create_task(t_list *tokens, t_list *files)
 {
 	t_task	*task;
 

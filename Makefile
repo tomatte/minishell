@@ -20,7 +20,7 @@ SRC			=	main.c \
 				in_error.c \
 				get_files.c \
 				clear_files.c \
-				get_task.c \
+				create_task.c \
 
 VPATH		=	./src \
 				./src/prompt \
