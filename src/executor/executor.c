@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 17:06:10 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/16 10:30:25 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/16 12:57:34 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,41 @@ static void	next_operator(t_list **tokens)
 {
 	t_token	*token;
 
+	if (*tokens == NULL)
+		return ;
 	while (1)
 	{
 		*tokens = (*tokens)->next;
-		token = (t_token *)(*tokens)->content;
+		if (*tokens == NULL)
+			return ;
+		token = (*tokens)->content;
 		if (token->type == OPERATOR)
-			break;
+			return ;
 	}
+}
+
+static int	verify_error(t_task	*task)
+{
+	if (in_error() || task->status != 0)
+	{
+		ft_printf("EXEC ERROR\n");
+		return (1);
+	}
+	return (0);
+}
+
+static void	init_vars(t_list **files, t_task **task, t_list *tokens)
+{
+	*files = get_files(tokens);
+	*task = NULL;
+}
+
+static void	print_some_data(t_task *task, t_list *tokens)
+{
+	if (task)
+		ft_printf("output: %s\n", task->value);
+	if (tokens)
+		ft_printf("next token: %s\n", ((t_token *)tokens->content)->value);
 }
 
 void	executor(t_list *tokens)
@@ -53,14 +81,17 @@ void	executor(t_list *tokens)
 
 	if (in_error())
 		return ;
-	files = get_files(tokens);
-	task = NULL;
-	fill_task(&task, tokens, files);
-	execute_task(task);
-	ft_printf("output: %s\n", task->value);
-	ft_printf("next task: %s\n", ((t_token *)tokens->content)->value);
+	init_vars(&files, &task, tokens);
+	while (tokens)
+	{
+		fill_task(&task, tokens, files);
+		execute_task(task);
+		next_operator(&tokens);
+		if (verify_error(task))
+			break ;
+	}
+	ft_printf("%s", task->value);
 	clear_task(task);
-	print_files(files);
 	clear_files(files);
 }
 

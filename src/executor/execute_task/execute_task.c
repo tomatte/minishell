@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 15:58:34 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/15 18:05:27 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/16 12:25:40 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,5 @@ static void	print_args(t_task *task)
 void	execute_task(t_task *task)
 {
 	execute_command(task);
+	execute_pipe(task);
 }

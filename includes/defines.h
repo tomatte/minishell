@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 16:50:51 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/15 18:55:32 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/16 10:38:06 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,6 @@
 # define ERR_NUT -3
 # define CREATE_FILE_ERROR -4
 # define OPEN_FILE_ERROR -5
+# define EXEC_ERR -6
 
 #endif

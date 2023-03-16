@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 15:40:05 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/16 10:28:23 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/16 12:03:25 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ void	fill_task(t_task **task, t_list *tokens, t_list *files);
 void	command_task(t_task *task, t_list *tokens);
 void	execute_task(t_task *task);
 void	execute_command(t_task *task);
-void	next_task(t_list **tokens, t_task *task);
+void	pipe_task(t_task *task, t_list *tokens);
+void	execute_pipe(t_task *task);
 
 #endif
