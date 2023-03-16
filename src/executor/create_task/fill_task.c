@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_task.c                                      :+:      :+:    :+:   */
+/*   fill_task.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 12:08:23 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/15 20:39:44 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/16 10:30:37 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,9 @@ static t_task	*new_task(void)
 	return (task);
 }
 
-t_task	*create_task(t_list *tokens, t_list *files)
+void	fill_task(t_task **task, t_list *tokens, t_list *files)
 {
-	t_task	*task;
-
-	task = new_task();
-	return (task);
+	if (*task == NULL)
+		*task = new_task();
+	command_task(*task, tokens);
 }

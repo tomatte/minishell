@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 15:40:05 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/15 20:48:33 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/16 10:28:23 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	nut_error(char *str);
 void	executor(t_list *tokens);
 t_list	*get_files(t_list *tokens);
 void	clear_files(t_list *files);
-t_task	*create_task(t_list *tokens, t_list *files);
+void	fill_task(t_task **task, t_list *tokens, t_list *files);
 void	command_task(t_task *task, t_list *tokens);
 void	execute_task(t_task *task);
 void	execute_command(t_task *task);

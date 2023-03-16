@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 17:06:10 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/15 20:51:26 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/16 10:30:25 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,19 @@ void	clear_task(t_task *task)
 	free(task);
 }
 
+static void	next_operator(t_list **tokens)
+{
+	t_token	*token;
+
+	while (1)
+	{
+		*tokens = (*tokens)->next;
+		token = (t_token *)(*tokens)->content;
+		if (token->type == OPERATOR)
+			break;
+	}
+}
+
 void	executor(t_list *tokens)
 {
 	t_list	*files;
@@ -41,8 +54,8 @@ void	executor(t_list *tokens)
 	if (in_error())
 		return ;
 	files = get_files(tokens);
-	task = create_task(tokens, files);
-	next_task(&tokens, task);
+	task = NULL;
+	fill_task(&task, tokens, files);
 	execute_task(task);
 	ft_printf("output: %s\n", task->value);
 	ft_printf("next task: %s\n", ((t_token *)tokens->content)->value);
