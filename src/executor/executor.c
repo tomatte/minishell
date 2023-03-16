@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 17:06:10 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/16 12:57:34 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/16 13:55:27 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static int	verify_error(t_task	*task)
 	return (0);
 }
 
-static void	init_vars(t_list **files, t_task **task, t_list *tokens)
+static void	init_vars(t_list *tokens, t_list **files, t_task **task)
 {
 	*files = get_files(tokens);
 	*task = NULL;
@@ -74,6 +74,18 @@ static void	print_some_data(t_task *task, t_list *tokens)
 		ft_printf("next token: %s\n", ((t_token *)tokens->content)->value);
 }
 
+static void	exec_loop(t_list *tokens, t_list *files, t_task **task)
+{
+	while (tokens)
+	{
+		fill_task(task, tokens, files);
+		execute_task(*task);
+		next_operator(&tokens);
+		if (verify_error(*task))
+			break ;
+	}
+}
+
 void	executor(t_list *tokens)
 {
 	t_list	*files;
@@ -81,15 +93,8 @@ void	executor(t_list *tokens)
 
 	if (in_error())
 		return ;
-	init_vars(&files, &task, tokens);
-	while (tokens)
-	{
-		fill_task(&task, tokens, files);
-		execute_task(task);
-		next_operator(&tokens);
-		if (verify_error(task))
-			break ;
-	}
+	init_vars(tokens, &files, &task);
+	exec_loop(tokens, files, &task);
 	ft_printf("%s", task->value);
 	clear_task(task);
 	clear_files(files);
