@@ -29,7 +29,7 @@ typedef struct s_command
 	char	**args;
 	int		output_fd;
 	int		input_fd;
-}	t_command
+}	t_command;
 
 typedef struct s_pipe
 {

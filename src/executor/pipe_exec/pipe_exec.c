@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 10:00:02 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/22 10:30:56 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/22 10:45:27 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,17 @@
 
 static int	is_pipe(t_list *tokens)
 {
-	while (tokens)
-	{
-		if (token(tokens)->)
-	}
+	while (tokens && token(tokens)->type != OPERATOR)
+		tokens = tokens->next;
+	if (tokens == NULL)
+		return (0);
+	return (token(tokens)->id == PIPE);
 }
 
 void	pipe_exec(t_list *tokens)
 {
-
+	if (is_pipe(tokens))
+		ft_printf("start pipe executor\n");
 }
 
 /* 

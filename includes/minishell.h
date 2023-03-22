@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 15:40:05 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/22 10:12:08 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/22 10:45:38 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,6 @@ void	executor(t_list *tokens);
 t_list	*get_files(t_list *tokens);
 void	clear_files(t_list *files);
 char	**get_args(t_list *tokens);
+void	pipe_exec(t_list *tokens);
 
 #endif

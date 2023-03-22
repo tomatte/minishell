@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 17:06:10 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/22 09:42:44 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/22 10:46:13 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	executor(t_list *tokens)
 	if (in_error())
 		return ;
 	init_vars(tokens, &files, &new_stdout);
-	write(new_stdout, "RESETED\n", ft_strlen("RESETED\n") + 1);
+	pipe_exec(tokens);
 	//clear_task(task);
 	clear_files(files);
 }
