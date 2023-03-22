@@ -1,24 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   command_task.c                                     :+:      :+:    :+:   */
+/*   get_args.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/15 13:54:17 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/15 18:00:17 by dbrandao         ###   ########.fr       */
+/*   Created: 2023/03/20 13:14:23 by dbrandao          #+#    #+#             */
+/*   Updated: 2023/03/22 09:34:02 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/minishell.h"
-
-static int	is_command_task(t_list *tokens)
-{
-	t_token	*token;
-
-	token = (t_token *) tokens->content;
-	return (token->id == EXEC);
-}
+#include "../../includes/minishell.h"
 
 static int	get_args_len(t_list *tokens)
 {
@@ -39,7 +31,7 @@ static int	get_args_len(t_list *tokens)
 	return (len);
 }
 
-static char	**get_args(t_list *tokens)
+char	**get_args(t_list *tokens)
 {
 	t_token	*token;
 	char	**args;
@@ -58,12 +50,4 @@ static char	**get_args(t_list *tokens)
 	}
 	args[len] = NULL;
 	return (args);
-}
-
-void	command_task(t_task *task, t_list *tokens)
-{
-	if (!is_command_task(tokens))
-		return ;
-	task->type = EXEC;
-	task->args = get_args(tokens);
 }

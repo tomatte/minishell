@@ -20,13 +20,11 @@ SRC			=	main.c \
 				in_error.c \
 				get_files.c \
 				clear_files.c \
-				fill_task.c \
-				command_task.c \
 				execute_task.c \
 				execute_command.c \
 				read_all.c \
-				pipe_task.c \
 				execute_pipe.c \
+				get_args.c \
 
 VPATH		=	./src \
 				./src/prompt \
@@ -36,7 +34,6 @@ VPATH		=	./src \
 				./src/utils \
 				./src/error \
 				./src/executor \
-				./src/executor/create_task \
 				./src/executor/execute_task \
 
 OBJS_DIR	=	./objects

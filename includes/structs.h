@@ -18,6 +18,9 @@ typedef struct s_file
 typedef struct s_task
 {
 	char	**args;
+	int		*r_pipe;
+	int		*w_pipe;
+	int		*f_pipe;
 	int		type;
 	int		file_fd;
 	int		status;
