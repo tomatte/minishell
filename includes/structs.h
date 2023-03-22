@@ -18,13 +18,23 @@ typedef struct s_file
 typedef struct s_task
 {
 	char	**args;
-	int		*r_pipe;
-	int		*w_pipe;
-	int		*f_pipe;
 	int		type;
 	int		file_fd;
 	int		status;
 	char	*value;
 }	t_task;
+
+typedef struct s_command
+{
+	char	**args;
+	int		output_fd;
+	int		input_fd;
+}	t_command
+
+typedef struct s_pipe
+{
+	int			**pipedes;
+	t_command	**commands;
+}	t_pipe;
 
 #endif

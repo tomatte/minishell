@@ -25,6 +25,7 @@ SRC			=	main.c \
 				read_all.c \
 				execute_pipe.c \
 				get_args.c \
+				token.c \
 
 VPATH		=	./src \
 				./src/prompt \
