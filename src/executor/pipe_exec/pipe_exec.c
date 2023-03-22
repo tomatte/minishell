@@ -6,25 +6,19 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 10:00:02 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/22 10:45:27 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/22 11:26:53 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
 
-static int	is_pipe(t_list *tokens)
-{
-	while (tokens && token(tokens)->type != OPERATOR)
-		tokens = tokens->next;
-	if (tokens == NULL)
-		return (0);
-	return (token(tokens)->id == PIPE);
-}
-
 void	pipe_exec(t_list *tokens)
 {
-	if (is_pipe(tokens))
-		ft_printf("start pipe executor\n");
+	if (is_operator(tokens, PIPE))
+		ft_printf("IS PIPE OPERATOR\n");
+	else
+		ft_printf("IS NOT PIPE OPERATOR\n");
+	get_pipedes(tokens);
 }
 
 /* 

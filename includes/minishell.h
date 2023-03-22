@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 15:40:05 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/22 10:45:38 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/22 11:25:17 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ void	cleaner(char *str, t_list *tokens);
 int		in_error(void);
 char	*read_all(int fd);
 t_token	*token(t_list *tokens);
+t_list	*next_operator(t_list *tokens);
+int		is_operator(t_list *tokens, int operator);
 
 //ERROR
 void	nut_error(char *str);
@@ -64,5 +66,6 @@ t_list	*get_files(t_list *tokens);
 void	clear_files(t_list *files);
 char	**get_args(t_list *tokens);
 void	pipe_exec(t_list *tokens);
+int		**get_pipedes(t_list *tokens);
 
 #endif
