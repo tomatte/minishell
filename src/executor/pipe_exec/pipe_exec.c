@@ -6,19 +6,31 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 10:00:02 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/22 11:26:53 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/22 14:52:34 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
 
+static void	close_pipes(int **pipedes)
+{
+	while (*pipedes)
+	{
+		close((*pipedes)[0]);
+		close((*pipedes)[1]);
+		pipedes++;
+	}
+}
+
 void	pipe_exec(t_list *tokens)
 {
-	if (is_operator(tokens, PIPE))
-		ft_printf("IS PIPE OPERATOR\n");
-	else
-		ft_printf("IS NOT PIPE OPERATOR\n");
-	get_pipedes(tokens);
+	t_pipe	*data;
+
+	if (!is_operator(tokens, PIPE))
+		return ;
+	data->pipedes = get_pipedes(tokens);
+	//create_commands;
+	close_pipes(data->pipedes);
 }
 
 /* 
