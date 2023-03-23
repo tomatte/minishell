@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 10:00:02 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/23 16:16:41 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/23 17:22:23 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,26 @@ static void	close_pipes(int **pipedes)
 	}
 }
 
+static void	del_command(void *mem)
+{
+	t_command	*command;
+
+	command = (t_command *) mem;
+	free(command->args);
+	free(command);
+}
+
+static void	clear_data(t_pipe *data)
+{
+	int	i;
+
+	i = 0;
+	while (data->pipedes[i])
+		free(data->pipedes[i++]);
+	free(data->pipedes);
+	ft_lstclear(&(data->commands), del_command);
+}
+
 void	pipe_exec(t_list *tokens)
 {
 	t_pipe	data;
@@ -32,6 +52,7 @@ void	pipe_exec(t_list *tokens)
 	data.commands = get_commands(tokens, data.pipedes);
 	//create_commands;
 	close_pipes(data.pipedes);
+	clear_data(&data);
 }
 
 /* 
