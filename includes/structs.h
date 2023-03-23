@@ -29,12 +29,13 @@ typedef struct s_command
 	char	**args;
 	int		output_fd;
 	int		input_fd;
+	int		status;
 }	t_command;
 
 typedef struct s_pipe
 {
-	int			**pipedes;
-	t_command	**commands;
+	int		**pipedes;
+	t_list	*commands;
 }	t_pipe;
 
 #endif

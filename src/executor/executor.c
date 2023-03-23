@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 17:06:10 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/22 10:46:13 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/22 16:04:35 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,23 +30,6 @@ void	clear_task(t_task *task)
 	if (task->value)
 		free(task->value);
 	free(task);
-}
-
-static void	next_operator(t_list **tokens)
-{
-	t_token	*token;
-
-	if (*tokens == NULL)
-		return ;
-	while (1)
-	{
-		*tokens = (*tokens)->next;
-		if (*tokens == NULL)
-			return ;
-		token = (*tokens)->content;
-		if (token->type == OPERATOR)
-			return ;
-	}
 }
 
 static int	verify_error(t_task	*task)

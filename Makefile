@@ -27,6 +27,7 @@ SRC			=	main.c \
 				next_operator.c \
 				is_operator.c \
 				get_pipedes.c \
+				get_commands.c \
 
 VPATH		=	./src \
 				./src/prompt \
