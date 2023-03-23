@@ -27,8 +27,8 @@ typedef struct s_task
 typedef struct s_command
 {
 	char	**args;
-	int		output_fd;
 	int		input_fd;
+	int		output_fd;
 	int		status;
 }	t_command;
 
