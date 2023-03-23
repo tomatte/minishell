@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 10:56:05 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/22 14:51:43 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/23 16:00:10 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	get_pipes_len(t_list *tokens)
 		else
 			break ;
 	}
-	return (len);
+	return (len + 1);
 }
 
 static int	**alloc_pipes(int len)
