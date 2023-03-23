@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 15:41:29 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/23 16:15:47 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/23 16:49:58 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,29 +67,6 @@ static void	last_command(t_list *tokens, int **pipedes, t_list **commands)
 	command->input_fd = pipedes[i][R];
 	command->output_fd = STDOUT_FILENO;
 	ft_lstadd_back(commands, ft_lstnew(command));
-}
-
-static void	print_command(t_command *command)
-{
-	int	i;
-
-	ft_printf("COMMAND %s\n", command->args[0]);
-	ft_printf("args: ");
-	i = -1;
-	while (command->args[++i])
-		ft_printf("%s   ", command->args[i]);
-	ft_printf("\ninput_fd: %d\n", command->input_fd);
-	ft_printf("output_fd: %d\n", command->output_fd);
-	ft_printf("status: %d\n", command->status);
-}
-
-static void	print_commands(t_list *commands)
-{
-	while (commands)
-	{
-		print_command((t_command *) commands->content);
-		commands = commands->next;
-	}
 }
 
 t_list	*get_commands(t_list *tokens, int **pipedes)

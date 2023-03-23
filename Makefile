@@ -1,4 +1,5 @@
-SRC			=	main.c \
+SRC			=	temp_functions.c \
+				main.c \
 				prompt.c \
 				get_directory.c \
 				get_username.c \

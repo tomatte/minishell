@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 10:56:05 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/23 16:00:10 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/23 16:47:23 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,15 +48,6 @@ static void	open_pipes(int **pipedes)
 	while (*pipedes)
 	{
 		pipe(*pipedes);
-		pipedes++;
-	}
-}
-
-static void	print_pipedes(int **pipedes)
-{
-	while (*pipedes)
-	{
-		ft_printf("r%d / w%d\n", (*pipedes)[0], (*pipedes)[1]);
 		pipedes++;
 	}
 }
