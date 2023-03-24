@@ -1,37 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.c                                           :+:      :+:    :+:   */
+/*   is_operator.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/09 15:37:32 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/13 21:06:07 by dbrandao         ###   ########.fr       */
+/*   Created: 2023/03/22 11:06:00 by dbrandao          #+#    #+#             */
+/*   Updated: 2023/03/22 11:28:04 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-static void	keep_state(t_token *token)
+int	is_operator(t_list *tokens, int operator_id)
 {
-	if (get_state() < 0)
-		return ;
-	if (token->type == OPERATOR)
-		set_state(token->id);
-}
-
-void	parser(t_list *tokens)
-{
-	t_token	*token;
-
-	if (tokens == NULL)
-		return ;
-	while (tokens && !in_error())
-	{
-		token = (t_token *) tokens->content;
-		categorize_word(token);
-		syntax(tokens);
-		keep_state(token);
+	while (tokens && token(tokens)->type != OPERATOR)
 		tokens = tokens->next;
-	}
+	if (tokens == NULL)
+		return (0);
+	return (token(tokens)->id == operator_id);
 }

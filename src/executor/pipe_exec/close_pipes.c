@@ -1,37 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.c                                           :+:      :+:    :+:   */
+/*   close_pipes.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/09 15:37:32 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/13 21:06:07 by dbrandao         ###   ########.fr       */
+/*   Created: 2023/03/24 12:04:37 by dbrandao          #+#    #+#             */
+/*   Updated: 2023/03/24 12:07:25 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "../../../includes/minishell.h"
 
-static void	keep_state(t_token *token)
+void	close_pipes(int **pipedes)
 {
-	if (get_state() < 0)
-		return ;
-	if (token->type == OPERATOR)
-		set_state(token->id);
-}
-
-void	parser(t_list *tokens)
-{
-	t_token	*token;
-
-	if (tokens == NULL)
-		return ;
-	while (tokens && !in_error())
+	while (*pipedes)
 	{
-		token = (t_token *) tokens->content;
-		categorize_word(token);
-		syntax(tokens);
-		keep_state(token);
-		tokens = tokens->next;
+		if ((*pipedes)[R] != STDIN_FILENO)
+			close((*pipedes)[R]);
+		if ((*pipedes)[W] != STDOUT_FILENO)
+			close((*pipedes)[W]);
+		pipedes++;
 	}
 }

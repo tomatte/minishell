@@ -1,37 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.c                                           :+:      :+:    :+:   */
+/*   clear_files.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/09 15:37:32 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/13 21:06:07 by dbrandao         ###   ########.fr       */
+/*   Created: 2023/03/14 20:27:44 by dbrandao          #+#    #+#             */
+/*   Updated: 2023/03/14 20:29:03 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-static void	keep_state(t_token *token)
+static void	del_file(void *file)
 {
-	if (get_state() < 0)
-		return ;
-	if (token->type == OPERATOR)
-		set_state(token->id);
+	ft_printf("closed %d\n", ((t_file *) file)->fd);
+	close(((t_file *) file)->fd);
+	free(file);
 }
 
-void	parser(t_list *tokens)
+void	clear_files(t_list *files)
 {
-	t_token	*token;
-
-	if (tokens == NULL)
-		return ;
-	while (tokens && !in_error())
-	{
-		token = (t_token *) tokens->content;
-		categorize_word(token);
-		syntax(tokens);
-		keep_state(token);
-		tokens = tokens->next;
-	}
+	ft_lstclear(&files, del_file);
 }

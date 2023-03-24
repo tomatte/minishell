@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   defines.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/14 16:50:51 by dbrandao          #+#    #+#             */
+/*   Updated: 2023/03/23 14:39:16 by dbrandao         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef DEFINES_H
 # define DEFINES_H
 
@@ -32,10 +44,19 @@
 # define R_OUTPUT 18
 # define PIPE 19
 
+//UTILS
+# define NEXT 20
+
 # define OP_NUM 5
+
+# define R 0
+# define W 1
 
 //ERRORS
 # define ERR_UNCLOSED_QUOTES -2
 # define ERR_NUT -3
+# define CREATE_FILE_ERROR -4
+# define OPEN_FILE_ERROR -5
+# define EXEC_ERR -6
 
 #endif

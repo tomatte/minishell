@@ -1,4 +1,5 @@
-SRC			=	main.c \
+SRC			=	temp_functions.c \
+				main.c \
 				prompt.c \
 				get_directory.c \
 				get_username.c \
@@ -16,6 +17,20 @@ SRC			=	main.c \
 				cleaner.c \
 				syntax.c \
 				nut_error.c \
+				executor.c \
+				in_error.c \
+				get_files.c \
+				clear_files.c \
+				read_all.c \
+				get_args.c \
+				token.c \
+				pipe_exec.c \
+				next_operator.c \
+				is_operator.c \
+				get_pipedes.c \
+				get_commands.c \
+				exec_commands.c \
+				close_pipes.c \
 
 VPATH		=	./src \
 				./src/prompt \
@@ -24,6 +39,8 @@ VPATH		=	./src \
 				./src/parser \
 				./src/utils \
 				./src/error \
+				./src/executor \
+				./src/executor/pipe_exec \
 
 OBJS_DIR	=	./objects
 

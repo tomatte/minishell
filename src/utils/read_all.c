@@ -1,37 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.c                                           :+:      :+:    :+:   */
+/*   read_all.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/09 15:37:32 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/13 21:06:07 by dbrandao         ###   ########.fr       */
+/*   Created: 2023/03/15 18:52:44 by dbrandao          #+#    #+#             */
+/*   Updated: 2023/03/15 18:52:59 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-static void	keep_state(t_token *token)
+static char	*join_and_free(char *s1, char *s2)
 {
-	if (get_state() < 0)
-		return ;
-	if (token->type == OPERATOR)
-		set_state(token->id);
+	char	*result;
+
+	if (s1 == NULL)
+		return (s2);
+	if (s2 == NULL)
+		return (s1);
+	result = ft_strjoin(s1, s2);
+	free(s1);
+	free(s2);
+	return (result);
 }
 
-void	parser(t_list *tokens)
+char	*read_all(int fd)
 {
-	t_token	*token;
+	char	*str;
+	char	*aux;
 
-	if (tokens == NULL)
-		return ;
-	while (tokens && !in_error())
+	str = NULL;
+	while (1)
 	{
-		token = (t_token *) tokens->content;
-		categorize_word(token);
-		syntax(tokens);
-		keep_state(token);
-		tokens = tokens->next;
+		aux = get_next_line(fd);
+		if (!aux)
+			return (str);
+		str = join_and_free(str, aux);
 	}
 }

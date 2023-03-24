@@ -1,9 +1,0 @@
-learning
-.vscode
-.gitignore
-*.out
-*.a
-objects
-minishell
-*.o
-test

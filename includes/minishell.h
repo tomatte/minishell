@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 15:40:05 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/13 15:15:12 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/24 16:01:15 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,11 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <fcntl.h>
+# include <sys/types.h>
+# include <sys/stat.h>
+# include <sys/wait.h>
 # include "./defines.h"
-
-typedef struct s_token
-{
-	char	*value;
-	int		type;
-	int		id;
-}	t_token;
-
+# include "./structs.h"
 
 //PROMPT
 const char	*get_username(void);
@@ -55,8 +51,29 @@ void	syntax(t_list *tokens);
 
 //UTILS
 void	cleaner(char *str, t_list *tokens);
+int		in_error(void);
+char	*read_all(int fd);
+t_token	*token(t_list *tokens);
+t_list	*next_operator(t_list *tokens);
+int		is_operator(t_list *tokens, int operator);
 
 //ERROR
 void	nut_error(char *str);
+
+//EXECUTOR
+void	executor(t_list *tokens, char **envp);
+t_list	*get_files(t_list *tokens);
+void	clear_files(t_list *files);
+char	**get_args(t_list *tokens);
+void	pipe_exec(t_list *tokens, char **envp);
+int		**get_pipedes(t_list *tokens);
+t_list	*get_commands(t_list *tokens, int **pipedes);
+void	exec_commands(t_list *commands, int **pipedes, char **envp);
+void	close_pipes(int **pipedes);
+
+//TEMP
+void	print_pipedes(int **pipedes);
+void	print_commands(t_list *commands);
+void	print_command(t_command *command);
 
 #endif
