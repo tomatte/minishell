@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 17:06:10 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/24 12:54:45 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/24 16:05:42 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,9 @@ static void	print_files(t_list *files)
 	ft_printf("\n");
 }
 
-void	clear_task(t_task *task)
+static int	verify_error(void)
 {
-	if (task->value)
-		free(task->value);
-	free(task);
-}
-
-static int	verify_error(t_task	*task)
-{
-	if (in_error() || task->status != 0)
+	if (in_error())
 	{
 		ft_printf("EXEC ERROR\n");
 		return (1);
@@ -42,23 +35,16 @@ static int	verify_error(t_task	*task)
 	return (0);
 }
 
-static void	print_some_data(t_task *task, t_list *tokens)
-{
-	if (task)
-		ft_printf("output: %s\n", task->value);
-	if (tokens)
-		ft_printf("next token: %s\n", ((t_token *)tokens->content)->value);
-}
-
-void	executor(t_list *tokens)
+void	executor(t_list *tokens, char **envp)
 {
 	t_list	*files;
 
 	if (in_error())
 		return ;
 	files = get_files(tokens);
-	pipe_exec(tokens);
+	pipe_exec(tokens, envp);
 	clear_files(files);
+	while (wait(NULL) != -1);
 }
 
 /* SIMPLE AND IMPORTANT!!!

@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 08:58:08 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/14 21:58:03 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/24 16:00:02 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static void	print_error(void)
 		ft_printf("THERE'S AN ERROR!\n");
 }
 
-int	main(void)
+int	main(int argc, char **argv, char **envp)
 {
 	char	*str;
 	t_list	*tokens;
@@ -61,7 +61,7 @@ int	main(void)
 		is_exit(str);
 		tokens = lexer(str);
 		parser(tokens);
-		executor(tokens);
+		executor(tokens, envp);
 		print_tokens(tokens);
 		print_error();
 		cleaner(str, tokens);

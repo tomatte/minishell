@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 09:49:23 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/24 12:42:24 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/24 16:05:36 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,14 @@ static void	redirect_fds(t_command *command)
 	dup2(command->output_fd, STDOUT_FILENO);
 }
 
-static void	exec_command(t_list *commands, int **pipedes)
+static void	try_execve(t_command *command, char **envp)
+{
+	execve(command->args[0], command->args, envp);
+	command->args[0] = ft_strjoin("/bin/", command->args[0]);
+	execve(command->args[0], command->args, envp);
+}
+
+static void	exec_command(t_list *commands, int **pipedes, char **envp)
 {
 	t_command	*command;
 
@@ -35,19 +42,18 @@ static void	exec_command(t_list *commands, int **pipedes)
 	{
 		redirect_fds(command);
 		close_pipes(pipedes);
-		execv(command->args[0], command->args);
+		try_execve(command, envp);
 		ft_printf("Error executing command %s\n", command->args[0]);
 		exit(0);
 	}
 }
 
-void	exec_commands(t_list *commands, int **pipedes)
+void	exec_commands(t_list *commands, int **pipedes, char **envp)
 {
 	while (commands)
 	{
 		create_fork(commands);
-		exec_command(commands, pipedes);
+		exec_command(commands, pipedes, envp);
 		commands = commands->next;
 	}
-	while (wait(NULL) != -1);
 }
