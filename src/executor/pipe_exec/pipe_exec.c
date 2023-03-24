@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 10:00:02 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/24 16:17:08 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/24 16:24:46 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ static void	clear_data(t_list *commands, int **pipedes)
 	free(pipedes);
 	ft_lstclear(&commands, del_command);
 }
-
 
 void	pipe_exec(t_list *tokens, char **envp)
 {
