@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 17:06:10 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/22 16:04:35 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/24 12:54:45 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,6 @@ static int	verify_error(t_task	*task)
 	return (0);
 }
 
-static void	init_vars(t_list *tokens, t_list **files, int *nout)
-{
-	*files = get_files(tokens);
-	*nout = dup(STDOUT_FILENO);
-}
-
 static void	print_some_data(t_task *task, t_list *tokens)
 {
 	if (task)
@@ -59,14 +53,11 @@ static void	print_some_data(t_task *task, t_list *tokens)
 void	executor(t_list *tokens)
 {
 	t_list	*files;
-	t_task	*task;
-	int		new_stdout;
 
 	if (in_error())
 		return ;
-	init_vars(tokens, &files, &new_stdout);
+	files = get_files(tokens);
 	pipe_exec(tokens);
-	//clear_task(task);
 	clear_files(files);
 }
 

@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 10:00:02 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/24 12:48:11 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/24 12:53:13 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,40 +47,6 @@ void	pipe_exec(t_list *tokens)
 	clear_data(commands, pipedes);
 }
 
-/* 
-	PLANO NIVEL 1
-
-	is_pipe() //true | false
-
-	contar quantidade de pipes
-	mallocar um array pra todos
-	abrir todos os pipes
-
-	executar primeiro comando
-	{
-		filho lê do stdin
-		filho escreve no seu pipe
-		fechar todos os pipes
-	}
-
-	executar comandos do meio
-	{
-		filho lê do pipe anterior
-		filho escreve no seu pipe
-		fechar todos os pipes
-	}
-
-	executar ultimo comando
-	{
-		filho lê do pipe anterior
-		filho escreve no stdout
-		fechar todos os pipes
-	}
-
-	fechar todos os pipes
-	esperar todos os filhos
-	
- */
 /* PLANO NIVEL 2
 
 	is_pipe() //true | false
