@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 15:40:05 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/24 12:04:59 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/24 12:50:01 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,7 @@ char	**get_args(t_list *tokens);
 void	pipe_exec(t_list *tokens);
 int		**get_pipedes(t_list *tokens);
 t_list	*get_commands(t_list *tokens, int **pipedes);
-void	clear_pipe_data(t_pipe *data);
-void	exec_commands(t_pipe *data);
+void	exec_commands(t_list *commands, int **pipedes);
 void	close_pipes(int **pipedes);
 
 //TEMP

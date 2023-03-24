@@ -6,28 +6,45 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 10:00:02 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/24 12:04:28 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/24 12:48:11 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
 
-static void	fill_data(t_pipe *data, t_list *tokens)
+static void	del_command(void *mem)
 {
-	data->pipedes = get_pipedes(tokens);
-	data->commands = get_commands(tokens, data->pipedes);
+	t_command	*command;
+
+	command = (t_command *) mem;
+	free(command->args);
+	free(command);
 }
+
+static void	clear_data(t_list *commands, int **pipedes)
+{
+	int	i;
+
+	i = 0;
+	while (pipedes[i])
+		free(pipedes[i++]);
+	free(pipedes);
+	ft_lstclear(&commands, del_command);
+}
+
 
 void	pipe_exec(t_list *tokens)
 {
-	t_pipe	data;
+	t_list	*commands;
+	int		**pipedes;
 
 	if (!is_operator(tokens, PIPE))
 		return ;
-	fill_data(&data, tokens);
-	exec_commands(&data);
-	close_pipes(data.pipedes);
-	clear_pipe_data(&data);
+	pipedes = get_pipedes(tokens);
+	commands = get_commands(tokens, pipedes);
+	exec_commands(commands, pipedes);
+	close_pipes(pipedes);
+	clear_data(commands, pipedes);
 }
 
 /* 

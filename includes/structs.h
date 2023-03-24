@@ -33,10 +33,4 @@ typedef struct s_command
 	int		status;
 }	t_command;
 
-typedef struct s_pipe
-{
-	int		**pipedes;
-	t_list	*commands;
-}	t_pipe;
-
 #endif
