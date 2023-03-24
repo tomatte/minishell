@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 10:00:02 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/24 09:48:43 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/24 09:51:50 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ static void	close_pipes(int **pipedes)
 	}
 }
 
-static void	fill_data(t_pipe *data)
+static void	fill_data(t_pipe *data, t_list *tokens)
 {
 	data->pipedes = get_pipedes(tokens);
-	data->commands = get_commands(tokens, data.pipedes);
+	data->commands = get_commands(tokens, data->pipedes);
 }
 
 void	pipe_exec(t_list *tokens)
@@ -34,7 +34,7 @@ void	pipe_exec(t_list *tokens)
 
 	if (!is_operator(tokens, PIPE))
 		return ;
-	fill_data(&data);
+	fill_data(&data, tokens);
 	close_pipes(data.pipedes);
 	clear_pipe_data(&data);
 }
