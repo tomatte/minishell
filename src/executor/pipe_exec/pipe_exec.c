@@ -6,21 +6,11 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 10:00:02 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/24 11:45:42 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/24 12:04:28 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
-
-static void	close_pipes(int **pipedes)
-{
-	while (*pipedes)
-	{
-		close((*pipedes)[0]);
-		close((*pipedes)[1]);
-		pipedes++;
-	}
-}
 
 static void	fill_data(t_pipe *data, t_list *tokens)
 {
@@ -84,7 +74,6 @@ void	pipe_exec(t_list *tokens)
 
 	executar primeiro comando
 	{
-		pegar argumentos do filho
 		redirecionar stdout do filho pra escrita do pipe
 		fechar todos os pipes
 		executar comando
@@ -93,7 +82,6 @@ void	pipe_exec(t_list *tokens)
 
 	executar comandos do meio
 	{
-		pegar argumentos do comando
 		redirecionar stdin do filho pra leitura do pipe anterior
 		redirecionar stdout do filho pra escrita do pipe
 		fechar todos os pipes

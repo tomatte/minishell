@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 15:41:29 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/23 16:49:58 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/24 12:21:34 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static t_list	*new_midcommand(t_list *tokens, int **pipedes, int i)
 	if (command == NULL)
 		return (NULL);
 	command->args = get_args(tokens);
-	command->input_fd = pipedes[i][R];
+	command->input_fd = pipedes[i - 1][R];
 	command->output_fd = pipedes[i][W];
 	return (ft_lstnew(command));
 }
@@ -64,7 +64,7 @@ static void	last_command(t_list *tokens, int **pipedes, t_list **commands)
 	}
 	command = ft_calloc(1, sizeof(t_command));
 	command->args = get_args(tokens);
-	command->input_fd = pipedes[i][R];
+	command->input_fd = pipedes[i - 1][R];
 	command->output_fd = STDOUT_FILENO;
 	ft_lstadd_back(commands, ft_lstnew(command));
 }
@@ -76,6 +76,5 @@ t_list	*get_commands(t_list *tokens, int **pipedes)
 	commands = first_command(tokens, pipedes);
 	middle_commands(tokens, pipedes, &commands);
 	last_command(tokens, pipedes, &commands);
-	print_commands(commands);
 	return (commands);
 }
