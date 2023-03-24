@@ -30,6 +30,7 @@ SRC			=	temp_functions.c \
 				get_pipedes.c \
 				get_commands.c \
 				clear_pipe_data.c \
+				exec_commands.c \
 
 VPATH		=	./src \
 				./src/prompt \

@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 10:00:02 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/24 09:51:50 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/24 11:45:42 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	pipe_exec(t_list *tokens)
 	if (!is_operator(tokens, PIPE))
 		return ;
 	fill_data(&data, tokens);
+	exec_commands(&data);
 	close_pipes(data.pipedes);
 	clear_pipe_data(&data);
 }

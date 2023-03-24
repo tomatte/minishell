@@ -29,6 +29,7 @@ typedef struct s_command
 	char	**args;
 	int		input_fd;
 	int		output_fd;
+	int		pid;
 	int		status;
 }	t_command;
 
