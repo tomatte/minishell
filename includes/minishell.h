@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 15:40:05 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/26 21:27:45 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/27 08:27:04 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ char		*prompt(void);
 char	**operators(void);
 int		get_state(void);
 void	set_state(int id);
+void	destroy_memories(void);
+void	*talloc(size_t nmemb, size_t size);
 
 //LEXER
 t_list	*lexer(char *str);

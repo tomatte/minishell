@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 09:49:23 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/26 21:29:53 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/26 23:28:25 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,9 @@ static void	redirect_fds(t_command *command)
 	dup2(command->output_fd, STDOUT_FILENO);
 }
 
+//create a memory tracker
+//so instead of use a malloc function I will use an alloc_track function
+//then the memory will be tracked from allocation
 static void	try_execve(t_command *command, char **envp)
 {
 	char	**paths;

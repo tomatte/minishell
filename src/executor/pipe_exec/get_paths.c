@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/26 19:42:01 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/26 21:25:04 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/26 21:36:11 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,16 +51,6 @@ static void	put_cmd(char **paths,  char *cmd)
 		paths[i] = ft_strjoin(paths[i], cmd);
 		free(aux);
 	}
-}
-
-void	clear_paths(char **paths)
-{
-	int	i;
-
-	i = -1;
-	while (paths[++i])
-		free(paths[i]);
-	free(paths);
 }
 
 char	**get_paths(char **envp, char *cmd)
