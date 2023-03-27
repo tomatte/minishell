@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 15:40:05 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/27 16:14:08 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/27 16:15:35 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	categorize_word(t_token *token);
 void	syntax(t_list *tokens);
 
 //UTILS
-void	cleaner(char *str, t_list *tokens);
+void	cleaner(t_list *tokens);
 int		in_error(void);
 char	*read_all(int fd);
 t_token	*token(t_list *tokens);

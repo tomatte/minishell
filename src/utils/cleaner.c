@@ -6,13 +6,13 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 10:13:04 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/11 10:29:19 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/27 16:15:23 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-static void	clear_tokens(t_list *tokens)
+void	cleaner(t_list *tokens)
 {
 	t_token	*token;
 	t_list	*next;
@@ -26,10 +26,4 @@ static void	clear_tokens(t_list *tokens)
 		free(tokens);
 		tokens = next;
 	}
-}
-
-void	cleaner(char *str, t_list *tokens)
-{
-	clear_tokens(tokens);
-	free(str);
 }
