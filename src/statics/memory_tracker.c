@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 07:23:20 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/27 09:08:27 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/27 16:13:35 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static t_list	**memory_tracker(void)
 	return (&memories);
 }
 
-static void	add_to_tracker(void *mem)
+void	add_to_tracker(void *mem)
 {
 	t_list	**memories;
 
