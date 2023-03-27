@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 15:40:05 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/26 19:48:21 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/26 21:27:45 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int		**get_pipedes(t_list *tokens);
 t_list	*get_commands(t_list *tokens, int **pipedes);
 void	exec_commands(t_list *commands, int **pipedes, char **envp);
 void	close_pipes(int **pipedes);
-char	**get_paths(char **envp);
+char	**get_paths(char **envp, char *name);
 
 //TEMP
 void	print_pipedes(int **pipedes);

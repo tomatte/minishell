@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 09:49:23 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/24 16:05:36 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/26 21:29:53 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,20 @@ static void	redirect_fds(t_command *command)
 
 static void	try_execve(t_command *command, char **envp)
 {
-	execve(command->args[0], command->args, envp);
-	command->args[0] = ft_strjoin("/bin/", command->args[0]);
-	execve(command->args[0], command->args, envp);
+	char	**paths;
+	char	*cmd;
+	int		i;
+
+	cmd = command->args[0];
+	execve(cmd, command->args, envp);
+	paths = get_paths(envp, cmd);
+	i = -1;
+	while (paths[++i])
+	{
+		command->args[0] = paths[i];
+		execve(command->args[0], command->args, envp);
+	}
+	command->args[0] = cmd;
 }
 
 static void	exec_command(t_list *commands, int **pipedes, char **envp)
