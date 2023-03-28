@@ -6,20 +6,11 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 10:00:02 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/28 10:10:40 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/28 10:13:29 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
-
-static void	del_command(void *mem)
-{
-	t_command	*command;
-
-	command = (t_command *) mem;
-	free(command->args);
-	free(command);
-}
 
 void	pipe_exec(t_list *tokens, char **envp)
 {
