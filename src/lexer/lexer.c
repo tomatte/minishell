@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 17:15:54 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/27 16:23:15 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/28 09:51:56 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ static void	pass_spaces(char **str)
 static void	add_token(t_list **tokens, char **str)
 {
 	t_token	*token;
-	t_list	*lst_item;
 
 	pass_spaces(str);
 	token = identify_operator(str);
@@ -37,9 +36,7 @@ static void	add_token(t_list **tokens, char **str)
 	}
 	if (token == NULL)
 		return ;
-	lst_item = ft_lstnew(token);
-	add_to_tracker(lst_item);
-	ft_lstadd_back(tokens, lst_item);
+	ft_lstadd_back(tokens, lstnew_track(token));
 }
 
 static void	verify_errors(char **str, t_list **tokens)

@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 07:23:20 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/27 16:13:35 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/28 09:49:42 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,15 @@ void	destroy_memories(void)
 
 	memories = memory_tracker();
 	ft_lstclear(memories, free);
+}
+
+t_list	*lstnew_track(void *content)
+{
+	t_list	*new;
+
+	new = ft_lstnew(content);
+	add_to_tracker(new);
+	return (new);
 }
 
 void	*talloc(size_t nmemb, size_t size)

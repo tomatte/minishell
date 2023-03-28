@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 15:40:05 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/27 16:15:35 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/28 09:50:48 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	set_state(int id);
 void	destroy_memories(void);
 void	*talloc(size_t nmemb, size_t size);
 void	add_to_tracker(void *mem);
+t_list	*lstnew_track(void *content);
 
 //LEXER
 t_list	*lexer(char *str);
