@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 10:56:05 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/23 16:47:23 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/28 10:01:47 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@ static int	**alloc_pipes(int len)
 
 	if (len == 0)
 		return (NULL);
-	pipedes = (int **) malloc(sizeof(int *) * (len + 1));
+	pipedes = (int **) talloc(len + 1, sizeof(int *));
 	i = -1;
 	while (++i < len)
-		pipedes[i] = (int *) malloc(sizeof(int) * 2);
+		pipedes[i] = (int *) talloc(2, sizeof(int));
 	pipedes[i] = NULL;
 	return (pipedes);
 }
