@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 15:40:05 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/28 15:27:44 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/28 15:34:48 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ t_list	*lstnew_track(void *content);
 t_list	*get_evars(void);
 void	add_evar(char *var);
 void	start_evars(char **envp);
+void	destroy_evars(void);
 
 //LEXER
 t_list	*lexer(char *str);

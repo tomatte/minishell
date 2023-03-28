@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 08:58:08 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/28 15:26:26 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/28 15:35:07 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ int	main(int argc, char **argv, char **envp)
 	(void) argc;
 	start_evars(envp);
 	print_evars();
+	destroy_memories();
+	destroy_evars();
 	exit(1);
 	while (1)
 	{
