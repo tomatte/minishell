@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 10:37:08 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/06 19:34:10 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/27 16:16:13 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,6 @@ char	*prompt(void)
 	str_command = readline(msg);
 	free(msg);
 	add_history(str_command);
+	add_to_tracker(str_command);
 	return (str_command);
 }

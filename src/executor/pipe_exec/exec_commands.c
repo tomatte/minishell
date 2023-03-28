@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 09:49:23 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/24 16:05:36 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/28 10:43:28 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,32 @@ static void	create_fork(t_list *commands)
 	command->pid = fork();
 }
 
-static void	redirect_fds(t_command *command)
-{
-	dup2(command->input_fd, STDIN_FILENO);
-	dup2(command->output_fd, STDOUT_FILENO);
-}
-
 static void	try_execve(t_command *command, char **envp)
 {
-	execve(command->args[0], command->args, envp);
-	command->args[0] = ft_strjoin("/bin/", command->args[0]);
-	execve(command->args[0], command->args, envp);
+	char	**paths;
+	char	*cmd;
+	int		i;
+
+	cmd = command->args[0];
+	execve(cmd, command->args, envp);
+	paths = get_paths(envp, cmd);
+	i = -1;
+	while (paths[++i])
+	{
+		command->args[0] = paths[i];
+		execve(command->args[0], command->args, envp);
+	}
+	command->args[0] = cmd;
+}
+
+static void	exit_error(t_command *command)
+{
+	ft_printf("error executing command %s\n", command->args[0]);
+	close(R);
+	close(W);
+	destroy_memories();
+	clear_history();
+	exit(1);
 }
 
 static void	exec_command(t_list *commands, int **pipedes, char **envp)
@@ -40,11 +55,11 @@ static void	exec_command(t_list *commands, int **pipedes, char **envp)
 	command = (t_command *) commands->content;
 	if (command->pid == 0)
 	{
-		redirect_fds(command);
+		dup2(command->input_fd, STDIN_FILENO);
+		dup2(command->output_fd, STDOUT_FILENO);
 		close_pipes(pipedes);
 		try_execve(command, envp);
-		ft_printf("Error executing command %s\n", command->args[0]);
-		exit(0);
+		exit_error(command);
 	}
 }
 

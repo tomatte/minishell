@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 13:14:23 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/22 09:34:02 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/28 10:12:12 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ char	**get_args(t_list *tokens)
 	int		i;
 
 	len = get_args_len(tokens);
-	args = (char **) malloc(sizeof(char *) * (len + 1));
+	args = (char **) talloc(len + 1, sizeof(char *));
 	i = 0;
 	while (tokens && i < len)
 	{

@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 15:40:05 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/24 16:01:15 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/28 09:50:48 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,11 @@ char		*prompt(void);
 char	**operators(void);
 int		get_state(void);
 void	set_state(int id);
+//MEMORY TRACK
+void	destroy_memories(void);
+void	*talloc(size_t nmemb, size_t size);
+void	add_to_tracker(void *mem);
+t_list	*lstnew_track(void *content);
 
 //LEXER
 t_list	*lexer(char *str);
@@ -50,7 +55,7 @@ void	categorize_word(t_token *token);
 void	syntax(t_list *tokens);
 
 //UTILS
-void	cleaner(char *str, t_list *tokens);
+void	cleaner(t_list *tokens);
 int		in_error(void);
 char	*read_all(int fd);
 t_token	*token(t_list *tokens);
@@ -70,6 +75,7 @@ int		**get_pipedes(t_list *tokens);
 t_list	*get_commands(t_list *tokens, int **pipedes);
 void	exec_commands(t_list *commands, int **pipedes, char **envp);
 void	close_pipes(int **pipedes);
+char	**get_paths(char **envp, char *name);
 
 //TEMP
 void	print_pipedes(int **pipedes);

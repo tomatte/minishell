@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 16:39:41 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/14 22:14:13 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/28 10:37:05 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ static t_list	*get_files_list(t_list *tokens)
 		token = (t_token *) tokens->content;
 		if (token->id == IN_FILE || token->id == OUT_FILE)
 		{
-			file = (t_file *) malloc(sizeof(t_file));
+			file = (t_file *) talloc(1, sizeof(t_file));
 			file->id = token->id;
 			file->name = token->value;
-			ft_lstadd_back(&files, ft_lstnew(file));
+			ft_lstadd_back(&files, lstnew_track(file));
 		}
 		tokens = tokens->next;
 	}
