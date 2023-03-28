@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 08:58:08 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/28 14:47:30 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/28 15:26:26 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,18 @@ static void	print_error(void)
 		ft_printf("THERE'S AN ERROR!\n");
 }
 
+static void	print_evars()
+{
+	t_list	*evars;
+
+	evars = get_evars();
+	while (evars)
+	{
+		ft_printf("%s\n", (char *) evars->content);
+		evars = evars->next;
+	}
+}
+
 int	main(int argc, char **argv, char **envp)
 {
 	char	*str;
@@ -57,6 +69,9 @@ int	main(int argc, char **argv, char **envp)
 
 	(void) argv;
 	(void) argc;
+	start_evars(envp);
+	print_evars();
+	exit(1);
 	while (1)
 	{
 		str = prompt();
@@ -64,7 +79,6 @@ int	main(int argc, char **argv, char **envp)
 		tokens = lexer(str);
 		parser(tokens);
 		executor(tokens, envp);
-		//print_tokens(tokens);
 		print_error();
 		destroy_memories();
 	}

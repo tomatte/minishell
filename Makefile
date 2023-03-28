@@ -33,6 +33,7 @@ SRC			=	temp_functions.c \
 				close_pipes.c \
 				get_paths.c \
 				memory_tracker.c \
+				evars.c \
 
 VPATH		=	./src \
 				./src/prompt \
