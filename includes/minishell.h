@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 15:40:05 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/28 15:34:48 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/29 09:22:42 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	*talloc(size_t nmemb, size_t size);
 void	add_to_tracker(void *mem);
 t_list	*lstnew_track(void *content);
 //EVARS
-t_list	*get_evars(void);
+char	**get_evars(void);
 void	add_evar(char *var);
 void	start_evars(char **envp);
 void	destroy_evars(void);

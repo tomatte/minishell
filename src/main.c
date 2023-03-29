@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 08:58:08 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/28 15:35:07 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/29 09:38:13 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ static void	is_exit(char *str)
 	if (ft_strncmp(str, "exit", 5) == 0)
 	{
 		destroy_memories();
+		destroy_evars();
 		rl_clear_history();
 		exit(0);
 	}
@@ -52,13 +53,13 @@ static void	print_error(void)
 
 static void	print_evars()
 {
-	t_list	*evars;
+	char	**evars;
 
 	evars = get_evars();
-	while (evars)
+	while (*evars)
 	{
-		ft_printf("%s\n", (char *) evars->content);
-		evars = evars->next;
+		ft_printf("%s\n", *evars);
+		evars++;
 	}
 }
 
@@ -69,11 +70,6 @@ int	main(int argc, char **argv, char **envp)
 
 	(void) argv;
 	(void) argc;
-	start_evars(envp);
-	print_evars();
-	destroy_memories();
-	destroy_evars();
-	exit(1);
 	while (1)
 	{
 		str = prompt();
