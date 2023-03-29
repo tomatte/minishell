@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 17:06:10 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/28 14:45:52 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/29 09:52:19 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,20 +35,20 @@ static int	verify_error(void)
 	return (0);
 }
 
-static void	try_execve(char **args, char **envp)
+static void	try_execve(char **args)
 {
 	char	**paths;
 	char	*cmd;
 	int		i;
 
 	cmd = args[0];
-	execve(cmd, args, envp);
-	paths = get_paths(envp, cmd);
+	execve(cmd, args, get_evars());
+	paths = get_paths(cmd);
 	i = -1;
 	while (paths[++i])
 	{
 		args[0] = paths[i];
-		execve(args[0], args, envp);
+		execve(args[0], args, get_evars());
 	}
 	args[0] = cmd;
 }
@@ -59,11 +59,12 @@ static void	exit_error(char **args)
 	close(R);
 	close(W);
 	destroy_memories();
+	destroy_evars();
 	clear_history();
 	exit(1);
 }
 
-static void	command_exec(t_list *tokens, char **envp)
+static void	command_exec(t_list *tokens)
 {
 	char	**args;
 	int		pid;
@@ -74,20 +75,20 @@ static void	command_exec(t_list *tokens, char **envp)
 	if (pid == 0)
 	{
 		args = get_args(tokens);
-		try_execve(args, envp);
+		try_execve(args);
 		exit_error(args);
 	}
 }
 
-void	executor(t_list *tokens, char **envp)
+void	executor(t_list *tokens)
 {
 	t_list	*files;
 
 	if (in_error())
 		return ;
 	files = get_files(tokens);
-	command_exec(tokens, envp);
-	pipe_exec(tokens, envp);
+	command_exec(tokens);
+	pipe_exec(tokens);
 	while (wait(NULL) != -1)
 		;
 }

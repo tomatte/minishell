@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/26 19:42:01 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/28 10:22:17 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/29 09:51:10 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,12 @@ static char	**split_path(char *path)
 	return (paths);
 }
 
-char	**get_paths(char **envp, char *cmd)
+char	**get_paths(char *cmd)
 {
 	char	*path;
 	char	**paths;
 
-	path = find_path(envp);
+	path = find_path(get_evars());
 	paths = split_path(path);
 	put_endslash(paths);
 	put_cmd(paths, cmd);
