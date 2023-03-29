@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 08:58:08 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/29 09:38:13 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/29 09:53:42 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,13 +70,14 @@ int	main(int argc, char **argv, char **envp)
 
 	(void) argv;
 	(void) argc;
+	start_evars(envp);
 	while (1)
 	{
 		str = prompt();
 		is_exit(str);
 		tokens = lexer(str);
 		parser(tokens);
-		executor(tokens, envp);
+		executor(tokens);
 		print_error();
 		destroy_memories();
 	}

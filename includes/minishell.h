@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 15:40:05 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/29 09:22:42 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/29 09:55:30 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,16 +71,16 @@ int		is_operator(t_list *tokens, int operator);
 void	nut_error(char *str);
 
 //EXECUTOR
-void	executor(t_list *tokens, char **envp);
+void	executor(t_list *tokens);
 t_list	*get_files(t_list *tokens);
 void	clear_files(t_list *files);
 char	**get_args(t_list *tokens);
-void	pipe_exec(t_list *tokens, char **envp);
+void	pipe_exec(t_list *tokens);
 int		**get_pipedes(t_list *tokens);
 t_list	*get_commands(t_list *tokens, int **pipedes);
-void	exec_commands(t_list *commands, int **pipedes, char **envp);
+void	exec_commands(t_list *commands, int **pipedes);
 void	close_pipes(int **pipedes);
-char	**get_paths(char **envp, char *name);
+char	**get_paths(char *cmd);
 
 //TEMP
 void	print_pipedes(int **pipedes);

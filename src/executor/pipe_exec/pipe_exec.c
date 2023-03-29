@@ -6,13 +6,13 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 10:00:02 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/28 10:13:29 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/29 09:52:31 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
 
-void	pipe_exec(t_list *tokens, char **envp)
+void	pipe_exec(t_list *tokens)
 {
 	t_list	*commands;
 	int		**pipedes;
@@ -21,6 +21,6 @@ void	pipe_exec(t_list *tokens, char **envp)
 		return ;
 	pipedes = get_pipedes(tokens);
 	commands = get_commands(tokens, pipedes);
-	exec_commands(commands, pipedes, envp);
+	exec_commands(commands, pipedes, get_evars());
 	close_pipes(pipedes);
 }
