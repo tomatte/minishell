@@ -34,6 +34,7 @@ SRC			=	temp_functions.c \
 				get_paths.c \
 				memory_tracker.c \
 				evars.c \
+				expander.c \
 
 VPATH		=	./src \
 				./src/prompt \
@@ -44,6 +45,7 @@ VPATH		=	./src \
 				./src/error \
 				./src/executor \
 				./src/executor/pipe_exec \
+				./src/expander \
 
 OBJS_DIR	=	./objects
 

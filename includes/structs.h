@@ -24,4 +24,13 @@ typedef struct s_command
 	int		status;
 }	t_command;
 
+typedef struct s_exp
+{
+	char	*value;
+	char	*start;
+	char	*end;
+	int		len;
+}	t_exp;
+
+
 #endif

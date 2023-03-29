@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 15:40:05 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/29 09:55:30 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/29 10:40:19 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,5 +86,8 @@ char	**get_paths(char *cmd);
 void	print_pipedes(int **pipedes);
 void	print_commands(t_list *commands);
 void	print_command(t_command *command);
+
+//EXPANDER
+void	expander(char **str);
 
 #endif
