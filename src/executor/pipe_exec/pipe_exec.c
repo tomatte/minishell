@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 10:00:02 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/29 09:52:31 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/29 09:59:08 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,6 @@ void	pipe_exec(t_list *tokens)
 		return ;
 	pipedes = get_pipedes(tokens);
 	commands = get_commands(tokens, pipedes);
-	exec_commands(commands, pipedes, get_evars());
+	exec_commands(commands, pipedes);
 	close_pipes(pipedes);
 }
