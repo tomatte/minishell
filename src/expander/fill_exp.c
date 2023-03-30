@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 02:02:50 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/30 02:04:49 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/30 03:06:01 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	find_start(char *str, t_exp *exp)
 	int	double_quotes;
 
 	double_quotes = -1;
-	while (str)
+	while (*str)
 	{
 		if (*str == '"')
 			double_quotes *= -1;
@@ -36,7 +36,10 @@ static void	find_start(char *str, t_exp *exp)
 			break ;
 		str++;
 	}
-	exp->start = str;
+	if (*str)
+		exp->start = str + 1;
+	else
+		exp->start = NULL;
 }
 
 static void	find_end(t_exp *exp)
@@ -47,7 +50,7 @@ static void	find_end(t_exp *exp)
 	if (exp->start == NULL)
 		return ;
 	len = 0;
-	str = exp->start + 1;
+	str = exp->start;
 	while (str && !ft_strchr(EXP_DELIMITER, *str))
 	{
 		str++;
@@ -57,18 +60,20 @@ static void	find_end(t_exp *exp)
 	exp->len = len;
 }
 
-static void	fill_value(t_exp *exp)
+static void	fill_name(t_exp *exp)
 {
-	char	*value;
+	char	*name;
 
-	value = ft_calloc(exp->len + 1, sizeof(char));
-	ft_strlcpy(value, exp->start + 1, exp->len + 1);
-	exp->value = value;
+	if (exp->start == NULL)
+		return ;
+	name = ft_calloc(exp->len + 1, sizeof(char));
+	ft_strlcpy(name, exp->start, exp->len + 1);
+	exp->name = name;
 }
 
 void	fill_exp(t_exp *exp, char *str)
 {
 	find_start(str, exp);
 	find_end(exp);
-	fill_value(exp);
+	fill_name(exp);
 }

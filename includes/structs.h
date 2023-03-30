@@ -27,6 +27,7 @@ typedef struct s_command
 typedef struct s_exp
 {
 	char	*value;
+	char	*name;
 	char	*start;
 	char	*end;
 	int		len;
