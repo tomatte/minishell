@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 02:54:22 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/30 03:15:50 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/30 11:33:22 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,22 @@ static char	*find_evar(t_exp *exp)
 
 static char	*extract_value(char *evar)
 {
+	char	*new;
+
 	while (*evar != '=')
 		evar++;
-	return (ft_strdup(evar + 1));
+	new = ft_strdup(evar + 1);
+	add_to_tracker(new);
+	return (new);
+}
+
+static char	*strdup_track(char *str)
+{
+	char	*new;
+
+	new = ft_strdup(str);
+	add_to_tracker(new);
+	return (new);
 }
 
 void	fill_exp_value(t_exp *exp)
@@ -50,13 +63,13 @@ void	fill_exp_value(t_exp *exp)
 
 	if (exp->start == NULL)
 	{
-		exp->value = ft_strdup("");
+		exp->value = strdup_track("");
 		return ;
 	}
 	evar = find_evar(exp);
 	if (evar == NULL)
 	{
-		exp->value = ft_strdup("");
+		exp->value = strdup_track("");
 		return ;
 	}
 	exp->value = extract_value(evar);

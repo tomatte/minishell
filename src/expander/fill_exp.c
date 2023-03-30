@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 02:02:50 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/30 03:06:01 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/30 11:34:13 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@ static void	pass_simple_quotes(char **str)
 	(*str)++;
 	while (**str != 39)
 		(*str)++;
-	if ((*str))
-		(*str)++;
+	(*str)++;
 }
 
 static void	find_start(char *str, t_exp *exp)
@@ -32,7 +31,7 @@ static void	find_start(char *str, t_exp *exp)
 			double_quotes *= -1;
 		if (*str == '\'' && double_quotes != 1)
 			pass_simple_quotes(&str);
-		if (*str == '$')
+		if (!*str || *str == '$')
 			break ;
 		str++;
 	}
@@ -66,7 +65,7 @@ static void	fill_name(t_exp *exp)
 
 	if (exp->start == NULL)
 		return ;
-	name = ft_calloc(exp->len + 1, sizeof(char));
+	name = talloc(exp->len + 1, sizeof(char));
 	ft_strlcpy(name, exp->start, exp->len + 1);
 	exp->name = name;
 }
