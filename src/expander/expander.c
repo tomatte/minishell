@@ -1,0 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   expander.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/29 10:30:03 by dbrandao          #+#    #+#             */
+/*   Updated: 2023/03/30 11:21:01 by dbrandao         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../../includes/minishell.h"
+
+void	expander(char **str)
+{
+	t_exp	exp;
+
+	while (1)
+	{
+		fill_exp(&exp, *str);
+		fill_exp_value(&exp);
+		expand_str(str, &exp);
+		if (exp.start == NULL)
+			break ;
+	}
+}
