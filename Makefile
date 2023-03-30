@@ -35,6 +35,7 @@ SRC			=	temp_functions.c \
 				memory_tracker.c \
 				evars.c \
 				expander.c \
+				fill_exp.c \
 
 VPATH		=	./src \
 				./src/prompt \

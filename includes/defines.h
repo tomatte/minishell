@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 16:50:51 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/29 12:13:31 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/30 02:11:12 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@
 # define PATH_START "PATH="
 # define MAX_ENVS 1024
 # define DELIMITER "$'\"<|>"
-# define EXP_DELIMITER "$|<> \n"
+# define EXP_DELIMITER "\"'$|<> \n"
 
 //ERRORS
 # define ERR_UNCLOSED_QUOTES -2
