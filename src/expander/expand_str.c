@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 03:28:05 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/30 10:41:29 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/30 11:17:30 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ void	expand_str(char **str, t_exp *exp)
 {
 	int	size;
 
+	if (exp->start == NULL)
+		return ;
 	size = get_strsize(str, exp);
 	replace_str(str, exp, size);
 }
