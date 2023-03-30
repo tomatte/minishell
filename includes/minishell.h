@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 15:40:05 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/30 02:56:55 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/30 03:29:30 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,5 +91,6 @@ void	print_command(t_command *command);
 void	expander(char **str);
 void	fill_exp(t_exp *exp, char *str);
 void	fill_exp_value(t_exp *exp);
+void	expand_str(char **str, t_exp *exp);
 
 #endif

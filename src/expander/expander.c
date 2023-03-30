@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 10:30:03 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/30 02:58:32 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/03/30 10:41:03 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,6 @@ void	expander(char **str)
 
 	fill_exp(&exp, *str);
 	fill_exp_value(&exp);
-	ft_printf("%s\n", exp.value);
+	expand_str(str, &exp);
+	ft_printf("RESULT: %s\n", *str);
 }

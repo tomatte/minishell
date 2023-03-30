@@ -37,6 +37,7 @@ SRC			=	temp_functions.c \
 				expander.c \
 				fill_exp.c \
 				fill_exp_value.c \
+				expand_str.c \
 
 VPATH		=	./src \
 				./src/prompt \
