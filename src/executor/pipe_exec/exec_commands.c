@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 09:49:23 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/29 09:56:50 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/03 14:54:53 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,24 +18,6 @@ static void	create_fork(t_list *commands)
 
 	command = commands->content;
 	command->pid = fork();
-}
-
-static void	try_execve(t_command *command)
-{
-	char	**paths;
-	char	*cmd;
-	int		i;
-
-	cmd = command->args[0];
-	execve(cmd, command->args, get_evars());
-	paths = get_paths(cmd);
-	i = -1;
-	while (paths[++i])
-	{
-		command->args[0] = paths[i];
-		execve(command->args[0], command->args, get_evars());
-	}
-	command->args[0] = cmd;
 }
 
 static void	exit_error(t_command *command)
@@ -59,7 +41,7 @@ static void	exec_command(t_list *commands, int **pipedes)
 		dup2(command->input_fd, STDIN_FILENO);
 		dup2(command->output_fd, STDOUT_FILENO);
 		close_pipes(pipedes);
-		try_execve(command);
+		command_exec(command);
 		exit_error(command);
 	}
 }

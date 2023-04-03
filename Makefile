@@ -38,6 +38,8 @@ SRC			=	temp_functions.c \
 				fill_exp.c \
 				fill_exp_value.c \
 				expand_str.c \
+				echo.c \
+				command_exec.c \
 
 VPATH		=	./src \
 				./src/prompt \
@@ -49,6 +51,7 @@ VPATH		=	./src \
 				./src/executor \
 				./src/executor/pipe_exec \
 				./src/expander \
+				./src/builtins \
 
 OBJS_DIR	=	./objects
 
