@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 14:48:30 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/03 14:53:05 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/03 16:19:32 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,20 @@ static void	try_execve(t_command *command)
 	command->args[0] = cmd;
 }
 
+static int	try_builtin(t_command *command)
+{
+	if (ft_streq(command->args[0], "echo"))
+	{
+		echo(command);
+		return (1);
+	}
+	return (0);
+}
+
 void	command_exec(t_command *command)
 {
-	try_execve(command);
+	if (try_builtin(command))
+		;
+	else
+		try_execve(command);
 }
