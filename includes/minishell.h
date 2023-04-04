@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 15:40:05 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/03 14:53:26 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/04 08:44:28 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ int		is_operator(t_list *tokens, int operator);
 
 //ERROR
 void	nut_error(char *str);
+void	cmd_not_found(char *cmd);
 
 //EXECUTOR
 void	executor(t_list *tokens);

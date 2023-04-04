@@ -40,6 +40,7 @@ SRC			=	temp_functions.c \
 				expand_str.c \
 				echo.c \
 				command_exec.c \
+				simple_errors.c \
 
 VPATH		=	./src \
 				./src/prompt \
