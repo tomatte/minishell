@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 09:49:23 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/03 14:54:53 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/04 08:23:58 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,6 @@ static void	create_fork(t_list *commands)
 	command->pid = fork();
 }
 
-static void	exit_error(t_command *command)
-{
-	ft_printf("error executing command %s\n", command->args[0]);
-	close(R);
-	close(W);
-	destroy_memories();
-	destroy_evars();
-	clear_history();
-	exit(1);
-}
-
 static void	exec_command(t_list *commands, int **pipedes)
 {
 	t_command	*command;
@@ -42,7 +31,6 @@ static void	exec_command(t_list *commands, int **pipedes)
 		dup2(command->output_fd, STDOUT_FILENO);
 		close_pipes(pipedes);
 		command_exec(command);
-		exit_error(command);
 	}
 }
 

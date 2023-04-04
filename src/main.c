@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 08:58:08 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/29 10:40:55 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/03 17:02:54 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static void	print_tokens(t_list *tokens)
 static void	print_error(void)
 {
 	if (get_state() < 0)
-		ft_printf("THERE'S AN ERROR!\n");
+		ft_printf("THERE'S AN ERROR! Code: %d\n", get_state());
 }
 
 static void	print_evars()

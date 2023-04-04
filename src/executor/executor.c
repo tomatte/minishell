@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 17:06:10 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/03 15:11:38 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/04 08:13:10 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,17 +35,6 @@ static int	verify_error(void)
 	return (0);
 }
 
-static void	exit_error(char **args)
-{
-	ft_printf("error executing command %s\n", args[0]);
-	close(R);
-	close(W);
-	destroy_memories();
-	destroy_evars();
-	clear_history();
-	exit(1);
-}
-
 static t_command	*new_command(t_list *tokens, int fd_in, int fd_out)
 {
 	t_command	*command;
@@ -62,15 +51,25 @@ static void	simple_exec(t_list *tokens)
 	char	**args;
 	int		pid;
 
-	if (next_operator(tokens) != NULL)
+	if (tokens == NULL || next_operator(tokens) != NULL)
 		return ;
 	pid = fork();
 	if (pid == 0)
 	{
 		args = get_args(tokens);
 		command_exec(new_command(tokens, STDIN_FILENO, STDOUT_FILENO));
-		exit_error(args);
 	}
+}
+
+static void	wait_childs(void)
+{
+	int	status;
+
+	status = 0;
+	while (wait(&status) != -1)
+		;
+	if (status)
+		set_state(EXEC_ERR);
 }
 
 void	executor(t_list *tokens)
@@ -84,6 +83,5 @@ void	executor(t_list *tokens)
 	files = get_files(tokens);
 	simple_exec(tokens);
 	pipe_exec(tokens);
-	while (wait(NULL) != -1)
-		;
+	wait_childs();
 }

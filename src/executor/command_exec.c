@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 14:48:30 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/03 16:19:32 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/04 08:13:23 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,23 @@ static int	try_builtin(t_command *command)
 	return (0);
 }
 
+static void	exit_error(void)
+{
+	close(R);
+	close(W);
+	destroy_memories();
+	destroy_evars();
+	clear_history();
+	exit(1);
+}
+
 void	command_exec(t_command *command)
 {
 	if (try_builtin(command))
 		;
 	else
+	{
 		try_execve(command);
+		exit_error();
+	}
 }
