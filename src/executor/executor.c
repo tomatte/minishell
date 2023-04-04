@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 17:06:10 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/04 08:13:10 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/04 08:56:56 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,7 @@ static void	wait_childs(void)
 	status = 0;
 	while (wait(&status) != -1)
 		;
-	if (status)
-		set_state(EXEC_ERR);
+	set_state(status);
 }
 
 void	executor(t_list *tokens)
