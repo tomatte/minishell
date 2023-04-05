@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 09:49:23 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/05 11:21:40 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/05 13:29:32 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,15 @@ static void	exec_command(t_list *commands, int **pipedes)
 
 void	exec_commands(t_list *tokens, t_list *commands, int **pipedes)
 {
+	t_list	*aux;
+
+	aux = tokens;
 	while (commands)
 	{
-		add_redirects(tokens, commands);
+		add_redirects(aux, commands);
 		create_fork(commands);
 		exec_command(commands, pipedes);
 		commands = commands->next;
+		aux = next_pipe(aux);
 	}
 }
