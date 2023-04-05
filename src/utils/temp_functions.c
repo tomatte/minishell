@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 16:47:44 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/05 12:19:00 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/05 17:43:19 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,6 @@ static void	print_token(t_token *token)
 
 void	print_tokens(t_list *tokens)
 {
-	if (!tokens)
-		ft_printf("\n");
 	while (tokens)
 	{
 		print_token(tokens->content);
