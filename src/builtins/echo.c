@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 18:01:06 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/03 16:20:18 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/05 10:58:52 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ void	echo(t_command *cmd)
 	while (cmd->args[++i])
 	{
 		if (i > 1)
-			ft_putstr_fd(" ", cmd->output_fd);
-		ft_putstr_fd(cmd->args[i], cmd->output_fd);
+			ft_putstr(" ");
+		ft_putstr(cmd->args[i]);
 	}
 	if (n == 0)
-		ft_putstr_fd("\n", cmd->output_fd);
+		ft_putstr("\n");
 }
