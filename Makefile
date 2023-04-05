@@ -47,6 +47,7 @@ SRC			=	temp_functions.c \
 				simple_exec.c \
 				next_pipe.c \
 				heredoc_convert.c \
+				read_doc.c \
 
 VPATH		=	./src \
 				./src/prompt \

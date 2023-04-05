@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 16:47:44 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/05 17:43:19 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/05 18:26:54 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,13 @@ void	print_args(char **args)
 	i = -1;
 	while (args[++i])
 		ft_printf("  %s", args[i]);
+	ft_printf("\n");
+}
+
+void	print_asc(char *str)
+{
+	ft_printf("%s: ", str);
+	while (*str)
+		ft_printf("%d ", *str++);
 	ft_printf("\n");
 }
