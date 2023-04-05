@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 16:47:44 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/23 16:50:41 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/05 10:26:54 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,26 @@ void	print_commands(t_list *commands)
 		print_command((t_command *) commands->content);
 		commands = commands->next;
 	}
+}
+
+static void	print_token(t_token *token)
+{
+	char	*CONSTANTS[] = {"NONE", "START", "WORD", "OPERATOR", "EXPANSIVE", \
+	"QUOTE", "EXEC", "ARG", "IN_FILE", "OUT_FILE", "HERE_DOC_END", \
+	"SIMPLE_QUOTES", "DOUBLE_QUOTES", "ENV_VAR", "EXIT_STAT", "HERE_DOC", \
+	"R_APPEND_OUT", "R_INPUT", "R_OUTPUT", "PIPE"};
+
+	ft_printf("[%s]  ", CONSTANTS[token->id]);
+}
+
+void	print_tokens(t_list *tokens)
+{
+	if (!tokens)
+		ft_printf("\n");
+	while (tokens)
+	{
+		print_token(tokens->content);
+		tokens = tokens->next;
+	}
+	ft_printf("\n");
 }

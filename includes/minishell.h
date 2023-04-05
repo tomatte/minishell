@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 15:40:05 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/04 08:44:28 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/05 10:27:05 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <sys/wait.h>
+# include <errno.h>
 # include "./defines.h"
 # include "./structs.h"
 
@@ -66,6 +67,7 @@ char	*read_all(int fd);
 t_token	*token(t_list *tokens);
 t_list	*next_operator(t_list *tokens);
 int		is_operator(t_list *tokens, int operator);
+int		is_redirect(t_list *tokens);
 
 //ERROR
 void	nut_error(char *str);
@@ -83,11 +85,13 @@ void	exec_commands(t_list *commands, int **pipedes);
 void	close_pipes(int **pipedes);
 char	**get_paths(char *cmd);
 void	command_exec(t_command *command);
+void	get_redirects(t_list *tokens, int *redirects);
 
 //TEMP
 void	print_pipedes(int **pipedes);
 void	print_commands(t_list *commands);
 void	print_command(t_command *command);
+void	print_tokens(t_list *tokens);
 
 //EXPANDER
 void	expander(char **str);
