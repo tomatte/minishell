@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 09:49:23 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/29 09:56:50 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/05 13:29:32 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,33 +20,25 @@ static void	create_fork(t_list *commands)
 	command->pid = fork();
 }
 
-static void	try_execve(t_command *command)
+static void	add_redirects(t_list *tokens, t_list *commands)
 {
-	char	**paths;
-	char	*cmd;
-	int		i;
+	t_command	*command;
+	int			redirects[2];
 
-	cmd = command->args[0];
-	execve(cmd, command->args, get_evars());
-	paths = get_paths(cmd);
-	i = -1;
-	while (paths[++i])
+	command = (t_command *) commands->content;
+	get_redirects(tokens, redirects);
+	if (redirects[R] != STDIN_FILENO)
 	{
-		command->args[0] = paths[i];
-		execve(command->args[0], command->args, get_evars());
+		if (command->input_fd != STDIN_FILENO)
+			close(command->input_fd);
+		command->input_fd = redirects[R];
 	}
-	command->args[0] = cmd;
-}
-
-static void	exit_error(t_command *command)
-{
-	ft_printf("error executing command %s\n", command->args[0]);
-	close(R);
-	close(W);
-	destroy_memories();
-	destroy_evars();
-	clear_history();
-	exit(1);
+	if (redirects[W] != STDOUT_FILENO)
+	{
+		if (command->output_fd != STDOUT_FILENO)
+			close(command->output_fd);
+		command->output_fd = redirects[W];
+	}
 }
 
 static void	exec_command(t_list *commands, int **pipedes)
@@ -59,17 +51,21 @@ static void	exec_command(t_list *commands, int **pipedes)
 		dup2(command->input_fd, STDIN_FILENO);
 		dup2(command->output_fd, STDOUT_FILENO);
 		close_pipes(pipedes);
-		try_execve(command);
-		exit_error(command);
+		command_exec(command);
 	}
 }
 
-void	exec_commands(t_list *commands, int **pipedes)
+void	exec_commands(t_list *tokens, t_list *commands, int **pipedes)
 {
+	t_list	*aux;
+
+	aux = tokens;
 	while (commands)
 	{
+		add_redirects(aux, commands);
 		create_fork(commands);
 		exec_command(commands, pipedes);
 		commands = commands->next;
+		aux = next_pipe(aux);
 	}
 }

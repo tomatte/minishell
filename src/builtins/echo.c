@@ -1,44 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   executor.c                                         :+:      :+:    :+:   */
+/*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/13 17:06:10 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/05 10:44:39 by dbrandao         ###   ########.fr       */
+/*   Created: 2023/03/30 18:01:06 by dbrandao          #+#    #+#             */
+/*   Updated: 2023/04/05 10:58:52 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-static int	verify_error(void)
+void	echo(t_command *cmd)
 {
-	if (in_error())
+	int	i;
+	int	n;
+
+	n = 0;
+	i = 0;
+	if (ft_streq(cmd->args[1], "-n"))
 	{
-		ft_printf("EXEC ERROR\n");
-		return (1);
+		n = 1;
+		i = 1;
 	}
-	return (0);
-}
-
-static void	wait_childs(void)
-{
-	int	status;
-
-	status = 0;
-	while (wait(&status) != -1)
-		;
-	set_state(status);
-}
-
-void	executor(t_list *tokens)
-{
-	if (in_error())
-		return ;
-	if (tokens == NULL)
-		return ;
-	simple_exec(tokens);
-	pipe_exec(tokens);
-	wait_childs();
+	while (cmd->args[++i])
+	{
+		if (i > 1)
+			ft_putstr(" ");
+		ft_putstr(cmd->args[i]);
+	}
+	if (n == 0)
+		ft_putstr("\n");
 }

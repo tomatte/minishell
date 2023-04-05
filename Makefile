@@ -38,6 +38,14 @@ SRC			=	temp_functions.c \
 				fill_exp.c \
 				fill_exp_value.c \
 				expand_str.c \
+				echo.c \
+				command_exec.c \
+				simple_errors.c \
+				get_redirects.c \
+				is_redirect.c \
+				new_command.c \
+				simple_exec.c \
+				next_pipe.c \
 
 VPATH		=	./src \
 				./src/prompt \
@@ -49,6 +57,7 @@ VPATH		=	./src \
 				./src/executor \
 				./src/executor/pipe_exec \
 				./src/expander \
+				./src/builtins \
 
 OBJS_DIR	=	./objects
 
@@ -87,5 +96,10 @@ fclean:	clean
 	make -C $(LIBFT_DIR) fclean
 
 re:	fclean all
+
+val:
+	valgrind --leak-check=full --show-leak-kinds=all --suppressions=sup.supp ./$(NAME)
+
+valgrind: val
 
 .PHONY:	all clean fclean re

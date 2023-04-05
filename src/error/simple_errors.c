@@ -1,44 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   executor.c                                         :+:      :+:    :+:   */
+/*   simple_errors.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/13 17:06:10 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/05 10:44:39 by dbrandao         ###   ########.fr       */
+/*   Created: 2023/04/04 08:40:09 by dbrandao          #+#    #+#             */
+/*   Updated: 2023/04/04 08:45:50 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-static int	verify_error(void)
+void	cmd_not_found(char *cmd)
 {
-	if (in_error())
-	{
-		ft_printf("EXEC ERROR\n");
-		return (1);
-	}
-	return (0);
-}
-
-static void	wait_childs(void)
-{
-	int	status;
-
-	status = 0;
-	while (wait(&status) != -1)
-		;
-	set_state(status);
-}
-
-void	executor(t_list *tokens)
-{
-	if (in_error())
-		return ;
-	if (tokens == NULL)
-		return ;
-	simple_exec(tokens);
-	pipe_exec(tokens);
-	wait_childs();
+	ft_putstr_fd(cmd, STDERR_FILENO);
+	ft_putstr_fd(": ", STDERR_FILENO);
+	ft_putstr_fd("command not found\n", STDERR_FILENO);
 }

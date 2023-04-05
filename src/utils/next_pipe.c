@@ -1,44 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   executor.c                                         :+:      :+:    :+:   */
+/*   next_pipe.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/13 17:06:10 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/05 10:44:39 by dbrandao         ###   ########.fr       */
+/*   Created: 2023/04/05 11:27:35 by dbrandao          #+#    #+#             */
+/*   Updated: 2023/04/05 11:27:49 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-static int	verify_error(void)
+t_list	*next_pipe(t_list *tokens)
 {
-	if (in_error())
+	while (1)
 	{
-		ft_printf("EXEC ERROR\n");
-		return (1);
+		tokens = next_operator(tokens);
+		while (is_redirect(tokens))
+			tokens = next_operator(tokens);
+		break ;
 	}
-	return (0);
-}
-
-static void	wait_childs(void)
-{
-	int	status;
-
-	status = 0;
-	while (wait(&status) != -1)
-		;
-	set_state(status);
-}
-
-void	executor(t_list *tokens)
-{
-	if (in_error())
-		return ;
-	if (tokens == NULL)
-		return ;
-	simple_exec(tokens);
-	pipe_exec(tokens);
-	wait_childs();
+	if (is_operator(tokens, PIPE))
+		return (tokens);
+	else
+		return (NULL);
 }

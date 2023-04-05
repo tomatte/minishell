@@ -1,44 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   executor.c                                         :+:      :+:    :+:   */
+/*   new_command.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/13 17:06:10 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/05 10:44:39 by dbrandao         ###   ########.fr       */
+/*   Created: 2023/04/05 10:29:57 by dbrandao          #+#    #+#             */
+/*   Updated: 2023/04/05 10:30:14 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-static int	verify_error(void)
+t_command	*new_command(t_list *tokens, int fd_in, int fd_out)
 {
-	if (in_error())
-	{
-		ft_printf("EXEC ERROR\n");
-		return (1);
-	}
-	return (0);
-}
+	t_command	*command;
 
-static void	wait_childs(void)
-{
-	int	status;
-
-	status = 0;
-	while (wait(&status) != -1)
-		;
-	set_state(status);
-}
-
-void	executor(t_list *tokens)
-{
-	if (in_error())
-		return ;
-	if (tokens == NULL)
-		return ;
-	simple_exec(tokens);
-	pipe_exec(tokens);
-	wait_childs();
+	command = talloc(1, sizeof(t_command));
+	command->args = get_args(tokens);
+	command->input_fd = fd_in;
+	command->output_fd = fd_out;
+	return (command);
 }

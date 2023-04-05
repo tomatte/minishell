@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 15:41:29 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/28 10:10:17 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/05 12:24:37 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,16 @@ static void	middle_commands(t_list *tokens, int **pipedes, t_list **commands)
 	t_list	*new_command;
 	int		i;
 
-	tokens = next_operator(tokens)->next;
+	tokens = next_pipe(tokens);
+	if (tokens == NULL)
+		return ;
+	tokens = tokens->next;
 	i = 1;
-	while (is_operator(next_operator(tokens), PIPE))
+	while (next_pipe(tokens))
 	{
 		new_command = new_midcommand(tokens, pipedes, i++);
 		ft_lstadd_back(commands, new_command);
-		tokens = next_operator(tokens)->next;
+		tokens = next_pipe(tokens)->next;
 	}
 }
 
@@ -57,9 +60,9 @@ static void	last_command(t_list *tokens, int **pipedes, t_list **commands)
 	int			i;
 
 	i = 0;
-	while (is_operator(next_operator(tokens), PIPE))
+	while (next_pipe(tokens))
 	{
-		tokens = next_operator(tokens)->next;
+		tokens = next_pipe(tokens)->next;
 		i++;
 	}
 	command = talloc(1, sizeof(t_command));

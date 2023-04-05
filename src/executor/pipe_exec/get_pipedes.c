@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 10:56:05 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/28 10:01:47 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/05 12:25:38 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	get_pipes_len(t_list *tokens)
 	len = 0;
 	while (tokens)
 	{
-		tokens = next_operator(tokens);
+		tokens = next_pipe(tokens);
 		if (is_operator(tokens, PIPE))
 			len++;
 		else

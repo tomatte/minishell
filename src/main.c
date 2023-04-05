@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 08:58:08 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/29 10:40:55 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/05 10:28:38 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,32 +23,10 @@ static void	is_exit(char *str)
 	}
 }
 
-static void	print_token(t_token *token)
-{
-	char	*CONSTANTS[] = {"NONE", "START", "WORD", "OPERATOR", "EXPANSIVE", \
-	"QUOTE", "EXEC", "ARG", "IN_FILE", "OUT_FILE", "HERE_DOC_END", \
-	"SIMPLE_QUOTES", "DOUBLE_QUOTES", "ENV_VAR", "EXIT_STAT", "HERE_DOC", \
-	"R_APPEND_OUT", "R_INPUT", "R_OUTPUT", "PIPE"};
-
-	ft_printf("[%s]  ", CONSTANTS[token->id]);
-}
-
-static void	print_tokens(t_list *tokens)
-{
-	if (!tokens)
-		ft_printf("\n");
-	while (tokens)
-	{
-		print_token(tokens->content);
-		tokens = tokens->next;
-	}
-	ft_printf("\n");
-}
-
 static void	print_error(void)
 {
-	if (get_state() < 0)
-		ft_printf("THERE'S AN ERROR!\n");
+	if (get_state())
+		ft_printf("THERE'S AN ERROR! Code: %d\n", get_state());
 }
 
 static void	print_evars()
@@ -61,6 +39,15 @@ static void	print_evars()
 		ft_printf("%s\n", *evars);
 		evars++;
 	}
+}
+
+// ---- ANY CODE TO BE TESTED --- //
+static void	test_some_code(t_list *tokens)
+{
+	int	redirects[2];
+
+	get_redirects(tokens, redirects);
+	ft_printf("RR: %d\nRW: %d\n", redirects[R], redirects[W]);
 }
 
 int	main(int argc, char **argv, char **envp)
