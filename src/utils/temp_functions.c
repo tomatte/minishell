@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 16:47:44 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/05 10:26:54 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/05 12:19:00 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,16 @@ void	print_tokens(t_list *tokens)
 		print_token(tokens->content);
 		tokens = tokens->next;
 	}
+	ft_printf("\n");
+}
+
+void	print_args(char **args)
+{
+	int	i;
+
+	ft_printf("Args:");
+	i = -1;
+	while (args[++i])
+		ft_printf("  %s", args[i]);
 	ft_printf("\n");
 }

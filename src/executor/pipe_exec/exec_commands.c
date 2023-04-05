@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 09:49:23 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/04 08:23:58 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/05 11:21:40 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,27 @@ static void	create_fork(t_list *commands)
 
 	command = commands->content;
 	command->pid = fork();
+}
+
+static void	add_redirects(t_list *tokens, t_list *commands)
+{
+	t_command	*command;
+	int			redirects[2];
+
+	command = (t_command *) commands->content;
+	get_redirects(tokens, redirects);
+	if (redirects[R] != STDIN_FILENO)
+	{
+		if (command->input_fd != STDIN_FILENO)
+			close(command->input_fd);
+		command->input_fd = redirects[R];
+	}
+	if (redirects[W] != STDOUT_FILENO)
+	{
+		if (command->output_fd != STDOUT_FILENO)
+			close(command->output_fd);
+		command->output_fd = redirects[W];
+	}
 }
 
 static void	exec_command(t_list *commands, int **pipedes)
@@ -34,10 +55,11 @@ static void	exec_command(t_list *commands, int **pipedes)
 	}
 }
 
-void	exec_commands(t_list *commands, int **pipedes)
+void	exec_commands(t_list *tokens, t_list *commands, int **pipedes)
 {
 	while (commands)
 	{
+		add_redirects(tokens, commands);
 		create_fork(commands);
 		exec_command(commands, pipedes);
 		commands = commands->next;
