@@ -97,4 +97,9 @@ fclean:	clean
 
 re:	fclean all
 
+val:
+	valgrind --leak-check=full --show-leak-kinds=all --suppressions=sup.supp ./$(NAME)
+
+valgrind: val
+
 .PHONY:	all clean fclean re
