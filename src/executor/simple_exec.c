@@ -6,21 +6,36 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 10:40:45 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/05 10:44:00 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/05 10:55:58 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
+static int	is_simple_exec(t_list *tokens)
+{
+	if (tokens == NULL)
+		return (0);
+	if (next_operator(tokens) == NULL)
+		return (1);
+	while (is_redirect(next_operator(tokens)))
+		tokens = next_operator(tokens);
+	if (next_operator(tokens) == NULL)
+		return (1);
+	return (0);
+}
+
 void	simple_exec(t_list *tokens)
 {
 	int		pid;
+	int		redirects[2];
 
-	if (tokens == NULL || next_operator(tokens) != NULL)
+	if (!is_simple_exec(tokens))
 		return ;
 	pid = fork();
 	if (pid == 0)
 	{
-		command_exec(new_command(tokens, STDIN_FILENO, STDOUT_FILENO));
+		get_redirects(tokens, redirects);
+		command_exec(new_command(tokens, redirects[R], redirects[W]));
 	}
 }
