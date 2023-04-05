@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 15:40:05 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/05 10:27:05 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/05 10:30:42 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,18 +74,19 @@ void	nut_error(char *str);
 void	cmd_not_found(char *cmd);
 
 //EXECUTOR
-void	executor(t_list *tokens);
-t_list	*get_files(t_list *tokens);
-void	clear_files(t_list *files);
-char	**get_args(t_list *tokens);
-void	pipe_exec(t_list *tokens);
-int		**get_pipedes(t_list *tokens);
-t_list	*get_commands(t_list *tokens, int **pipedes);
-void	exec_commands(t_list *commands, int **pipedes);
-void	close_pipes(int **pipedes);
-char	**get_paths(char *cmd);
-void	command_exec(t_command *command);
-void	get_redirects(t_list *tokens, int *redirects);
+void		executor(t_list *tokens);
+t_list		*get_files(t_list *tokens);
+void		clear_files(t_list *files);
+char		**get_args(t_list *tokens);
+void		pipe_exec(t_list *tokens);
+int			**get_pipedes(t_list *tokens);
+t_list		*get_commands(t_list *tokens, int **pipedes);
+void		exec_commands(t_list *commands, int **pipedes);
+void		close_pipes(int **pipedes);
+char		**get_paths(char *cmd);
+void		command_exec(t_command *command);
+void		get_redirects(t_list *tokens, int *redirects);
+t_command	*new_command(t_list *tokens, int fd_in, int fd_out);
 
 //TEMP
 void	print_pipedes(int **pipedes);

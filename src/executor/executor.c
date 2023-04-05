@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 17:06:10 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/04 08:56:56 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/05 10:32:13 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,17 +33,6 @@ static int	verify_error(void)
 		return (1);
 	}
 	return (0);
-}
-
-static t_command	*new_command(t_list *tokens, int fd_in, int fd_out)
-{
-	t_command	*command;
-
-	command = talloc(1, sizeof(t_command));
-	command->args = get_args(tokens);
-	command->input_fd = fd_in;
-	command->output_fd = fd_out;
-	return (command);
 }
 
 static void	simple_exec(t_list *tokens)
@@ -73,13 +62,10 @@ static void	wait_childs(void)
 
 void	executor(t_list *tokens)
 {
-	t_list	*files;
-
 	if (in_error())
 		return ;
 	if (tokens == NULL)
 		return ;
-	files = get_files(tokens);
 	simple_exec(tokens);
 	pipe_exec(tokens);
 	wait_childs();
