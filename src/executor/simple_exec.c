@@ -1,44 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   executor.c                                         :+:      :+:    :+:   */
+/*   simple_exec.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/13 17:06:10 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/05 10:44:39 by dbrandao         ###   ########.fr       */
+/*   Created: 2023/04/05 10:40:45 by dbrandao          #+#    #+#             */
+/*   Updated: 2023/04/05 10:44:00 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-static int	verify_error(void)
+void	simple_exec(t_list *tokens)
 {
-	if (in_error())
+	int		pid;
+
+	if (tokens == NULL || next_operator(tokens) != NULL)
+		return ;
+	pid = fork();
+	if (pid == 0)
 	{
-		ft_printf("EXEC ERROR\n");
-		return (1);
+		command_exec(new_command(tokens, STDIN_FILENO, STDOUT_FILENO));
 	}
-	return (0);
-}
-
-static void	wait_childs(void)
-{
-	int	status;
-
-	status = 0;
-	while (wait(&status) != -1)
-		;
-	set_state(status);
-}
-
-void	executor(t_list *tokens)
-{
-	if (in_error())
-		return ;
-	if (tokens == NULL)
-		return ;
-	simple_exec(tokens);
-	pipe_exec(tokens);
-	wait_childs();
 }

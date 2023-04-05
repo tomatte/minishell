@@ -44,6 +44,7 @@ SRC			=	temp_functions.c \
 				get_redirects.c \
 				is_redirect.c \
 				new_command.c \
+				simple_exec.c \
 
 VPATH		=	./src \
 				./src/prompt \
