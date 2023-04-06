@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 18:41:30 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/06 14:08:47 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/06 14:26:06 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,14 @@ static void	add_to_begin(t_list **tokens, t_list *args)
 static void	add_to_middle(t_list **tokens, t_list *args)
 {
 	t_list	*mid;
+	t_list	*aux;
 
 	mid = *tokens;
 	while (token(mid->next->next)->id != HERE_DOC)
 		mid = mid->next;
-	print_tokens(mid);
+	aux = mid->next;
+	add_to_begin(&aux, args);
+	mid->next = aux;
 }
 
 void	convert_to_tokens(t_list **tokens, t_list *args)
