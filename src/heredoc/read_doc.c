@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 18:23:07 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/06 14:16:31 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/06 15:15:29 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,15 @@ static int	is_endline(char *here_end, char *value)
 	return (0);
 }
 
+static char	*get_input(void)
+{
+	char	*value;
+
+	ft_printf("> ");
+	value = get_next_line(STDIN_FILENO);
+	return (value);
+}
+
 t_list	*read_doc(t_token *here_end)
 {
 	t_list	*args;
@@ -30,7 +39,7 @@ t_list	*read_doc(t_token *here_end)
 	args = NULL;
 	while (1)
 	{
-		value = get_next_line(STDIN_FILENO);
+		value = get_input();
 		if (is_endline(here_end->value, value))
 		{
 			free(value);
