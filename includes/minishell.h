@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 15:40:05 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/05 19:18:19 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/06 14:31:28 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,5 +112,6 @@ void	echo(t_command *cmd);
 void	heredoc_convert(t_list **tokens);
 t_list	*read_doc(t_token *here_end);
 void	convert_to_tokens(t_list **tokens, t_list *args);
+void	heredoc(t_command *cmd);
 
 #endif

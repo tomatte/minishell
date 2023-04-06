@@ -49,6 +49,7 @@ SRC			=	temp_functions.c \
 				heredoc_convert.c \
 				read_doc.c \
 				convert_to_tokens.c \
+				heredoc.c \
 
 VPATH		=	./src \
 				./src/prompt \
