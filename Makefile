@@ -46,6 +46,11 @@ SRC			=	temp_functions.c \
 				new_command.c \
 				simple_exec.c \
 				next_pipe.c \
+				heredoc_convert.c \
+				read_doc.c \
+				convert_to_tokens.c \
+				heredoc.c \
+				is_hereexec.c \
 
 VPATH		=	./src \
 				./src/prompt \
@@ -58,6 +63,7 @@ VPATH		=	./src \
 				./src/executor/pipe_exec \
 				./src/expander \
 				./src/builtins \
+				./src/heredoc \
 
 OBJS_DIR	=	./objects
 
@@ -98,7 +104,7 @@ fclean:	clean
 re:	fclean all
 
 val:
-	valgrind --leak-check=full --show-leak-kinds=all --suppressions=sup.supp ./$(NAME)
+	make && valgrind --leak-check=full --show-leak-kinds=all --suppressions=sup.supp ./$(NAME)
 
 valgrind: val
 

@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 16:47:44 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/05 12:19:00 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/05 19:18:10 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	print_commands(t_list *commands)
 	}
 }
 
-static void	print_token(t_token *token)
+void	print_token(t_token *token)
 {
 	char	*CONSTANTS[] = {"NONE", "START", "WORD", "OPERATOR", "EXPANSIVE", \
 	"QUOTE", "EXEC", "ARG", "IN_FILE", "OUT_FILE", "HERE_DOC_END", \
@@ -56,8 +56,6 @@ static void	print_token(t_token *token)
 
 void	print_tokens(t_list *tokens)
 {
-	if (!tokens)
-		ft_printf("\n");
 	while (tokens)
 	{
 		print_token(tokens->content);
@@ -74,5 +72,13 @@ void	print_args(char **args)
 	i = -1;
 	while (args[++i])
 		ft_printf("  %s", args[i]);
+	ft_printf("\n");
+}
+
+void	print_asc(char *str)
+{
+	ft_printf("%s: ", str);
+	while (*str)
+		ft_printf("%d ", *str++);
 	ft_printf("\n");
 }
