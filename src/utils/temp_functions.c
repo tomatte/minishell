@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 16:47:44 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/05 18:26:54 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/05 19:18:10 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	print_commands(t_list *commands)
 	}
 }
 
-static void	print_token(t_token *token)
+void	print_token(t_token *token)
 {
 	char	*CONSTANTS[] = {"NONE", "START", "WORD", "OPERATOR", "EXPANSIVE", \
 	"QUOTE", "EXEC", "ARG", "IN_FILE", "OUT_FILE", "HERE_DOC_END", \

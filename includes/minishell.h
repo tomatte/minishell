@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 15:40:05 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/05 18:27:04 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/05 19:18:19 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ void	print_command(t_command *command);
 void	print_tokens(t_list *tokens);
 void	print_args(char **args);
 void	print_asc(char *str);
+void	print_token(t_token *token);
 
 //EXPANDER
 void	expander(char **str);
@@ -110,5 +111,6 @@ void	echo(t_command *cmd);
 //HEREDOC
 void	heredoc_convert(t_list **tokens);
 t_list	*read_doc(t_token *here_end);
+void	convert_to_tokens(t_list **tokens, t_list *args);
 
 #endif
