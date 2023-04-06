@@ -6,30 +6,19 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 18:23:07 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/05 18:26:10 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/06 14:16:31 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-static void	remove_line(char *str)
+static int	is_endline(char *here_end, char *value)
 {
-	int	len;
-
-	if (str == NULL)
-		return ;
-	len = ft_strlen(str);
-	if (str[len - 1] == '\n')
-		str[len - 1] = '\0';
-}
-
-static char	*get_input(void)
-{
-	char	*value;
-
-	value = get_next_line(STDIN_FILENO);
-	remove_line(value);
-	return (value);
+	if (ft_strncmp(here_end, value, ft_strlen(here_end)) != 0)
+		return (0);
+	if (ft_streq("\n", &(value[ft_strlen(here_end)])))
+		return (1);
+	return (0);
 }
 
 t_list	*read_doc(t_token *here_end)
@@ -41,8 +30,8 @@ t_list	*read_doc(t_token *here_end)
 	args = NULL;
 	while (1)
 	{
-		value = get_input();
-		if (ft_streq(value, here_end->value))
+		value = get_next_line(STDIN_FILENO);
+		if (is_endline(here_end->value, value))
 		{
 			free(value);
 			break ;

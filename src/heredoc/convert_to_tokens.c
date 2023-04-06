@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 18:41:30 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/06 12:52:35 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/06 14:08:47 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ static void	add_to_begin(t_list **tokens, t_list *args)
 	t_list	*echo_node;
 	t_list	*pipe_node;
 
-	if (!is_operator((*tokens)->next, HERE_DOC))
-		return ;
 	echo_node = get_node("echo", WORD, EXEC);
 	echo_node->next = args;
 	pipe_node = get_node("|", OPERATOR, PIPE);
@@ -37,9 +35,22 @@ static void	add_to_begin(t_list **tokens, t_list *args)
 	*tokens = echo_node;
 }
 
+static void	add_to_middle(t_list **tokens, t_list *args)
+{
+	t_list	*mid;
+
+	mid = *tokens;
+	while (token(mid->next->next)->id != HERE_DOC)
+		mid = mid->next;
+	print_tokens(mid);
+}
+
 void	convert_to_tokens(t_list **tokens, t_list *args)
 {
-	add_to_begin(tokens, args);
+	if (is_operator(next_operator((*tokens)), HERE_DOC))
+		add_to_begin(tokens, args);
+	else
+		add_to_middle(tokens, args);
 }
 
 /* 
