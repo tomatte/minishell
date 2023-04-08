@@ -19,7 +19,6 @@ SRC			=	temp_functions.c \
 				nut_error.c \
 				executor.c \
 				in_error.c \
-				get_files.c \
 				clear_files.c \
 				read_all.c \
 				get_args.c \
