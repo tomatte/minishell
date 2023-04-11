@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 10:40:45 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/11 14:46:39 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/11 15:00:00 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ static int	create_fork(t_token *tkn)
 		return (BUILTIN_CODE);
 	else if (ft_streq(tkn->value, "pwd"))
 		return (BUILTIN_CODE);
+	else if (ft_streq(tkn->value, "env"))
+		return (BUILTIN_CODE);
 	return (fork());
 }
 
@@ -57,6 +59,8 @@ static void	builtin_func(t_list *tokens)
 		exitin(command);
 	else if (ft_streq(command->args[0], "pwd"))
 		pwd();
+	else if (ft_streq(command->args[0], "env"))
+		env();
 }
 
 void	simple_exec(t_list *tokens)

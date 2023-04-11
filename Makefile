@@ -54,6 +54,7 @@ SRC			=	temp_functions.c \
 				mini_exit.c \
 				exitin.c \
 				pwd.c \
+				env.c \
 
 VPATH		=	./src \
 				./src/prompt \
