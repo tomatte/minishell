@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 15:40:05 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/11 17:21:21 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/11 17:49:54 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ void	start_evars2(char **envp);
 t_list	*get_evars2(void);
 void	destroy_evars2(void);
 void	add_evar2(char *str);
+t_list	*find_evar2(char *str);
 
 //LEXER
 t_list	*lexer(char *str);
