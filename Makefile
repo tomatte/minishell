@@ -51,6 +51,8 @@ SRC			=	temp_functions.c \
 				heredoc.c \
 				is_hereexec.c \
 				cd.c \
+				mini_exit.c \
+				exitin.c \
 
 VPATH		=	./src \
 				./src/prompt \

@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 08:58:08 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/05 17:40:42 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/11 13:52:48 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	main(int argc, char **argv, char **envp)
 	while (1)
 	{
 		str = prompt();
-		is_exit(str);
+		//is_exit(str);
 		expander(&str);
 		tokens = lexer(str);
 		parser(tokens);

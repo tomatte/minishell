@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 15:40:05 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/11 10:41:17 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/11 13:51:34 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ t_list	*next_operator(t_list *tokens);
 int		is_operator(t_list *tokens, int operator);
 int		is_redirect(t_list *tokens);
 t_list	*next_pipe(t_list *tokens);
+void	mini_exit(int code);
 
 //ERROR
 void	nut_error(char *str);
@@ -108,6 +109,7 @@ void	expand_str(char **str, t_exp *exp);
 //BUILT-INS
 void	echo(t_command *cmd);
 void	cd(t_command *cmd);
+void	exitin(t_command *cmd);
 
 //HEREDOC
 void	heredoc_convert(t_list **tokens);

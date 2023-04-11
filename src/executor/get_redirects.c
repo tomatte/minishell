@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 10:07:49 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/05 10:22:03 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/11 12:10:27 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static int	open_file(int id, char *name)
 	if (fd == -1)
 	{
 		perror(strerror(errno));
-		exit(1); //use exit_error()
+		mini_exit(1);
 	}
 	return (fd);
 }
