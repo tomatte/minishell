@@ -56,6 +56,7 @@ SRC			=	temp_functions.c \
 				pwd.c \
 				env.c \
 				export.c \
+				evars2.c \
 
 VPATH		=	./src \
 				./src/prompt \
