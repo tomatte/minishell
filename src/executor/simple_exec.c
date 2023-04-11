@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 10:40:45 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/11 13:55:17 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/11 14:46:39 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,9 @@ static int	create_fork(t_token *tkn)
 {
 	if (ft_streq(tkn->value, "cd"))
 		return (BUILTIN_CODE);
-	if (ft_streq(tkn->value, "exit"))
+	else if (ft_streq(tkn->value, "exit"))
+		return (BUILTIN_CODE);
+	else if (ft_streq(tkn->value, "pwd"))
 		return (BUILTIN_CODE);
 	return (fork());
 }
@@ -51,8 +53,10 @@ static void	builtin_func(t_list *tokens)
 	command = new_command(tokens, STDIN_FILENO, STDOUT_FILENO);
 	if (ft_streq(command->args[0], "cd"))
 		cd(command);
-	if (ft_streq(command->args[0], "exit"))
+	else if (ft_streq(command->args[0], "exit"))
 		exitin(command);
+	else if (ft_streq(command->args[0], "pwd"))
+		pwd();
 }
 
 void	simple_exec(t_list *tokens)
