@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 15:40:05 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/11 14:59:00 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/11 15:15:10 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,7 @@ void	cd(t_command *cmd);
 void	exitin(t_command *cmd);
 void	pwd(void);
 void	env(void);
+void	export(t_command *cmd);
 
 //HEREDOC
 void	heredoc_convert(t_list **tokens);
