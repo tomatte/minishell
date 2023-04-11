@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 16:50:51 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/30 02:11:12 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/11 11:15:43 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@
 # define MAX_ENVS 1024
 # define DELIMITER "$'\"<|>"
 # define EXP_DELIMITER "\"'$|<> \n"
+# define BUILTIN_CODE -6
 
 //ERRORS
 # define ERR_UNCLOSED_QUOTES -2

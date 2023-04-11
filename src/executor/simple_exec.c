@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 10:40:45 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/05 11:03:49 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/11 11:20:39 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,22 @@ static void	dup_and_close(int *redirects)
 		close(redirects[R]);
 }
 
+static int	create_fork(t_token *tkn)
+{
+	if (ft_streq(tkn->value, "cd"))
+		return (BUILTIN_CODE);
+	return (fork());
+}
+
+static void	builtin_func(t_list *tokens)
+{
+	t_command	*command;
+
+	command = new_command(tokens, STDIN_FILENO, STDOUT_FILENO);
+	if (ft_streq(command->args[0], "cd"))
+		cd(command);
+}
+
 void	simple_exec(t_list *tokens)
 {
 	int		pid;
@@ -42,11 +58,16 @@ void	simple_exec(t_list *tokens)
 
 	if (!is_simple_exec(tokens))
 		return ;
-	pid = fork();
+	pid = create_fork(token(tokens));
 	if (pid == 0)
 	{
 		get_redirects(tokens, redirects);
 		dup_and_close(redirects);
 		command_exec(new_command(tokens, STDIN_FILENO, STDOUT_FILENO));
+	}
+	else if (pid == BUILTIN_CODE)
+	{
+		get_redirects(tokens, redirects);
+		builtin_func(tokens);
 	}
 }
