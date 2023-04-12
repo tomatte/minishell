@@ -6,13 +6,13 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 16:57:57 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/11 17:28:30 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/12 09:51:19 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-static t_list	**evars(void)
+t_list	**evars(void)
 {
 	static t_list	*vars = NULL;
 
