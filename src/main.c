@@ -6,22 +6,11 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 08:58:08 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/11 13:52:48 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/12 14:37:57 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
-
-static void	is_exit(char *str)
-{
-	if (ft_strncmp(str, "exit", 5) == 0)
-	{
-		destroy_memories();
-		destroy_evars();
-		rl_clear_history();
-		exit(0);
-	}
-}
 
 static void	print_error(void)
 {
@@ -41,15 +30,6 @@ static void	print_evars()
 	}
 }
 
-// ---- ANY CODE TO BE TESTED --- //
-static void	test_some_code(t_list *tokens)
-{
-	int	redirects[2];
-
-	get_redirects(tokens, redirects);
-	ft_printf("RR: %d\nRW: %d\n", redirects[R], redirects[W]);
-}
-
 int	main(int argc, char **argv, char **envp)
 {
 	char	*str;
@@ -58,6 +38,7 @@ int	main(int argc, char **argv, char **envp)
 	(void) argv;
 	(void) argc;
 	start_evars(envp);
+	start_evars2(envp);
 	while (1)
 	{
 		str = prompt();
