@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 15:41:29 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/05 12:24:37 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/08 12:05:25 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,7 @@
 static t_list	*first_command(t_list *tokens, int **pipedes)
 {
 	t_command	*command;
-
-	command = talloc(1, sizeof(t_command));
-	command->args = get_args(tokens);
-	command->input_fd = STDIN_FILENO;
-	command->output_fd = pipedes[0][W];
+	command = new_command(tokens, STDIN_FILENO, pipedes[0][W]);
 	return (lstnew_track(command));
 }
 
@@ -27,12 +23,7 @@ static t_list	*new_midcommand(t_list *tokens, int **pipedes, int i)
 {
 	t_command	*command;
 
-	command = talloc(1, sizeof(t_command));
-	if (command == NULL)
-		return (NULL);
-	command->args = get_args(tokens);
-	command->input_fd = pipedes[i - 1][R];
-	command->output_fd = pipedes[i][W];
+	command = new_command(tokens, pipedes[i - 1][R], pipedes[i][W]);
 	return (lstnew_track(command));
 }
 
@@ -65,10 +56,7 @@ static void	last_command(t_list *tokens, int **pipedes, t_list **commands)
 		tokens = next_pipe(tokens)->next;
 		i++;
 	}
-	command = talloc(1, sizeof(t_command));
-	command->args = get_args(tokens);
-	command->input_fd = pipedes[i - 1][R];
-	command->output_fd = STDOUT_FILENO;
+	command = new_command(tokens, pipedes[i - 1][R], STDOUT_FILENO);
 	ft_lstadd_back(commands, lstnew_track(command));
 }
 

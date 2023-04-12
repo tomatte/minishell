@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 15:40:05 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/06 14:49:41 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/12 15:01:04 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,22 @@ void	destroy_memories(void);
 void	*talloc(size_t nmemb, size_t size);
 void	add_to_tracker(void *mem);
 t_list	*lstnew_track(void *content);
+
 //EVARS
 char	**get_evars(void);
 void	add_evar(char *var);
 void	start_evars(char **envp);
 void	destroy_evars(void);
+
+//evars2
+t_list	**evars2(void);
+void	start_evars2(char **envp);
+t_list	*get_evars2(void);
+void	destroy_evars2(void);
+void	add_evar2(char *str);
+t_list	*find_evar2(char *str);
+void	remove_evar(char *str);
+char	**get_evars_arr(void);
 
 //LEXER
 t_list	*lexer(char *str);
@@ -69,6 +80,7 @@ t_list	*next_operator(t_list *tokens);
 int		is_operator(t_list *tokens, int operator);
 int		is_redirect(t_list *tokens);
 t_list	*next_pipe(t_list *tokens);
+void	mini_exit(int code);
 
 //ERROR
 void	nut_error(char *str);
@@ -107,6 +119,12 @@ void	expand_str(char **str, t_exp *exp);
 
 //BUILT-INS
 void	echo(t_command *cmd);
+void	cd(t_command *cmd);
+void	exitin(t_command *cmd);
+void	pwd(void);
+void	env(void);
+void	export(t_command *cmd);
+void	unset(t_command *cmd);
 
 //HEREDOC
 void	heredoc_convert(t_list **tokens);

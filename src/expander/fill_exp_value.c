@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 02:54:22 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/30 11:33:22 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/12 14:47:48 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static char	*find_evar(t_exp *exp)
 {
 	char	**evars;
 
-	evars = get_evars();
+	evars = get_evars_arr();
 	while (*evars)
 	{
 		if (is_evar_eq(*evars, exp->name))
