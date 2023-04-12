@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 15:07:40 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/11 15:42:10 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/12 14:49:29 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	export_print(void)
 {
 	char	**envs;
 
-	envs = get_evars();
+	envs = get_evars_arr();
 	if (envs == NULL)
 		return ;
 	while (*envs)
@@ -47,7 +47,7 @@ static void	export_var(t_command *cmd)
 	{
 		if (!is_valid(cmd->args[i]))
 			continue ;
-		add_evar(ft_strdup(cmd->args[i]));
+		add_evar2(cmd->args[i]);
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 14:48:30 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/11 15:18:09 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/12 14:47:19 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ static void	try_execve(t_command *command)
 	int		i;
 
 	cmd = command->args[0];
-	execve(cmd, command->args, get_evars());
+	execve(cmd, command->args, get_evars_arr());
 	paths = get_paths(cmd);
 	i = -1;
 	while (paths[++i])
 	{
 		command->args[0] = paths[i];
-		execve(command->args[0], command->args, get_evars());
+		execve(command->args[0], command->args, get_evars_arr());
 	}
 	command->args[0] = cmd;
 }
