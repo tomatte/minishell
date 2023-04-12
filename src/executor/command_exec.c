@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 14:48:30 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/12 14:47:19 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/12 15:02:31 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ static int	try_builtin(t_command *command)
 		env();
 	else if (ft_streq(command->args[0], "export"))
 		export(command);
+	else if (ft_streq(command->args[0], "unset"))
+		unset(command);
 	else
 		return (0);
 	return (1);
