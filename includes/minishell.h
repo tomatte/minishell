@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 15:40:05 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/12 10:53:32 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/12 14:42:10 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	start_evars(char **envp);
 void	destroy_evars(void);
 
 //evars2
-t_list	**evars(void);
+t_list	**evars2(void);
 void	start_evars2(char **envp);
 t_list	*get_evars2(void);
 void	destroy_evars2(void);

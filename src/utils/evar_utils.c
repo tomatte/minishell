@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:28:51 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/12 10:55:01 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/12 14:42:40 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	remove_evar(char *str)
 	t_list	*aux;
 	t_list	*removed;
 
-	vars = evars();
+	vars = evars2();
 	removed = NULL;
 	if (str == NULL || *vars == NULL)
 		return ;
