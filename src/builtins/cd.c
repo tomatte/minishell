@@ -6,13 +6,11 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 10:38:01 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/13 15:33:58 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/13 15:35:54 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-
-
 
 static void	cd_not_found(char *path)
 {

@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 16:57:57 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/12 14:41:57 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/13 15:39:33 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ void	start_evars2(char **envp)
 		node = ft_lstnew(ft_strdup(envp[i]));
 		ft_lstadd_back(vars, node);
 	}
-	
 }
 
 t_list	*get_evars2(void)
