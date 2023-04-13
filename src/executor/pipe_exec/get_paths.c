@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/26 19:42:01 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/12 14:44:55 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/13 15:37:32 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	put_endslash(char **paths)
 	}
 }
 
-static void	put_cmd(char **paths,  char *cmd)
+static void	put_cmd(char **paths, char *cmd)
 {
 	char	*aux;
 	int		i;

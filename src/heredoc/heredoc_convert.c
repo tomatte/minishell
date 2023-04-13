@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 16:29:10 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/06 15:33:27 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/13 15:39:55 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ static void	remove_heredoc(t_list *tokens)
 		before = before->next;
 	after = before->next->next->next;
 	before->next = after;
-
 }
 
 void	heredoc_convert(t_list **tokens)

@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 15:41:29 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/08 12:05:25 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/13 15:37:50 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static t_list	*first_command(t_list *tokens, int **pipedes)
 {
 	t_command	*command;
+
 	command = new_command(tokens, STDIN_FILENO, pipedes[0][W]);
 	return (lstnew_track(command));
 }

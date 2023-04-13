@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 10:00:02 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/05 11:25:47 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/13 17:55:42 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,20 @@ static int	is_pipe_exec(t_list *tokens)
 	return (0);
 }
 
+static void	wait_childs_ordered(t_list *commands)
+{
+	t_command	*cmd;
+	int			status;
+
+	while (commands)
+	{
+		cmd = (t_command *) commands->content;
+		waitpid(cmd->pid, &status, WUNTRACED);
+		set_error(WEXITSTATUS(status));
+		commands = commands->next;
+	}
+}
+
 void	pipe_exec(t_list *tokens)
 {
 	t_list	*commands;
@@ -36,4 +50,5 @@ void	pipe_exec(t_list *tokens)
 	commands = get_commands(tokens, pipedes);
 	exec_commands(tokens, commands, pipedes);
 	close_pipes(pipedes);
+	wait_childs_ordered(commands);
 }

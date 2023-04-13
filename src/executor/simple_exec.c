@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 10:40:45 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/12 15:02:02 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/13 18:44:10 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static void	builtin_func(t_list *tokens)
 	else if (ft_streq(command->args[0], "pwd"))
 		pwd();
 	else if (ft_streq(command->args[0], "env"))
-		env();
+		env(command);
 	else if (ft_streq(command->args[0], "export"))
 		export(command);
 	else if (ft_streq(command->args[0], "unset"))
@@ -73,6 +73,7 @@ static void	builtin_func(t_list *tokens)
 
 void	simple_exec(t_list *tokens)
 {
+	int		status;
 	int		pid;
 	int		redirects[2];
 
@@ -89,5 +90,8 @@ void	simple_exec(t_list *tokens)
 	{
 		get_redirects(tokens, redirects);
 		builtin_func(tokens);
+		return ;
 	}
+	waitpid(pid, &status, WUNTRACED);
+	set_error(WEXITSTATUS(status));
 }

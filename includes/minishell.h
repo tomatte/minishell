@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 15:40:05 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/12 15:01:04 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/13 18:24:53 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,8 @@ void	mini_exit(int code);
 //ERROR
 void	nut_error(char *str);
 void	cmd_not_found(char *cmd);
+void	set_error(int code);
+int		get_error(void);
 
 //EXECUTOR
 void		executor(t_list *tokens);
@@ -122,7 +124,7 @@ void	echo(t_command *cmd);
 void	cd(t_command *cmd);
 void	exitin(t_command *cmd);
 void	pwd(void);
-void	env(void);
+void	env(t_command *cmd);
 void	export(t_command *cmd);
 void	unset(t_command *cmd);
 

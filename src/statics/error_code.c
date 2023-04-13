@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   executor.c                                         :+:      :+:    :+:   */
+/*   error_code.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/13 17:06:10 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/13 16:50:14 by dbrandao         ###   ########.fr       */
+/*   Created: 2023/04/13 13:29:06 by dbrandao          #+#    #+#             */
+/*   Updated: 2023/04/13 13:33:25 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-static int	verify_error(void)
+static int	*error_code(void)
 {
-	if (in_error())
-	{
-		ft_printf("EXEC ERROR\n");
-		return (1);
-	}
-	return (0);
+	static int	err = 0;
+
+	return (&err);
 }
 
-void	executor(t_list *tokens)
+void	set_error(int code)
 {
-	if (in_error())
-		return ;
-	if (tokens == NULL)
-		return ;
-	simple_exec(tokens);
-	pipe_exec(tokens);
+	int	*err;
+
+	err = error_code();
+	*err = code;
+}
+
+int	get_error(void)
+{
+	return (*error_code());
 }

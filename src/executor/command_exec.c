@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 14:48:30 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/12 15:02:31 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/13 18:23:15 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,13 @@
 static void	try_execve(t_command *command)
 {
 	char	**paths;
-	char	*cmd;
 	int		i;
 
-	cmd = command->args[0];
-	execve(cmd, command->args, get_evars_arr());
-	paths = get_paths(cmd);
+	execve(command->args[0], command->args, get_evars_arr());
+	paths = get_paths(command->args[0]);
 	i = -1;
 	while (paths[++i])
-	{
-		command->args[0] = paths[i];
-		execve(command->args[0], command->args, get_evars_arr());
-	}
-	command->args[0] = cmd;
+		execve(paths[i], command->args, get_evars_arr());
 }
 
 static int	try_builtin(t_command *command)
@@ -43,7 +37,7 @@ static int	try_builtin(t_command *command)
 	else if (ft_streq(command->args[0], "pwd"))
 		pwd();
 	else if (ft_streq(command->args[0], "env"))
-		env();
+		env(command);
 	else if (ft_streq(command->args[0], "export"))
 		export(command);
 	else if (ft_streq(command->args[0], "unset"))
@@ -56,7 +50,7 @@ static int	try_builtin(t_command *command)
 void	command_exec(t_command *command)
 {
 	if (try_builtin(command))
-		mini_exit(0);
+		mini_exit(get_error());
 	else
 	{
 		try_execve(command);
