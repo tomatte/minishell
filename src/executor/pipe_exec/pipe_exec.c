@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 10:00:02 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/13 17:13:46 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/13 17:55:42 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	wait_childs_ordered(t_list *commands)
 	{
 		cmd = (t_command *) commands->content;
 		waitpid(cmd->pid, &status, WUNTRACED);
-		set_error(status);
+		set_error(WEXITSTATUS(status));
 		commands = commands->next;
 	}
 }

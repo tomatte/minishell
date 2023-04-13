@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 10:40:45 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/13 16:51:34 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/13 17:50:37 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,6 @@ void	simple_exec(t_list *tokens)
 		get_redirects(tokens, redirects);
 		builtin_func(tokens);
 	}
-	wait(&status);
-	set_error(status);
+	waitpid(pid, &status, WUNTRACED);
+	set_error(WEXITSTATUS(status));
 }
