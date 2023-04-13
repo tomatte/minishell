@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 17:06:10 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/13 15:08:09 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/13 16:50:14 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,20 +22,6 @@ static int	verify_error(void)
 	return (0);
 }
 
-static void	wait_childs(void)
-{
-	int	status;
-	int	i;
-
-	i = 0;
-	while (wait(&status) != -1)
-		i++;
-	if (i == 0)
-		return ;
-	set_state(status);
-	set_error(status);
-}
-
 void	executor(t_list *tokens)
 {
 	if (in_error())
@@ -44,5 +30,4 @@ void	executor(t_list *tokens)
 		return ;
 	simple_exec(tokens);
 	pipe_exec(tokens);
-	wait_childs();
 }

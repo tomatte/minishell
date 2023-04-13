@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 18:01:06 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/05 10:58:52 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/13 16:42:29 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,5 @@ void	echo(t_command *cmd)
 	}
 	if (n == 0)
 		ft_putstr("\n");
+	set_error(0);
 }
