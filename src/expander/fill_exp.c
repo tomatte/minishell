@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 02:02:50 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/30 11:34:13 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/13 14:14:11 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ static void	find_end(t_exp *exp)
 	{
 		str++;
 		len++;
+		if (*(exp->start) == '?')
+			break ;
 	}
 	exp->end = str;
 	exp->len = len;

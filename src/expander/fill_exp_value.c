@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 02:54:22 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/12 14:47:48 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/13 14:17:14 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,11 @@ void	fill_exp_value(t_exp *exp)
 	if (exp->start == NULL)
 	{
 		exp->value = strdup_track("");
+		return ;
+	}
+	if (*exp->start == '?')
+	{
+		exp->value = ft_itoa(get_error());
 		return ;
 	}
 	evar = find_evar(exp);
