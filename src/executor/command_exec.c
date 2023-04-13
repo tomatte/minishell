@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 14:48:30 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/13 16:09:17 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/13 18:23:15 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static int	try_builtin(t_command *command)
 	else if (ft_streq(command->args[0], "pwd"))
 		pwd();
 	else if (ft_streq(command->args[0], "env"))
-		env();
+		env(command);
 	else if (ft_streq(command->args[0], "export"))
 		export(command);
 	else if (ft_streq(command->args[0], "unset"))
