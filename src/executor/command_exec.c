@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 14:48:30 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/12 15:02:31 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/13 14:39:38 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,13 @@
 static void	try_execve(t_command *command)
 {
 	char	**paths;
-	char	*cmd;
 	int		i;
 
-	cmd = command->args[0];
-	execve(cmd, command->args, get_evars_arr());
-	paths = get_paths(cmd);
+	execve(command->args[0], command->args, get_evars_arr());
+	paths = get_paths(command->args[0]);
 	i = -1;
 	while (paths[++i])
-	{
-		command->args[0] = paths[i];
-		execve(command->args[0], command->args, get_evars_arr());
-	}
-	command->args[0] = cmd;
+		execve(paths[i], command->args, get_evars_arr());
 }
 
 static int	try_builtin(t_command *command)
