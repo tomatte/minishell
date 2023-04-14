@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 17:15:54 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/14 13:01:55 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/14 13:05:00 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,9 @@ static void	add_token(t_list **tokens, char **str)
 	pass_spaces(str);
 	token = identify_operator(str);
 	if (token == NULL)
-	{
-		pass_spaces(str);
 		token = identify_quotes(str);
-	}	
 	if (token == NULL)
-	{
-		pass_spaces(str);
 		token = identify_word(str);
-	}
 	if (token == NULL)
 		return ;
 	ft_lstadd_back(tokens, lstnew_track(token));
