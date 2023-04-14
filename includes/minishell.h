@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 15:40:05 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/13 18:24:53 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/14 10:54:24 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,12 +81,14 @@ int		is_operator(t_list *tokens, int operator);
 int		is_redirect(t_list *tokens);
 t_list	*next_pipe(t_list *tokens);
 void	mini_exit(int code);
+int		is_option(char *str);
 
 //ERROR
 void	nut_error(char *str);
 void	cmd_not_found(char *cmd);
 void	set_error(int code);
 int		get_error(void);
+void	invalid_option(char *cmd, char *opt);
 
 //EXECUTOR
 void		executor(t_list *tokens);

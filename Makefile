@@ -60,6 +60,7 @@ SRC			=	temp_functions.c \
 				evar_utils.c \
 				unset.c \
 				error_code.c \
+				is_option.c \
 
 VPATH		=	./src \
 				./src/prompt \
