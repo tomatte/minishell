@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 10:40:45 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/13 18:44:10 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/14 12:39:27 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static void	builtin_func(t_list *tokens)
 	else if (ft_streq(command->args[0], "exit"))
 		exitin(command);
 	else if (ft_streq(command->args[0], "pwd"))
-		pwd();
+		pwd(command);
 	else if (ft_streq(command->args[0], "env"))
 		env(command);
 	else if (ft_streq(command->args[0], "export"))

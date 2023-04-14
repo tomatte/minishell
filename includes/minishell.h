@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 15:40:05 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/14 12:29:27 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/14 12:39:04 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,7 @@ void	expand_str(char **str, t_exp *exp);
 void	echo(t_command *cmd);
 void	cd(t_command *cmd);
 void	exitin(t_command *cmd);
-void	pwd(void);
+void	pwd(t_command *cmd);
 void	env(t_command *cmd);
 void	export(t_command *cmd);
 void	unset(t_command *cmd);
