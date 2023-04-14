@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 08:40:09 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/14 11:06:12 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/14 12:29:11 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,15 @@ void	no_such_file(char *cmd, char *file)
 	ft_putstr_fd(file, STDERR_FILENO);
 	ft_putstr_fd("': No such file or directory\n", STDERR_FILENO);
 	set_error(3);
+}
+
+void	invalid_identifier(char *cmd, char *identifier)
+{
+	if (identifier == NULL || cmd == NULL)
+		return ;
+	ft_putstr_fd(cmd, STDERR_FILENO);
+	ft_putstr_fd(": '", STDERR_FILENO);
+	ft_putstr_fd(identifier, STDERR_FILENO);
+	ft_putstr_fd("': not a valid identifier\n", STDERR_FILENO);
+	set_error(4);
 }
