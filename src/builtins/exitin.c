@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 13:45:36 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/11 13:57:11 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/14 12:23:05 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,14 @@
 
 void	exitin(t_command *cmd)
 {
-	int	i;
+	int	err;
 
-	i = 0;
-	while (cmd->args[i])
-		i++;
-	if (i > 2)
+	err = 0;
+	if (cmd->args[1])
 	{
-		ft_printf("too many arguments\n");
-		mini_exit(0);
+		err = ft_atoi(cmd->args[1]);
+		if (err == 0)
+			err = 2;
 	}
-	if (i == 2)
-	{
-		//verify if its number, convert to int and exit
-	}
-	mini_exit(0);
+	mini_exit(err);
 }

@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 02:54:22 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/13 14:17:14 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/14 12:35:50 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ void	fill_exp_value(t_exp *exp)
 	if (*exp->start == '?')
 	{
 		exp->value = ft_itoa(get_error());
+		add_to_tracker(exp->value);
 		return ;
 	}
 	evar = find_evar(exp);

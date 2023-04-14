@@ -19,7 +19,6 @@ SRC			=	temp_functions.c \
 				nut_error.c \
 				executor.c \
 				in_error.c \
-				clear_files.c \
 				read_all.c \
 				get_args.c \
 				token.c \
@@ -60,6 +59,7 @@ SRC			=	temp_functions.c \
 				evar_utils.c \
 				unset.c \
 				error_code.c \
+				is_option.c \
 
 VPATH		=	./src \
 				./src/prompt \

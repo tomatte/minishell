@@ -6,23 +6,30 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 14:58:26 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/13 18:33:46 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/14 11:07:11 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-static int	many_args_err(t_command *cmd)
+static int	verify_args(t_command *cmd)
 {
-	int		i;
+	int	i;
 
-	i = 0;
+	i = 1;
 	while (cmd->args[i])
-		i++;
-	if (i >= 2)
 	{
-		ft_putstr_fd("env: Too many arguments\n", STDERR_FILENO);
-		return (1);
+		if (is_option(cmd->args[i]))
+		{
+			invalid_option(cmd->args[0], cmd->args[i]);
+			return (1);
+		}
+		else
+		{
+			no_such_file(cmd->args[0], cmd->args[i]);
+			return (1);
+		}
+		i++;
 	}
 	return (0);
 }
@@ -31,8 +38,8 @@ void	env(t_command *cmd)
 {
 	t_list	*vars;
 
-	if (many_args_err(cmd))
-		return (set_error(1));
+	if (verify_args(cmd))
+		return ;
 	vars = get_evars2();
 	while (vars)
 	{

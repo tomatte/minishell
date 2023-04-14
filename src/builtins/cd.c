@@ -6,19 +6,11 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 10:38:01 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/13 15:35:54 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/14 12:12:31 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-
-static void	cd_not_found(char *path)
-{
-	ft_putstr_fd("cd: ", STDERR_FILENO);
-	ft_putstr_fd(path, STDERR_FILENO);
-	ft_putstr_fd(" No such file or directory\n", STDERR_FILENO);
-	set_error(1);
-}
 
 static int	cd_home(void)
 {
@@ -28,9 +20,9 @@ static int	cd_home(void)
 	path = ft_strjoin("/home/", getenv("USER"));
 	err = chdir(path);
 	if (err != 0)
-		cd_not_found(path);
+		no_such_file("cd", path);
 	free(path);
-	return (err);
+	return (err != 0);
 }
 
 static int	cd_many_args(void)
@@ -45,8 +37,8 @@ static int	cd_path(t_command *cmd)
 
 	err = chdir(cmd->args[1]);
 	if (err != 0)
-		cd_not_found(cmd->args[1]);
-	return (err);
+		no_such_file(cmd->args[0], cmd->args[1]);
+	return (err != 0);
 }
 
 void	cd(t_command *cmd)
@@ -54,6 +46,8 @@ void	cd(t_command *cmd)
 	int	i;
 	int	err;
 
+	if (is_option(cmd->args[1]))
+		return (invalid_option(cmd->args[0], cmd->args[1]));
 	i = 0;
 	while (cmd->args[i])
 		i++;

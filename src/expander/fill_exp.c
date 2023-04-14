@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 02:02:50 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/13 14:14:11 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/14 10:17:15 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,10 @@
 static void	pass_simple_quotes(char **str)
 {
 	(*str)++;
-	while (**str != 39)
+	while (**str && **str != 39)
 		(*str)++;
-	(*str)++;
+	if (**str)
+		(*str)++;
 }
 
 static void	find_start(char *str, t_exp *exp)

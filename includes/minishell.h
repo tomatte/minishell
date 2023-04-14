@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 15:40:05 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/13 18:24:53 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/14 13:23:41 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,17 +81,20 @@ int		is_operator(t_list *tokens, int operator);
 int		is_redirect(t_list *tokens);
 t_list	*next_pipe(t_list *tokens);
 void	mini_exit(int code);
+int		is_option(char *str);
 
 //ERROR
 void	nut_error(char *str);
 void	cmd_not_found(char *cmd);
 void	set_error(int code);
 int		get_error(void);
+void	invalid_option(char *cmd, char *opt);
+void	no_such_file(char *cmd, char *file);
+void	invalid_identifier(char *cmd, char *identifier);
 
 //EXECUTOR
 void		executor(t_list *tokens);
 t_list		*get_files(t_list *tokens);
-void		clear_files(t_list *files);
 char		**get_args(t_list *tokens);
 void		pipe_exec(t_list *tokens);
 int			**get_pipedes(t_list *tokens);
@@ -123,7 +126,7 @@ void	expand_str(char **str, t_exp *exp);
 void	echo(t_command *cmd);
 void	cd(t_command *cmd);
 void	exitin(t_command *cmd);
-void	pwd(void);
+void	pwd(t_command *cmd);
 void	env(t_command *cmd);
 void	export(t_command *cmd);
 void	unset(t_command *cmd);

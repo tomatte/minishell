@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clear_files.c                                      :+:      :+:    :+:   */
+/*   get_option.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/14 20:27:44 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/14 20:29:03 by dbrandao         ###   ########.fr       */
+/*   Created: 2023/04/14 10:20:33 by dbrandao          #+#    #+#             */
+/*   Updated: 2023/04/14 10:53:30 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-static void	del_file(void *file)
+int	is_option(char *str)
 {
-	ft_printf("closed %d\n", ((t_file *) file)->fd);
-	close(((t_file *) file)->fd);
-	free(file);
-}
-
-void	clear_files(t_list *files)
-{
-	ft_lstclear(&files, del_file);
+	if (str == NULL)
+		return (0);
+	if (*str == '-')
+		str++;
+	else
+		return (0);
+	if (*str == '-')
+		str++;
+	if (*str)
+		return (1);
+	return (0);
 }

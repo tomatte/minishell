@@ -8,13 +8,6 @@ typedef struct s_token
 	int		id;
 }	t_token;
 
-typedef struct s_file
-{
-	int		fd;
-	int		id;
-	char	*name;
-}	t_file;
-
 typedef struct s_command
 {
 	char	**args;
