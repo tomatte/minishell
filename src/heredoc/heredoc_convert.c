@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 16:29:10 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/13 15:39:55 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/13 22:56:33 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,16 @@ void	heredoc_convert(t_list **tokens)
 	t_list	*args;
 
 	set_sdoc(0);
-	doc = find_heredoc(*tokens);
-	if (doc == NULL)
-		return ;
-	set_sdoc(1);
-	args = read_doc((t_token *) doc->next->content);
-	convert_to_tokens(tokens, args);
-	remove_heredoc(*tokens);
+	while (1)
+	{
+		doc = find_heredoc(*tokens);
+		if (doc == NULL)
+			return ;
+		set_sdoc(1);
+		args = read_doc((t_token *) doc->next->content);
+		convert_to_tokens(tokens, args);
+		remove_heredoc(*tokens);
+	}
 }
 
 //encontrar here_doc x
