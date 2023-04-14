@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 15:40:05 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/14 10:54:24 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/14 11:06:25 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ void	cmd_not_found(char *cmd);
 void	set_error(int code);
 int		get_error(void);
 void	invalid_option(char *cmd, char *opt);
+void	no_such_file(char *cmd, char *file);
 
 //EXECUTOR
 void		executor(t_list *tokens);

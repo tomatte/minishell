@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 08:40:09 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/14 10:59:27 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/14 11:06:12 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,15 @@ void	invalid_option(char *cmd, char *opt)
 	ft_putstr_fd("'\n", STDERR_FILENO);
 	set_error(2);
 	return ;
+}
+
+void	no_such_file(char *cmd, char *file)
+{
+	if (file == NULL || cmd == NULL)
+		return ;
+	ft_putstr_fd(cmd, STDERR_FILENO);
+	ft_putstr_fd(": '", STDERR_FILENO);
+	ft_putstr_fd(file, STDERR_FILENO);
+	ft_putstr_fd("': No such file or directory\n", STDERR_FILENO);
+	set_error(3);
 }
