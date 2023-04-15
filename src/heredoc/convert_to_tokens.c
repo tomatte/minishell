@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 18:41:30 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/06 14:40:34 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/15 13:52:27 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	add_to_begin(t_list **tokens, t_list *args)
 	echo_node = get_node("heredoc", WORD, EXEC);
 	echo_node->next = args;
 	pipe_node = get_node("|", OPERATOR, PIPE);
-	ft_lstlast(args)->next = pipe_node;
+	ft_lstlast(echo_node)->next = pipe_node;
 	ft_lstadd_front(tokens, pipe_node);
 	*tokens = echo_node;
 }

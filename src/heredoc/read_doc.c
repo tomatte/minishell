@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 18:23:07 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/15 12:06:05 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/15 13:48:22 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ static char	*get_input(char *end)
 	result = NULL;
 	while (1)
 	{
+		ft_putstr("> ");
 		value = get_next_line(STDIN_FILENO);
 		if (value == NULL || is_endline(end, value))
 			break ;
@@ -69,13 +70,9 @@ static char	*read_fork(char *end)
 t_list	*read_doc(t_token *here_end)
 {
 	t_list	*args;
-	t_token	*arg;
 	char	*text;
 
 	text = read_fork(here_end->value);
-	ft_putstr("----TEXT----\n");
-	ft_putstr(text);
-	mini_exit(0);
-	//args = extract_tokens();
+	args = extract_tokens(text);
 	return (args);
 }
