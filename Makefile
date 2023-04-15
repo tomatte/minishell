@@ -60,6 +60,7 @@ SRC			=	temp_functions.c \
 				unset.c \
 				error_code.c \
 				is_option.c \
+				heredoc_exec.c \
 
 VPATH		=	./src \
 				./src/prompt \
