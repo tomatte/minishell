@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 22:09:49 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/15 15:02:55 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/15 15:54:38 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,21 +38,13 @@ void	store_in_static(char **storage, char *buffer, ssize_t b_size)
 
 int	no_return(char *storage, char *buffer, ssize_t r_bytes)
 {
+	(void) buffer;
 	if (r_bytes < 0)
-	{
-		free(buffer);
 		return (-1);
-	}
 	if (!storage && !r_bytes)
-	{
-		free(buffer);
 		return (0);
-	}
 	if (storage && !r_bytes)
-	{
-		free(buffer);
 		return (2);
-	}
 	return (1);
 }
 
