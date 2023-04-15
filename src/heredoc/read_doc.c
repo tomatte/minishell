@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 18:23:07 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/15 14:35:33 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/15 14:44:29 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ t_list	*read_doc(t_token *here_end)
 	disable_signals();
 	pipe(pipedes);
 	text = read_fork(here_end->value, pipedes);
+	set_signals();
 	args = extract_tokens(text);
 	return (args);
 }
