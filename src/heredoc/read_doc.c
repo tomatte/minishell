@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 18:23:07 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/15 13:48:22 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/15 14:35:33 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,16 +41,27 @@ static char	*get_input(char *end)
 	return (result);
 }
 
-static char	*read_fork(char *end)
+static int	child_err(int status, int *pipedes)
+{
+	if (status == 0)
+		return (0);
+	set_state(-1);
+	close(pipedes[W]);
+	close(pipedes[R]);
+	set_error(130);
+	return (1);
+}
+
+static char	*read_fork(char *end, int *pipedes)
 {
 	int		pid;
-	int		pipedes[2];
+	int		status;
 	char	*text;
 
-	pipe(pipedes);
 	pid = fork();
 	if (pid == 0)
 	{
+		set_sig_here();
 		text = get_input(end);
 		close(pipedes[R]);
 		write(pipedes[W], text, ft_strlen(text) + 1);
@@ -59,7 +70,9 @@ static char	*read_fork(char *end)
 	}
 	else
 	{
-		waitpid(pid, NULL, WUNTRACED);
+		waitpid(pid, &status, WUNTRACED);
+		if (child_err(status, pipedes))
+			return (NULL);
 		close(pipedes[W]);
 		text = read_all(pipedes[R]);
 		close(pipedes[R]);
@@ -71,8 +84,11 @@ t_list	*read_doc(t_token *here_end)
 {
 	t_list	*args;
 	char	*text;
+	int		pipedes[2];
 
-	text = read_fork(here_end->value);
+	disable_signals();
+	pipe(pipedes);
+	text = read_fork(here_end->value, pipedes);
 	args = extract_tokens(text);
 	return (args);
 }

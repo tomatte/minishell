@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 13:39:19 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/15 13:44:35 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/15 14:13:41 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ t_list	*extract_tokens(char *text)
 	char	*line;
 	int		len;
 
+	if (in_error())
+		return (NULL);
 	args = NULL;
 	len = 0;
 	while (*text)

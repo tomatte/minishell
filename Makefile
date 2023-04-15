@@ -61,6 +61,7 @@ SRC			=	temp_functions.c \
 				error_code.c \
 				is_option.c \
 				extract_tokens.c \
+				here_signal.c \
 
 VPATH		=	./src \
 				./src/prompt \
@@ -74,6 +75,7 @@ VPATH		=	./src \
 				./src/expander \
 				./src/builtins \
 				./src/heredoc \
+				./src/signals \
 
 OBJS_DIR	=	./objects
 
