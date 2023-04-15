@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 22:09:49 by dbrandao          #+#    #+#             */
-/*   Updated: 2022/06/29 22:34:10 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/15 15:02:55 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,13 +58,10 @@ int	no_return(char *storage, char *buffer, ssize_t r_bytes)
 
 int	read_buffer(int fd, char **storage, char **s_line)
 {
-	char	*buffer;
+	char	buffer[BUFFER_SIZE];
 	int		r_bytes;
 	int		flag;
 
-	buffer = (char *) malloc(BUFFER_SIZE);
-	if (!buffer)
-		return (0);
 	while (1)
 	{
 		r_bytes = read(fd, buffer, BUFFER_SIZE);
@@ -74,10 +71,7 @@ int	read_buffer(int fd, char **storage, char **s_line)
 		store_in_static(storage, buffer, r_bytes);
 		flag = verify_line(storage, s_line);
 		if (flag)
-		{
-			free(buffer);
 			return (flag);
-		}
 	}
 }
 
