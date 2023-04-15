@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 18:23:07 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/14 22:52:00 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/15 12:06:05 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,51 +21,61 @@ static int	is_endline(char *here_end, char *value)
 	return (0);
 }
 
-static char	*get_input(void)
+static char	*get_input(char *end)
 {
+	char	*result;
 	char	*value;
+
+	result = NULL;
+	while (1)
+	{
+		value = get_next_line(STDIN_FILENO);
+		if (value == NULL || is_endline(end, value))
+			break ;
+		result = join_and_free(result, value);
+	}
+	if (result == NULL)
+		result = ft_strdup("");
+	add_to_tracker(result);
+	return (result);
+}
+
+static char	*read_fork(char *end)
+{
 	int		pid;
 	int		pipedes[2];
+	char	*text;
 
 	pipe(pipedes);
 	pid = fork();
 	if (pid == 0)
 	{
-		ft_printf("> ");
-		value = get_next_line(STDIN_FILENO);
+		text = get_input(end);
 		close(pipedes[R]);
-		write(pipedes[W], value, ft_strlen(value) + 1);
+		write(pipedes[W], text, ft_strlen(text) + 1);
 		close(pipedes[W]);
-		free(value);
 		mini_exit(0);
-		return (NULL);
 	}
 	else
 	{
+		waitpid(pid, NULL, WUNTRACED);
 		close(pipedes[W]);
-		value = get_next_line(pipedes[R]);
+		text = read_all(pipedes[R]);
 		close(pipedes[R]);
-		return (value);
 	}
+	return (text);
 }
 
 t_list	*read_doc(t_token *here_end)
 {
 	t_list	*args;
 	t_token	*arg;
-	char	*value;
+	char	*text;
 
-	args = NULL;
-	while (1)
-	{
-		value = get_input();
-		if (is_endline(here_end->value, value))
-		{
-			free(value);
-			break ;
-		}
-		arg = new_token(value, WORD, ARG);
-		ft_lstadd_back(&args, lstnew_track(arg));
-	}
+	text = read_fork(here_end->value);
+	ft_putstr("----TEXT----\n");
+	ft_putstr(text);
+	mini_exit(0);
+	//args = extract_tokens();
 	return (args);
 }
