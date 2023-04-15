@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 08:58:08 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/15 14:55:22 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/15 16:25:37 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ int	main(int argc, char **argv, char **envp)
 	(void) argv;
 	(void) argc;
 	start_evars2(envp);
-	set_signals();
 	while (1)
 	{
+		set_signals();
 		str = prompt();
 		expander(&str);
 		tokens = lexer(str);

@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 09:49:23 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/05 13:29:32 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/15 16:28:39 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ static void	exec_command(t_list *commands, int **pipedes)
 	command = (t_command *) commands->content;
 	if (command->pid == 0)
 	{
+		set_signals();
 		dup2(command->input_fd, STDIN_FILENO);
 		dup2(command->output_fd, STDOUT_FILENO);
 		close_pipes(pipedes);
@@ -63,6 +64,7 @@ void	exec_commands(t_list *tokens, t_list *commands, int **pipedes)
 	while (commands)
 	{
 		add_redirects(aux, commands);
+		signal(SIGINT, SIG_IGN);
 		create_fork(commands);
 		exec_command(commands, pipedes);
 		commands = commands->next;
