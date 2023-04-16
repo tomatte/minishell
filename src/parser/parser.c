@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 15:37:32 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/16 15:44:02 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/16 15:58:03 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	keep_state(t_token *token)
 {
 	if (get_state() < 0)
 		return ;
-	if (token->type == OPERATOR || token->type == HERE_DOC)
+	if (token->type == OPERATOR)
 		set_state(token->id);
 }
 
