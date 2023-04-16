@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 14:37:33 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/15 16:33:41 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/16 09:22:59 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	sig_handler(int sig)
 	rl_replace_line("", 0);
 	rl_on_new_line();
 	ft_putstr("\n");
-    rl_redisplay();
+	rl_redisplay();
 }
 
 void	set_signals(void)
