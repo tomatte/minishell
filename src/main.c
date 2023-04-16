@@ -6,23 +6,11 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 08:58:08 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/13 14:21:18 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/15 16:25:37 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
-
-/* static void	print_evars()
-{
-	char	**evars;
-
-	evars = get_evars();
-	while (*evars)
-	{
-		ft_printf("%s\n", *evars);
-		evars++;
-	}
-} */
 
 int	main(int argc, char **argv, char **envp)
 {
@@ -34,6 +22,7 @@ int	main(int argc, char **argv, char **envp)
 	start_evars2(envp);
 	while (1)
 	{
+		set_signals();
 		str = prompt();
 		expander(&str);
 		tokens = lexer(str);

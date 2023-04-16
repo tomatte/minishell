@@ -1,44 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_all.c                                         :+:      :+:    :+:   */
+/*   set_signals.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/15 18:52:44 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/15 11:05:44 by dbrandao         ###   ########.fr       */
+/*   Created: 2023/04/15 13:59:59 by dbrandao          #+#    #+#             */
+/*   Updated: 2023/04/15 14:26:38 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-char	*join_and_free(char *s1, char *s2)
+static void	here_handler(int sig)
 {
-	char	*result;
-
-	if (s1 == NULL)
-		return (s2);
-	if (s2 == NULL)
-		return (s1);
-	if (s1 == NULL && s2 == NULL)
-		return (NULL);
-	result = ft_strjoin(s1, s2);
-	free(s1);
-	free(s2);
-	return (result);
+	(void) sig;
+	ft_putstr("\n");
+	mini_exit(130);
 }
 
-char	*read_all(int fd)
+void	set_sig_here(void)
 {
-	char	*str;
-	char	*aux;
+	signal(SIGINT, here_handler);
+}
 
-	str = NULL;
-	while (1)
-	{
-		aux = get_next_line(fd);
-		if (!aux)
-			return (str);
-		str = join_and_free(str, aux);
-	}
+static void	none(int sig)
+{
+	(void) sig;
+}
+
+void	disable_signals(void)
+{
+	signal(SIGINT, none);
 }

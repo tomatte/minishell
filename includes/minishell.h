@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 15:40:05 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/14 13:23:41 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/15 14:41:08 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ int		is_redirect(t_list *tokens);
 t_list	*next_pipe(t_list *tokens);
 void	mini_exit(int code);
 int		is_option(char *str);
+char	*join_and_free(char *s1, char *s2);
 
 //ERROR
 void	nut_error(char *str);
@@ -138,5 +139,11 @@ void	convert_to_tokens(t_list **tokens, t_list *args);
 void	heredoc(t_command *cmd);
 int		get_sdoc(void);
 void	set_sdoc(int id);
+t_list	*extract_tokens(char *text);
+
+//SIGNALS
+void	disable_signals(void);
+void	set_sig_here(void);
+void	set_signals(void);
 
 #endif
