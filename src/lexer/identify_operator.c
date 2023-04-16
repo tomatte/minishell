@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 12:40:09 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/10 14:00:16 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/16 15:19:22 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,7 @@ t_token	*identify_operator(char **str)
 		return (NULL);
 	value = ft_strdup(operators()[id]);
 	(*str) += ft_strlen(value);
+	if (ft_streq("<<", value))
+		return (new_token(value, HERE_DOC, HERE_DOC));
 	return (new_token(value, OPERATOR, id + HERE_DOC));
 }
