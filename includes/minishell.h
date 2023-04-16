@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 15:40:05 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/15 14:41:08 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/16 12:55:00 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,6 +140,7 @@ void	heredoc(t_command *cmd);
 int		get_sdoc(void);
 void	set_sdoc(int id);
 t_list	*extract_tokens(char *text);
+void	parse_heredoc(t_list **tokens);
 
 //SIGNALS
 void	disable_signals(void);

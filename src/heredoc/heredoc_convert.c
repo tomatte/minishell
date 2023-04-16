@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 16:29:10 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/15 16:55:06 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/16 12:55:40 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void	heredoc_convert(t_list **tokens)
 
 	if (in_error())
 		return ;
+	parse_heredoc(tokens);
 	set_sdoc(0);
 	while (1)
 	{
