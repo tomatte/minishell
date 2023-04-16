@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 18:23:07 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/15 14:44:29 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/16 11:19:20 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,12 @@ static char	*get_input(char *end)
 	{
 		ft_putstr("> ");
 		value = get_next_line(STDIN_FILENO);
-		if (value == NULL || is_endline(end, value))
+		if (is_endline(end, value))
+		{
+			free(value);
+			break ;
+		}
+		if (value == NULL)
 			break ;
 		result = join_and_free(result, value);
 	}
@@ -91,5 +96,7 @@ t_list	*read_doc(t_token *here_end)
 	text = read_fork(here_end->value, pipedes);
 	set_signals();
 	args = extract_tokens(text);
+	if (text)
+		free(text);
 	return (args);
 }
