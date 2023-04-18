@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 16:29:10 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/18 10:22:39 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/18 10:31:41 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,17 @@
 
 void	heredoc_operation(t_list **tokens)
 {
-	t_list	*doc;
+	t_list	*heredoc_list;
 	t_list	*args;
 
-/* 	if (in_error())
-		return ; */
-	while (1)
-	{
-		if (!find_heredoc(*tokens))
-			return ;
-		args = read_doc(*tokens);
-		print_tokens(args);
-		set_error(1); set_state(-1);
-		if (in_error())
-			return ;
-	}
+ 	if (in_error())
+		return ;
+	if (!find_heredoc(*tokens))
+		return ;
+	heredoc_list = get_heredoc_list(*tokens);
+	//convert_tokens(tokens, heredoc_list);
+	set_error(1); set_state(-1);
 }
-
 
 /* 
 static t_list	*get_heredoc_list(tokens)

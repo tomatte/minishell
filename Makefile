@@ -63,6 +63,7 @@ SRC			=	temp_functions.c \
 				here_signal.c \
 				set_signals.c \
 				heredoc_utils.c \
+				get_heredoc_list.c \
 
 VPATH		=	./src \
 				./src/prompt \
