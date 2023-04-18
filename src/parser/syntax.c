@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 14:26:17 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/13 16:37:45 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/17 18:01:15 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ static void	near_unexpected_token(t_token *token, t_list *next)
 {
 	if (token->id == PIPE && get_state() == START)
 		return (nut_error(token->value));
-	if (is_operator_state() && token->type == OPERATOR)
+	if (is_operator_state() && token->type == OPERATOR
+		&& token->id != HERE_DOC)
 		return (nut_error(token->value));
 	if (token->type == OPERATOR && next == NULL)
 		return (nut_error("newline"));
