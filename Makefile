@@ -44,7 +44,7 @@ SRC			=	temp_functions.c \
 				new_command.c \
 				simple_exec.c \
 				next_pipe.c \
-				heredoc_convert.c \
+				heredoc_operation.c \
 				read_doc.c \
 				heredoc.c \
 				is_hereexec.c \
