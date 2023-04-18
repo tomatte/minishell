@@ -6,27 +6,11 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 13:59:05 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/18 13:59:14 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/18 14:20:22 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-
-static t_list	*get_left_token(t_list	*tokens)
-{
-	t_list	*here;
-
-	here = find_heredoc(tokens);
-	if (tokens == here)
-		return (NULL);
-	while (tokens)
-	{
-		if (tokens->next == here)
-			return (tokens);
-		tokens = tokens->next;
-	}
-	return (NULL);
-}
 
 static int	is_cmd_left(t_list *node)
 {
