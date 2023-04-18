@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 15:40:05 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/18 10:31:17 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/18 13:59:50 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,7 @@ void	print_tokens(t_list *tokens);
 void	print_args(char **args);
 void	print_asc(char *str);
 void	print_token(t_token *token);
+void	print_token_value(t_list *node);
 
 //EXPANDER
 void	expander(char **str);
@@ -142,6 +143,8 @@ t_list	*extract_tokens(char *text);
 t_list	*get_node(char *value, int type, int id);
 t_list	*find_heredoc(t_list *tokens);
 t_list	*get_heredoc_list(t_list *tokens);
+void	convert_tokens(t_list **tokens, t_list *heredoc_list);
+t_list	*get_heredoc_cmd(t_list *tokens);
 
 //SIGNALS
 void	disable_signals(void);

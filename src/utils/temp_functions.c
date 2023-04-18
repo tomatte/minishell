@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 16:47:44 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/13 13:50:39 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/18 13:58:02 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,4 +81,12 @@ void	print_asc(char *str)
 	while (*str)
 		ft_printf("%d ", *str++);
 	ft_printf("\n");
+}
+
+void	print_token_value(t_list *node)
+{
+	if (node == NULL)
+		ft_printf("NULL\n");
+	else
+		ft_printf("%s\n", token(node)->value);
 }
