@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 13:59:05 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/18 14:20:22 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/18 15:31:41 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ static t_list	*get_cmd_right(t_list *tokens)
 		return (NULL);
 	if (token(cmd)->id != ARG)
 		return (NULL);
+	if (cmd)
+		token(cmd)->id = EXEC;
 	return (cmd);
 }
 
