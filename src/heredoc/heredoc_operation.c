@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   heredoc_convert.c                                  :+:      :+:    :+:   */
+/*   heredoc_operation.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 16:29:10 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/18 10:16:14 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/18 10:22:39 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-void	heredoc_convert(t_list **tokens)
+void	heredoc_operation(t_list **tokens)
 {
 	t_list	*doc;
 	t_list	*args;
