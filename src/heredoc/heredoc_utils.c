@@ -1,36 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   heredoc_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/03 08:58:08 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/18 10:16:02 by dbrandao         ###   ########.fr       */
+/*   Created: 2023/04/18 09:54:17 by dbrandao          #+#    #+#             */
+/*   Updated: 2023/04/18 10:03:24 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../../includes/minishell.h"
 
-int	main(int argc, char **argv, char **envp)
+t_list	*get_node(char *value, int type, int id)
 {
-	char	*str;
-	t_list	*tokens;
+	t_list	*node;
+	t_token	*tkn;
 
-	(void) argv;
-	(void) argc;
-	start_evars2(envp);
-	while (1)
+	tkn = new_token(ft_strdup(value), type, id);
+	node = lstnew_track(tkn);
+	return (node);
+}
+
+t_list	*find_heredoc(t_list *tokens)
+{
+	while (tokens)
 	{
-		set_signals();
-		str = prompt();
-		expander(&str);
-		tokens = lexer(str);
-		parser(tokens);
-		print_tokens(tokens);
-		heredoc_convert(&tokens);
-		executor(tokens);
-		destroy_memories();
+		if (token(tokens)->id == HERE_DOC)
+			return (tokens);
+		tokens = tokens->next;
 	}
-	return (0);
+	return (NULL);
 }

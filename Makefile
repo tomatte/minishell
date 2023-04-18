@@ -46,7 +46,6 @@ SRC			=	temp_functions.c \
 				next_pipe.c \
 				heredoc_convert.c \
 				read_doc.c \
-				convert_to_tokens.c \
 				heredoc.c \
 				is_hereexec.c \
 				cd.c \
@@ -63,6 +62,7 @@ SRC			=	temp_functions.c \
 				extract_tokens.c \
 				here_signal.c \
 				set_signals.c \
+				heredoc_utils.c \
 
 VPATH		=	./src \
 				./src/prompt \

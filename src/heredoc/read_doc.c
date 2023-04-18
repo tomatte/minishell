@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 18:23:07 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/16 11:19:20 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/18 10:16:26 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,12 +85,14 @@ static char	*read_fork(char *end, int *pipedes)
 	return (text);
 }
 
-t_list	*read_doc(t_token *here_end)
+t_list	*read_doc(t_list *tokens)
 {
+	t_token	*here_end;
 	t_list	*args;
 	char	*text;
 	int		pipedes[2];
 
+	here_end = find_heredoc(tokens)->next->content;
 	disable_signals();
 	pipe(pipedes);
 	text = read_fork(here_end->value, pipedes);
