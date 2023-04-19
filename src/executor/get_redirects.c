@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 14:18:47 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/19 15:04:29 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/19 15:22:44 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,13 +60,11 @@ t_list	*redirect_remove(t_list **redirect)
 
 static int	get_redirect_fd(t_list *tokens)
 {
-	t_token	*tkn;
 	int		fd;
 
-	tkn = tokens->next->content;
-	if (tkn->id == HERE_DOC_END)
-		read_fork(tkn->value);
-	fd = open_file(tkn->id, tkn->value);
+	if (token(tokens)->id == HERE_DOC)
+		read_fork(token(tokens->next)->value);
+	fd = open_file(token(tokens)->id, token(tokens->next)->value);
 	return (fd);
 }
 
