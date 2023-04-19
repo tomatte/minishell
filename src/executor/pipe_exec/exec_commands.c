@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 09:49:23 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/19 10:50:39 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/19 14:49:33 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ static void	add_redirects(t_list **tokens, t_list *commands)
 
 	command = (t_command *) commands->content;
 	get_redirects(tokens, redirects);
+	if (in_error())
+		return ;
 	if (redirects[R] != STDIN_FILENO)
 	{
 		if (command->input_fd != STDIN_FILENO)
@@ -65,6 +67,8 @@ void	exec_commands(t_list *tokens, t_list *commands, int **pipedes)
 	{
 		signal(SIGINT, SIG_IGN);
 		add_redirects(&aux, commands);
+		if (in_error())
+			return ;
 		if (no_command(aux))
 		{
 			aux = next_pipe(aux);

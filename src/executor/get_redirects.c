@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 14:18:47 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/19 10:05:48 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/19 15:04:29 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,9 @@ static int	open_file(int id, char *name)
 		fd = open(name, flag, 0644);
 	if (fd == -1)
 	{
-		perror(strerror(errno));
-		mini_exit(1);
+		set_error(errno);
+		set_state(-1);
+		no_such_file("minishell", name);
 	}
 	return (fd);
 }
@@ -76,6 +77,8 @@ static void	fill_new_fd(t_list *tokens, int *redirects)
 
 	tkn = token(tokens);
 	fd = get_redirect_fd(tokens);
+	if (fd <= -1)
+		return ;
 	if (tkn->id == R_OUTPUT || tkn->id == R_APPEND_OUT)
 		redirects[W] = fd;
 	else
@@ -96,5 +99,7 @@ void	get_redirects(t_list **tokens, int *redirects)
 			return ;
 		fill_new_fd(op, redirects);
 		redirect_remove(tokens);
+		if (in_error())
+			return ;
 	}
 }
