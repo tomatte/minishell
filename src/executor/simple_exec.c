@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 10:40:45 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/15 16:24:27 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/19 10:48:31 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ static int	is_simple_exec(t_list *tokens)
 {
 	if (tokens == NULL)
 		return (0);
-	if (next_operator(tokens) == NULL)
-		return (1);
 	while (is_redirect(next_operator(tokens)))
 		tokens = next_operator(tokens);
 	if (next_operator(tokens) == NULL)
@@ -80,17 +78,18 @@ void	simple_exec(t_list *tokens)
 	if (!is_simple_exec(tokens))
 		return ;
 	signal(SIGINT, SIG_IGN);
+	get_redirects(&tokens, redirects);
+	if (no_command(tokens))
+		return ;
 	pid = create_fork(token(tokens));
 	if (pid == 0)
 	{
 		set_signals();
-		get_redirects(tokens, redirects);
 		dup_and_close(redirects);
 		command_exec(new_command(tokens, STDIN_FILENO, STDOUT_FILENO));
 	}
 	else if (pid == BUILTIN_CODE)
 	{
-		get_redirects(tokens, redirects);
 		builtin_func(tokens);
 		return ;
 	}

@@ -1,23 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   heredoc.c                                          :+:      :+:    :+:   */
+/*   no_command.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/06 14:28:21 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/06 14:50:55 by dbrandao         ###   ########.fr       */
+/*   Created: 2023/04/19 10:16:40 by dbrandao          #+#    #+#             */
+/*   Updated: 2023/04/19 10:17:10 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-void	heredoc(t_command *cmd)
+int	no_command(t_list *tokens)
 {
-	int	i;
+	int		redir;
 
-	i = 0;
-	while (cmd->args[++i])
-		ft_putstr(cmd->args[i]);
-	set_sdoc(0);
+	redir = 0;
+	if (tokens && token(tokens)->id == ARG)
+	{
+		token(tokens)->id = EXEC;
+		return (0);
+	}
+	while (tokens)
+	{
+		if (token(tokens)->id == EXEC)
+			return (0);
+		if (is_redirect(tokens))
+			redir = 1;
+		if (redir && token(tokens)->id == ARG)
+		{
+			token(tokens)->id = EXEC;
+			return (0);
+		}
+		if (token(tokens)->id == PIPE)
+			return (1);
+		tokens = tokens->next;
+	}
+	return (1);
 }

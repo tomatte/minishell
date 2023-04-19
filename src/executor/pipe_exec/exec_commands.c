@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 09:49:23 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/15 16:28:39 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/19 14:49:33 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,15 @@ static void	create_fork(t_list *commands)
 	command->pid = fork();
 }
 
-static void	add_redirects(t_list *tokens, t_list *commands)
+static void	add_redirects(t_list **tokens, t_list *commands)
 {
 	t_command	*command;
 	int			redirects[2];
 
 	command = (t_command *) commands->content;
 	get_redirects(tokens, redirects);
+	if (in_error())
+		return ;
 	if (redirects[R] != STDIN_FILENO)
 	{
 		if (command->input_fd != STDIN_FILENO)
@@ -63,11 +65,19 @@ void	exec_commands(t_list *tokens, t_list *commands, int **pipedes)
 	aux = tokens;
 	while (commands)
 	{
-		add_redirects(aux, commands);
 		signal(SIGINT, SIG_IGN);
+		add_redirects(&aux, commands);
+		if (in_error())
+			return ;
+		if (no_command(aux))
+		{
+			aux = next_pipe(aux);
+			commands = commands->next;
+			continue ;
+		}
 		create_fork(commands);
 		exec_command(commands, pipedes);
 		commands = commands->next;
-		aux = next_pipe(aux);
+		aux = next_pipe2(aux);
 	}
 }

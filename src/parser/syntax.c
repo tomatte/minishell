@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 14:26:17 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/13 16:37:45 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/19 14:20:59 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,22 @@ static int	is_operator_state(void)
 	return (0);
 }
 
+static int	is_redirec(int r)
+{
+	if (r >= 15 && r <= 18)
+		return (1);
+	return (0);
+}
+
 static void	near_unexpected_token(t_token *token, t_list *next)
 {
 	if (token->id == PIPE && get_state() == START)
 		return (nut_error(token->value));
-	if (is_operator_state() && token->type == OPERATOR)
+	if (is_redirec(get_state()) && is_redirec(token->id))
+		return (nut_error(token->value));
+	if (is_redirec(get_state()) && token->id == PIPE)
+		return (nut_error(token->value));
+	if (get_state() == PIPE && token->id == PIPE)
 		return (nut_error(token->value));
 	if (token->type == OPERATOR && next == NULL)
 		return (nut_error("newline"));

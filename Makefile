@@ -44,10 +44,7 @@ SRC			=	temp_functions.c \
 				new_command.c \
 				simple_exec.c \
 				next_pipe.c \
-				heredoc_convert.c \
 				read_doc.c \
-				convert_to_tokens.c \
-				heredoc.c \
 				is_hereexec.c \
 				cd.c \
 				mini_exit.c \
@@ -60,9 +57,9 @@ SRC			=	temp_functions.c \
 				unset.c \
 				error_code.c \
 				is_option.c \
-				extract_tokens.c \
 				here_signal.c \
 				set_signals.c \
+				no_command.c \
 
 VPATH		=	./src \
 				./src/prompt \

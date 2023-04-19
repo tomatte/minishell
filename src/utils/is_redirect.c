@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 10:24:26 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/05 10:24:33 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/18 19:37:13 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	is_redirect(t_list *tokens)
 	else if (token(tokens)->id == R_OUTPUT)
 		return (1);
 	else if (token(tokens)->id == R_INPUT)
+		return (1);
+	else if (token(tokens)->id == HERE_DOC)
 		return (1);
 	return (0);
 }

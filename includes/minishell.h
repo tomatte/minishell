@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 15:40:05 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/15 14:41:08 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/19 10:27:40 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,12 +77,15 @@ int		in_error(void);
 char	*read_all(int fd);
 t_token	*token(t_list *tokens);
 t_list	*next_operator(t_list *tokens);
+t_list	*next_operator2(t_list *tokens);
 int		is_operator(t_list *tokens, int operator);
 int		is_redirect(t_list *tokens);
 t_list	*next_pipe(t_list *tokens);
+t_list	*next_pipe2(t_list *tokens);
 void	mini_exit(int code);
 int		is_option(char *str);
 char	*join_and_free(char *s1, char *s2);
+int		no_command(t_list *tokens);
 
 //ERROR
 void	nut_error(char *str);
@@ -104,7 +107,7 @@ void		exec_commands(t_list *tokens, t_list *commands, int **pipedes);
 void		close_pipes(int **pipedes);
 char		**get_paths(char *cmd);
 void		command_exec(t_command *command);
-void		get_redirects(t_list *tokens, int *redirects);
+void		get_redirects(t_list **tokens, int *redirects);
 t_command	*new_command(t_list *tokens, int fd_in, int fd_out);
 void		simple_exec(t_list *tokens);
 
@@ -116,6 +119,7 @@ void	print_tokens(t_list *tokens);
 void	print_args(char **args);
 void	print_asc(char *str);
 void	print_token(t_token *token);
+void	print_token_value(t_list *node);
 
 //EXPANDER
 void	expander(char **str);
@@ -133,13 +137,9 @@ void	export(t_command *cmd);
 void	unset(t_command *cmd);
 
 //HEREDOC
-void	heredoc_convert(t_list **tokens);
-t_list	*read_doc(t_token *here_end);
-void	convert_to_tokens(t_list **tokens, t_list *args);
-void	heredoc(t_command *cmd);
 int		get_sdoc(void);
 void	set_sdoc(int id);
-t_list	*extract_tokens(char *text);
+void	read_fork(char *end);
 
 //SIGNALS
 void	disable_signals(void);
