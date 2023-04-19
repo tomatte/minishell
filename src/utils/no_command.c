@@ -1,29 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   next_operator.c                                    :+:      :+:    :+:   */
+/*   no_command.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/22 10:58:56 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/19 10:08:03 by dbrandao         ###   ########.fr       */
+/*   Created: 2023/04/19 10:16:40 by dbrandao          #+#    #+#             */
+/*   Updated: 2023/04/19 10:17:10 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-t_list	*next_operator(t_list *tokens)
+int	no_command(t_list *tokens)
 {
-	if (tokens && token(tokens)->type == OPERATOR)
-		tokens = tokens->next;
-	while (tokens && token(tokens)->type != OPERATOR)
-		tokens = tokens->next;
-	return (tokens);
-}
+	int		redir;
 
-t_list	*next_operator2(t_list *tokens)
-{
-	while (tokens && token(tokens)->type != OPERATOR)
+	redir = 0;
+	if (tokens && token(tokens)->id == ARG)
+	{
+		token(tokens)->id = EXEC;
+		return (0);
+	}
+	while (tokens)
+	{
+		if (token(tokens)->id == EXEC)
+			return (0);
+		if (is_redirect(tokens))
+			redir = 1;
+		if (redir && token(tokens)->id == ARG)
+		{
+			token(tokens)->id = EXEC;
+			return (0);
+		}
+		if (token(tokens)->id == PIPE)
+			return (1);
 		tokens = tokens->next;
-	return (tokens);
+	}
+	return (1);
 }

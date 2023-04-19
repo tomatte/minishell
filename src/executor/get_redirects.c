@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 14:18:47 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/18 22:57:36 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/19 10:05:48 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,18 +36,25 @@ static int	open_file(int id, char *name)
 	return (fd);
 }
 
-t_list	*redirect_remove(t_list *redirect)
+t_list	*redirect_remove(t_list **redirect)
 {
+	t_list	*op;
 	t_list	*aux;
 
-	while (redirect && !is_redirect(redirect))
+	if (is_redirect(*redirect))
 	{
-		aux = redirect;
-		redirect = redirect->next;
+		*redirect = (*redirect)->next->next;
+		return (*redirect);
 	}
-	if (is_redirect(redirect))
-		aux->next = redirect->next->next;
-	return (redirect);
+	op = *redirect;
+	while (op && !is_redirect(op))
+	{
+		aux = op;
+		op = op->next;
+	}
+	if (is_redirect(op))
+		aux->next = op->next->next;
+	return (op);
 }
 
 static int	get_redirect_fd(t_list *tokens)
@@ -75,20 +82,19 @@ static void	fill_new_fd(t_list *tokens, int *redirects)
 		redirects[R] = fd;
 }
 
-void	get_redirects(t_list *tokens, int *redirects)
+void	get_redirects(t_list **tokens, int *redirects)
 {
-	t_list	*aux;
+	t_list	*op;
 
 	redirects[R] = STDIN_FILENO;
 	redirects[W] = STDOUT_FILENO;
-	aux = tokens;
 	while (1)
 	{
-		tokens = aux;
-		tokens = next_operator(tokens);
-		if (tokens == NULL || !is_redirect(tokens))
+		op = *tokens;
+		op = next_operator2(op);
+		if (op == NULL || !is_redirect(op))
 			return ;
-		fill_new_fd(tokens, redirects);
-		redirect_remove(aux);
+		fill_new_fd(op, redirects);
+		redirect_remove(tokens);
 	}
 }

@@ -59,6 +59,7 @@ SRC			=	temp_functions.c \
 				is_option.c \
 				here_signal.c \
 				set_signals.c \
+				no_command.c \
 
 VPATH		=	./src \
 				./src/prompt \
