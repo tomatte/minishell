@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 15:40:05 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/18 14:20:40 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/18 22:05:31 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,18 +134,9 @@ void	export(t_command *cmd);
 void	unset(t_command *cmd);
 
 //HEREDOC
-void	heredoc_operation(t_list **tokens);
-t_list	*read_doc(t_list *tokens);
-void	heredoc(t_command *cmd);
 int		get_sdoc(void);
 void	set_sdoc(int id);
-t_list	*extract_tokens(char *text);
-t_list	*get_node(char *value, int type, int id);
-t_list	*find_heredoc(t_list *tokens);
-t_list	*get_heredoc_list(t_list *tokens);
-void	convert_tokens(t_list **tokens, t_list *heredoc_list);
-t_list	*get_heredoc_cmd(t_list *tokens);
-t_list	*get_left_token(t_list	*tokens);
+void	read_fork(char *end);
 
 //SIGNALS
 void	disable_signals(void);

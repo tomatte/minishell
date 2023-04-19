@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 08:58:08 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/18 10:22:19 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/18 19:37:31 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,7 @@ int	main(int argc, char **argv, char **envp)
 		expander(&str);
 		tokens = lexer(str);
 		parser(tokens);
-		print_tokens(tokens);
-		heredoc_operation(&tokens);
+		//heredoc_operation(&tokens);
 		executor(tokens);
 		destroy_memories();
 	}

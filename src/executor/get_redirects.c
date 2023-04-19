@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 14:18:47 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/13 14:18:50 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/18 22:57:36 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,10 @@ static int	open_file(int id, char *name)
 		flag = flag | O_WRONLY | O_CREAT;
 	if (id == R_APPEND_OUT)
 		flag = flag | O_WRONLY | O_APPEND | O_CREAT;
-	fd = open(name, flag, 0664);
+	if (id == HERE_DOC_END)
+		fd = open(HERE_FILE, O_RDWR, 0644);
+	else
+		fd = open(name, flag, 0644);
 	if (fd == -1)
 	{
 		perror(strerror(errno));
@@ -47,13 +50,25 @@ t_list	*redirect_remove(t_list *redirect)
 	return (redirect);
 }
 
+static int	get_redirect_fd(t_list *tokens)
+{
+	t_token	*tkn;
+	int		fd;
+
+	tkn = tokens->next->content;
+	if (tkn->id == HERE_DOC_END)
+		read_fork(tkn->value);
+	fd = open_file(tkn->id, tkn->value);
+	return (fd);
+}
+
 static void	fill_new_fd(t_list *tokens, int *redirects)
 {
 	t_token	*tkn;
 	int		fd;
 
 	tkn = token(tokens);
-	fd = open_file(tkn->id, token(tokens->next)->value);
+	fd = get_redirect_fd(tokens);
 	if (tkn->id == R_OUTPUT || tkn->id == R_APPEND_OUT)
 		redirects[W] = fd;
 	else

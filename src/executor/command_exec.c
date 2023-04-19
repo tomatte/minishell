@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 14:48:30 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/17 17:39:52 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/18 22:06:39 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ static int	try_builtin(t_command *command)
 {
 	if (ft_streq(command->args[0], "echo"))
 		echo(command);
-	else if (ft_streq(command->args[0], "heredoc"))
-		heredoc(command);
 	else if (ft_streq(command->args[0], "cd"))
 		cd(command);
 	else if (ft_streq(command->args[0], "exit"))
