@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 15:40:05 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/19 10:17:47 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/19 10:27:40 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ t_list	*next_operator2(t_list *tokens);
 int		is_operator(t_list *tokens, int operator);
 int		is_redirect(t_list *tokens);
 t_list	*next_pipe(t_list *tokens);
+t_list	*next_pipe2(t_list *tokens);
 void	mini_exit(int code);
 int		is_option(char *str);
 char	*join_and_free(char *s1, char *s2);
