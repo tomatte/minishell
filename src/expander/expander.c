@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 10:30:03 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/19 20:34:08 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/20 11:21:45 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,40 +65,6 @@ static void	remove_quotes(char *str)
 		str++;
 	}
 	dst[i] = '\0';
-}
-
-static int	is_delimiter(char c)
-{
-	if (ft_strchr(DELIMITER, c))
-		return (1);
-	if (ft_isspace(c))
-		return (1);
-	return (0);
-}
-
-static int	there_is_quote(char *str)
-{
-	while (*str && !is_delimiter(*str))
-	{
-		if (*str == '\'' || *str == '"')
-			return (1);
-		str++;
-	}
-	return (0);
-}
-
-static void	transform_quotes(char **str)
-{
-	char	*word;
-	char	*aux;
-	int		quote;
-
-	quote = 0;
-	aux = *str;
-	while (*aux && is_delimiter(*aux))
-		aux++;
-	word = aux;
-
 }
 
 void	expander(char **str)
