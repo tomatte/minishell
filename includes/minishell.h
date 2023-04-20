@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 15:40:05 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/19 10:27:40 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/20 11:18:43 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,5 +145,8 @@ void	read_fork(char *end);
 void	disable_signals(void);
 void	set_sig_here(void);
 void	set_signals(void);
+
+//TRANSFORMER
+void	transformer(char *str);
 
 #endif
