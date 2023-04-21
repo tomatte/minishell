@@ -61,6 +61,7 @@ SRC			=	temp_functions.c \
 				set_signals.c \
 				no_command.c \
 				transformer.c \
+				transformer_utils.c \
 
 VPATH		=	./src \
 				./src/prompt \

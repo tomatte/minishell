@@ -6,46 +6,11 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 11:18:54 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/21 16:52:36 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/21 17:10:27 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-
-static int	is_delimiter(char c)
-{
-	if (ft_strchr(DELIMITER2, c))
-		return (1);
-	if (ft_isspace(c))
-		return (1);
-	return (0);
-}
-
-static int	is_quote(char c)
-{
-	if (c == '"' || c == '\'')
-		return (1);
-	return (0);
-}
-
-static int	have_quotes(char *s)
-{
-	while (*s)
-	{
-		if (is_quote(*s))
-			return (1);
-		if (is_delimiter(*s))
-			return (0);
-		s++;
-	}
-	return (0);
-}
-
-static void	pass_word(char **str)
-{
-	while (**str && !is_delimiter(**str))
-		(*str)++;
-}
 
 static void	move_quote_left(char *str, char *start)
 {
@@ -124,24 +89,10 @@ static void	remove_quotes(char *str, char **end)
 	dst[i] = '\0';
 }
 
-static void	pass_quotes(char **s)
-{
-	char	quote;
-
-	if (is_quote(**s))
-	{
-		quote = **s;
-		(*s)++;
-		while (**s != quote)
-			(*s)++;
-		quote = 0;
-	}
-}
-
 static char	*get_end_of_word(char *s)
 {
 	s++;
-	while (*s && !is_delimiter(*s))
+	while (*s && !is_delimiter2(*s))
 	{
 		pass_quotes(&s);
 		s++;
@@ -177,7 +128,7 @@ void	transformer(char *str)
 {
 	while (*str)
 	{
-		if (!is_delimiter(*str))
+		if (!is_delimiter2(*str))
 			transform_word(&str);
 		else
 			str++;
