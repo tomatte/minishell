@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 17:15:54 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/14 13:05:00 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/19 19:30:56 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ t_list	*lexer(char *str)
 {
 	t_list	*tokens;
 
+	if (in_error())
+		return (NULL);
 	tokens = NULL;
 	set_state(START);
 	while (*str)

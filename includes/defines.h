@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 16:50:51 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/18 22:59:04 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/21 14:30:44 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,14 @@
 # define W 1
 # define PATH_START "PATH="
 # define MAX_ENVS 1024
-# define DELIMITER "$'\"<|>"
+# define DELIMITER "'\"<|>"
+# define DELIMITER2 "<|>"
 # define EXP_DELIMITER "\"'$|<> \n"
 # define BUILTIN_CODE -6
 # define INVALIDS1 ".?+-!@#$%¨&*()"
 # define INVALIDS2 "1234567890="
 # define HERE_FILE "/tmp/here_file.txt"
+# define UNIT_SEPARATOR 31
 
 //ERRORS
 # define ERR_UNCLOSED_QUOTES -2

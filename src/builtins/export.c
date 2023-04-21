@@ -6,11 +6,19 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 15:07:40 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/14 12:32:39 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/21 19:21:13 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
+
+static void	print_export_env(char *env)
+{
+	ft_printf("declare -x ");
+	while (*env && *env != '=')
+		ft_putchar(*env++);
+	ft_printf("=\"%s\"\n", (env + 1));
+}
 
 static void	export_print(void)
 {
@@ -20,7 +28,7 @@ static void	export_print(void)
 	if (envs == NULL)
 		return ;
 	while (*envs)
-		ft_printf("declare -x %s\n", *envs++);
+		print_export_env(*envs++);
 }
 
 static int	is_valid(char *str)

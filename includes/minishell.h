@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 15:40:05 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/19 10:27:40 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/21 17:26:31 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,5 +145,17 @@ void	read_fork(char *end);
 void	disable_signals(void);
 void	set_sig_here(void);
 void	set_signals(void);
+
+//TRANSFORMER
+void	transformer(char *str);
+int		is_quote(char c);
+int		is_delimiter2(char c);
+int		have_quotes(char *s);
+void	pass_word(char **str);
+void	pass_quotes(char **s);
+char	*get_opening_quote(char *str);
+char	*get_closing_quote(char *s, char quote);
+void	move_quote_left(char *str, char *start);
+void	move_quote_right(char *s, char **str, char *end);
 
 #endif

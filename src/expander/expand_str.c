@@ -6,17 +6,24 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 03:28:05 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/30 11:17:30 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/21 18:43:29 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-int	get_strsize(char **str, t_exp *exp)
+static int	get_strsize(char *str, t_exp *exp)
 {
 	int		size;
 
-	size = ft_strlen(*str) - (exp->len + 1) + ft_strlen(exp->value);
+	size = 0;
+	while (str != exp->start - 1)
+	{
+		str++;
+		size++;
+	}
+	size += ft_strlen(exp->end);
+	size += ft_strlen(exp->value);
 	return (size + 1);
 }
 
@@ -41,6 +48,6 @@ void	expand_str(char **str, t_exp *exp)
 
 	if (exp->start == NULL)
 		return ;
-	size = get_strsize(str, exp);
+	size = get_strsize(*str, exp);
 	replace_str(str, exp, size);
 }

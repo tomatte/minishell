@@ -60,6 +60,9 @@ SRC			=	temp_functions.c \
 				here_signal.c \
 				set_signals.c \
 				no_command.c \
+				transformer.c \
+				transformer_utils.c \
+				transformer_utils2.c \
 
 VPATH		=	./src \
 				./src/prompt \
@@ -74,6 +77,7 @@ VPATH		=	./src \
 				./src/builtins \
 				./src/heredoc \
 				./src/signals \
+				./src/transformer \
 
 OBJS_DIR	=	./objects
 
