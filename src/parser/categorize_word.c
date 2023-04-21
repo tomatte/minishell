@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 16:53:14 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/19 10:38:03 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/21 19:35:16 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,7 @@ static int	is_exec(t_token *token)
 	int	s;
 
 	s = get_state();
-	if (s >= IN_FILE && s <= HERE_DOC_END)
-		token->id = EXEC;
-	else if (s == START || s == PIPE)
+	if (s == START || s == PIPE)
 		token->id = EXEC;
 	else
 		return (0);
