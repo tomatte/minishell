@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 16:50:51 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/20 14:20:11 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/21 14:30:44 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@
 # define INVALIDS1 ".?+-!@#$%¨&*()"
 # define INVALIDS2 "1234567890="
 # define HERE_FILE "/tmp/here_file.txt"
+# define UNIT_SEPARATOR 31
 
 //ERRORS
 # define ERR_UNCLOSED_QUOTES -2

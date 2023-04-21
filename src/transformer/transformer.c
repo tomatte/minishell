@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 11:18:54 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/20 17:52:14 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/21 15:03:35 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ static void	move_quote_left(char *str, char *start)
 		*str = c;
 		str--;
 	}
+	*str = UNIT_SEPARATOR;
 }
 
 static char	*get_opening_quote(char *str)
@@ -75,34 +76,93 @@ static char	*get_closing_quote(char *s, char quote)
 	return (s);
 }
 
-static void	move_quote_right(char *s, char **str)
+static void	move_quote_right(char *s, char **str, char *end)
 {
 	char	c;
-	char	*end;
 
-	end = s;
-	while (*(end + 1) && !is_delimiter(*(end + 1)))
-		end++;
-	while (s < end)
+	while (s < end - 1)
 	{
 		c = *(s + 1);
 		*(s + 1) = *s;
 		*s = c;
 		s++;
 	}
-	*str = (end + 1);
+	*s = UNIT_SEPARATOR;
+	*str = (end);
+}
+
+static void	remove_quotes(char *str, char **end)
+{
+	char	*dst;
+	char	quote;
+	int		i;
+
+	quote = 0;
+	dst = str;
+	i = 0;
+	while (str <= *end)
+	{
+		if ((is_quote(*str) && !quote))
+		{
+			quote = *str;
+			str++;
+		}
+		else if (*str == quote)
+		{
+			quote = 0;
+			str++;
+		}
+		else
+		{
+			dst[i++] = *str;
+			str++;
+		}
+	}
+	*end = &(dst[i]);
+	while (*str)
+		dst[i++] = *str++;
+	dst[i] = '\0';
+}
+
+static void	pass_quotes(char **s)
+{
+	char	quote;
+
+	if (is_quote(**s))
+	{
+		quote = **s;
+		(*s)++;
+		while (**s != quote)
+			(*s)++;
+		quote = 0;
+	}
+}
+
+static char	*get_end_of_word(char *s)
+{
+	s++;
+	while (*s && !is_delimiter(*s))
+	{
+		pass_quotes(&s);
+		s++;
+	}
+	return (s - 1);
 }
 
 static void	join_word(char **str)
 {
 	char	*s;
 	char	quote;
+	char	*end;
 
 	s = get_opening_quote(*str);
 	quote = *s;
 	move_quote_left(s, *str);
 	s = get_closing_quote(s, quote);
-	move_quote_right(s, str);
+	end = get_end_of_word(s);
+	remove_quotes(s + 1, &end);
+	move_quote_right(s, str, end);
+	
 }
 
 static void	transform_word(char **str)
@@ -115,16 +175,27 @@ static void	transform_word(char **str)
 
 void	transformer(char *str)
 {
+	char	*start = str;
 	while (*str)
 	{
 		if (!is_delimiter(*str))
 			transform_word(&str);
-		str++;
+		else
+			str++;
 	}
-	ft_printf("aquiiiiiii\n");
 }
 
 /*  
+
+NEW STRATEGY
+
+find a word with quotes to be changed
+get the begin address of the word
+get the end address of the word
+create a new string that will start and end with quotes
+copy the word to the new string ignoring the quotes (copy only what's inside the quotes)
+add this to the string
+loop this process
 
 'abc'efd
 abc'efd'
@@ -132,4 +203,10 @@ abc'efd'gc
 
 e|'abc'efd
 
+
+prompt: echo "hey|'|hey"' rosas'
+answer: hey|'|hey rosas
+
+
+echo '123'"4|5|6'"' |' end ls
 */
