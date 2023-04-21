@@ -6,55 +6,11 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 11:18:54 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/21 17:21:49 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/21 17:24:48 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-
-static void	move_quote_left(char *str, char *start)
-{
-	char	c;
-
-	while (str > start)
-	{
-		c = *(str - 1);
-		*(str - 1) = *str;
-		*str = c;
-		str--;
-	}
-	*str = UNIT_SEPARATOR;
-}
-
-static char	*get_opening_quote(char *str)
-{
-	while (*str && !is_quote(*str))
-		str++;
-	return (str);
-}
-
-static char	*get_closing_quote(char *s, char quote)
-{
-	s++;
-	while (*s != quote)
-		s++;
-	return (s);
-}
-
-static void	move_quote_right(char *s, char **str, char *end)
-{
-	char	c;
-
-	while (s < end - 1)
-	{
-		c = *(s + 1);
-		*(s + 1) = *s;
-		*s = c;
-		s++;
-	}
-	*s = UNIT_SEPARATOR;
-	*str = (end);
-}
 
 static void	remove_quotes(char *str, char **end)
 {
