@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 11:18:54 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/21 17:10:27 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/21 17:21:49 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,20 +68,11 @@ static void	remove_quotes(char *str, char **end)
 	while (str <= *end)
 	{
 		if ((is_quote(*str) && !quote))
-		{
-			quote = *str;
-			str++;
-		}
+			quote = *str++;
 		else if (*str == quote)
-		{
-			quote = 0;
-			str++;
-		}
+			quote = (0 * (*str++));
 		else
-		{
-			dst[i++] = *str;
-			str++;
-		}
+			dst[i++] = *str++;
 	}
 	*end = &(dst[i]);
 	while (*str)
