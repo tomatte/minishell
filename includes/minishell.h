@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 15:40:05 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/21 17:26:31 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/22 14:18:29 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,9 @@ int		get_error(void);
 void	invalid_option(char *cmd, char *opt);
 void	no_such_file(char *cmd, char *file);
 void	invalid_identifier(char *cmd, char *identifier);
+void	exec_error_exit(int err, int code);
+void	normal_exec_error(int err, char *cmd);
+void	inpath_exec_error(int err, char *cmd);
 
 //EXECUTOR
 void		executor(t_list *tokens);
