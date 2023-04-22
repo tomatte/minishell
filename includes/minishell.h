@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 15:40:05 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/22 15:27:21 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/22 16:20:37 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ void		exec_commands(t_list *tokens, t_list *commands, int **pipedes);
 void		close_pipes(int **pipedes);
 char		**get_paths(char *cmd);
 void		command_exec(t_command *command);
-void		get_redirects(t_list **tokens, int *redirects);
+int			get_redirects(t_list **tokens, int *redirects);
 t_command	*new_command(t_list *tokens, int fd_in, int fd_out);
 void		simple_exec(t_list *tokens);
 

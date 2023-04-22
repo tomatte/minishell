@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 10:40:45 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/22 15:22:24 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/22 16:21:17 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,12 +74,13 @@ void	simple_exec(t_list *tokens)
 	int		status;
 	int		pid;
 	int		redirects[2];
+	int		err;
 
 	if (!is_simple_exec(tokens))
 		return ;
 	signal(SIGINT, SIG_IGN);
-	get_redirects(&tokens, redirects);
-	if (in_error())
+	err = get_redirects(&tokens, redirects);
+	if (in_error() || err)
 		return ;
 	if (no_command(tokens))
 		return ;
