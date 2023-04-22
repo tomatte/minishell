@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 09:49:23 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/22 16:05:28 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/22 16:32:36 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,12 @@ static void	exec_command(t_list *commands, int **pipedes)
 {
 	t_command	*command;
 
-	if (get_error() || in_error())
-		return ;
 	create_fork(commands);
 	command = (t_command *) commands->content;
 	if (command->pid == 0)
 	{
+		if (get_error() || in_error())
+			mini_exit(get_error());
 		set_signals();
 		dup2(command->input_fd, STDIN_FILENO);
 		dup2(command->output_fd, STDOUT_FILENO);
