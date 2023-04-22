@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 02:02:50 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/21 18:50:06 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/22 20:23:53 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	pass_simple_quotes(char **str)
 {
 	(*str)++;
-	while (**str && **str != 39)
+	while (**str && **str != '\'')
 		(*str)++;
 	if (**str)
 		(*str)++;
@@ -30,14 +30,15 @@ static void	find_start(char *str, t_exp *exp)
 	{
 		if (*str == '"')
 			double_quotes *= -1;
-		if (*str == '\'' && double_quotes != 1)
-			pass_simple_quotes(&str);
 		if (!*str || *str == '$')
 		{
 			if (!ft_strchr(EXP_DELIMITER, *(str + 1)))
 				break ;
 		}
-		str++;
+		if (*str == '\'' && double_quotes != 1)
+			pass_simple_quotes(&str);
+		else
+			str++;
 	}
 	if (*str)
 		exp->start = str + 1;
