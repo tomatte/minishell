@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 15:40:05 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/21 17:26:31 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/22 16:20:37 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,10 @@ int		get_error(void);
 void	invalid_option(char *cmd, char *opt);
 void	no_such_file(char *cmd, char *file);
 void	invalid_identifier(char *cmd, char *identifier);
+void	exec_error_exit(int err, int code);
+void	normal_exec_error(int err, t_command *cmd);
+void	inpath_exec_error(int err, char *cmd);
+void	redirect_error(char *file);
 
 //EXECUTOR
 void		executor(t_list *tokens);
@@ -107,7 +111,7 @@ void		exec_commands(t_list *tokens, t_list *commands, int **pipedes);
 void		close_pipes(int **pipedes);
 char		**get_paths(char *cmd);
 void		command_exec(t_command *command);
-void		get_redirects(t_list **tokens, int *redirects);
+int			get_redirects(t_list **tokens, int *redirects);
 t_command	*new_command(t_list *tokens, int fd_in, int fd_out);
 void		simple_exec(t_list *tokens);
 

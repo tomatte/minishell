@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 08:40:09 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/14 12:29:11 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/22 17:41:37 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,5 @@ void	invalid_identifier(char *cmd, char *identifier)
 	ft_putstr_fd(": '", STDERR_FILENO);
 	ft_putstr_fd(identifier, STDERR_FILENO);
 	ft_putstr_fd("': not a valid identifier\n", STDERR_FILENO);
-	set_error(4);
+	set_error(1);
 }

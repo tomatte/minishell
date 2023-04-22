@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 14:18:47 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/19 15:22:44 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/22 16:28:25 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,8 @@ static int	open_file(int id, char *name)
 		fd = open(HERE_FILE, O_RDWR, 0644);
 	else
 		fd = open(name, flag, 0644);
-	if (fd == -1)
-	{
-		set_error(errno);
-		set_state(-1);
-		no_such_file("minishell", name);
-	}
+	if (fd <= -1)
+		redirect_error(name);
 	return (fd);
 }
 
@@ -68,7 +64,7 @@ static int	get_redirect_fd(t_list *tokens)
 	return (fd);
 }
 
-static void	fill_new_fd(t_list *tokens, int *redirects)
+static int	fill_new_fd(t_list *tokens, int *redirects)
 {
 	t_token	*tkn;
 	int		fd;
@@ -76,16 +72,18 @@ static void	fill_new_fd(t_list *tokens, int *redirects)
 	tkn = token(tokens);
 	fd = get_redirect_fd(tokens);
 	if (fd <= -1)
-		return ;
+		return (-1);
 	if (tkn->id == R_OUTPUT || tkn->id == R_APPEND_OUT)
 		redirects[W] = fd;
 	else
 		redirects[R] = fd;
+	return (0);
 }
 
-void	get_redirects(t_list **tokens, int *redirects)
+int	get_redirects(t_list **tokens, int *redirects)
 {
 	t_list	*op;
+	int		err;
 
 	redirects[R] = STDIN_FILENO;
 	redirects[W] = STDOUT_FILENO;
@@ -94,10 +92,11 @@ void	get_redirects(t_list **tokens, int *redirects)
 		op = *tokens;
 		op = next_operator2(op);
 		if (op == NULL || !is_redirect(op))
-			return ;
-		fill_new_fd(op, redirects);
+			return (0);
+		err = fill_new_fd(op, redirects);
 		redirect_remove(tokens);
-		if (in_error())
-			return ;
+		if (err == -1)
+			return (-1);
 	}
+	return (0);
 }
