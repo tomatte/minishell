@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 14:48:30 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/22 14:20:37 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/22 15:08:58 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	normal_exec(t_command *command)
 	if (first_char != '.' && first_char != '/')
 		return ;
 	err = execve(command->args[0], command->args, get_evars_arr());
-	normal_exec_error(err, command->args[0]);
+	normal_exec_error(err, command);
 }
 
 static void	inpath_exec(t_command *command)
