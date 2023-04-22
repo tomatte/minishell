@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 15:07:40 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/21 19:21:13 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/22 17:38:52 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,21 @@ static void	export_print(void)
 
 static int	is_valid(char *str)
 {
-	if (ft_strchr(INVALIDS1, str[0]))
+	if (ft_strchr(INVALIDS2, str[0]))
+	{
 		invalid_identifier("export", str);
-	else if (ft_strchr(INVALIDS2, str[0]))
-		invalid_identifier("export", str);
-	else
-		return (1);
-	return (0);
+		return (0);
+	}
+	while (*str && *str != '=')
+	{
+		if (ft_strchr(INVALIDS1, *str))
+		{
+			invalid_identifier("export", str);
+			return (0);
+		}
+		str++;
+	}
+	return (1);
 }
 
 static void	export_var(t_command *cmd)
