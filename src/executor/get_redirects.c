@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 14:18:47 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/19 15:22:44 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/22 15:25:42 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,7 @@ static int	open_file(int id, char *name)
 	else
 		fd = open(name, flag, 0644);
 	if (fd == -1)
-	{
-		set_error(errno);
-		set_state(-1);
-		no_such_file("minishell", name);
-	}
+		redirect_error(name);
 	return (fd);
 }
 

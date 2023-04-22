@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 15:40:05 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/22 15:08:40 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/22 15:27:21 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ void	invalid_identifier(char *cmd, char *identifier);
 void	exec_error_exit(int err, int code);
 void	normal_exec_error(int err, t_command *cmd);
 void	inpath_exec_error(int err, char *cmd);
+void	redirect_error(char *file);
 
 //EXECUTOR
 void		executor(t_list *tokens);

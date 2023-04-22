@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 10:40:45 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/19 10:48:31 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/22 15:22:24 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,8 @@ void	simple_exec(t_list *tokens)
 		return ;
 	signal(SIGINT, SIG_IGN);
 	get_redirects(&tokens, redirects);
+	if (in_error())
+		return ;
 	if (no_command(tokens))
 		return ;
 	pid = create_fork(token(tokens));

@@ -16,7 +16,6 @@ SRC			=	temp_functions.c \
 				categorize_word.c \
 				cleaner.c \
 				syntax.c \
-				nut_error.c \
 				executor.c \
 				in_error.c \
 				read_all.c \
@@ -64,6 +63,7 @@ SRC			=	temp_functions.c \
 				transformer_utils.c \
 				transformer_utils2.c \
 				exec_errors.c \
+				more_errors.c \
 
 VPATH		=	./src \
 				./src/prompt \
