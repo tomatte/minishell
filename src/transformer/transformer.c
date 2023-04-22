@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 11:18:54 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/21 17:24:48 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/22 18:00:36 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ static void	join_word(char **str)
 	end = get_end_of_word(s);
 	remove_quotes(s + 1, &end);
 	move_quote_right(s, str, end);
-	
 }
 
 static void	transform_word(char **str)
