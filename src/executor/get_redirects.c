@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 14:18:47 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/22 16:28:25 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/22 20:10:48 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ static int	open_file(int id, char *name)
 		flag = flag | O_WRONLY | O_CREAT;
 	if (id == R_APPEND_OUT)
 		flag = flag | O_WRONLY | O_APPEND | O_CREAT;
-	if (id == HERE_DOC_END)
-		fd = open(HERE_FILE, O_RDWR, 0644);
+	if (id == HERE_DOC)
+		fd = open(HERE_FILE, O_RDONLY, 0644);
 	else
 		fd = open(name, flag, 0644);
 	if (fd <= -1)
