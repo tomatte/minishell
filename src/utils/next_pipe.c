@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 11:27:35 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/19 10:59:17 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/23 09:20:56 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,14 @@ t_list	*next_pipe2(t_list *tokens)
 	tokens = next_pipe(tokens);
 	if (tokens)
 		return (tokens->next);
+	return (tokens);
+}
+
+t_list	*next_pipe3(t_list *tokens)
+{
+	while (tokens && token(tokens)->id != PIPE)
+		tokens = tokens->next;
+	if (tokens && token(tokens)->id == PIPE)
+		tokens = tokens->next;
 	return (tokens);
 }
