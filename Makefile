@@ -119,7 +119,7 @@ fclean:	clean
 re:	fclean all
 
 val:
-	make && valgrind --leak-check=full --show-leak-kinds=all --suppressions=sup.supp ./$(NAME)
+	make && valgrind --track-origins=yes --leak-check=full --show-leak-kinds=all --suppressions=sup.supp ./$(NAME)
 
 valgrind: val
 

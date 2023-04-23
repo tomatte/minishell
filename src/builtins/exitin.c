@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 13:45:36 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/22 17:55:41 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/23 08:37:24 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	many_args_err(void)
 	mini_exit(1);
 }
 
-static int	check_number_limit(char *number)
+static int	num_overflow(char *number)
 {
 	long long int	sign;
 	long long int	n;
@@ -55,10 +55,10 @@ static int	check_number_limit(char *number)
 		n = n * 10 + *number - '0';
 		current = n * sign;
 		if (current / 10 != previous)
-			return (0);
+			return (1);
 		number++;
 	}
-	return (1);
+	return (0);
 }
 
 void	exitin(t_command *cmd)
@@ -69,15 +69,10 @@ void	exitin(t_command *cmd)
 	args_len = get_args_len(cmd);
 	if (args_len == 1)
 		mini_exit(get_error());
-	else if (!ft_isnumber(cmd->args[1]))
+	else if (!ft_isnumber(cmd->args[1]) || num_overflow(cmd->args[1]))
 		not_num_err(cmd->args[1]);
 	else if (args_len == 2)
-	{
-		if (!check_number_limit(cmd->args[1]))
-			not_num_err(cmd->args[1]);
-		else
-			mini_exit(ft_atoi(cmd->args[1]));
-	}
+		mini_exit(ft_atoi(cmd->args[1]));
 	else
 		many_args_err();
 }
