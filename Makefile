@@ -64,6 +64,7 @@ SRC			=	temp_functions.c \
 				transformer_utils2.c \
 				exec_errors.c \
 				more_errors.c \
+				export_utils.c \
 
 VPATH		=	./src \
 				./src/prompt \

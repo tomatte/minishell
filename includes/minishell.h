@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 15:40:05 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/23 09:21:11 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/23 10:41:26 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ void	mini_exit(int code);
 int		is_option(char *str);
 char	*join_and_free(char *s1, char *s2);
 int		no_command(t_list *tokens);
+void	add_var_to_evars(char *full_var);
 
 //ERROR
 void	nut_error(char *str);
