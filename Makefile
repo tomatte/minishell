@@ -65,6 +65,7 @@ SRC			=	temp_functions.c \
 				exec_errors.c \
 				more_errors.c \
 				export_utils.c \
+				spipes.c \
 
 VPATH		=	./src \
 				./src/prompt \
@@ -120,7 +121,7 @@ fclean:	clean
 re:	fclean all
 
 val:
-	make && valgrind --track-origins=yes --leak-check=full --show-leak-kinds=all --suppressions=sup.supp ./$(NAME)
+	make && valgrind --track-origins=yes --track-fds=yes --leak-check=full --show-leak-kinds=all --suppressions=sup.supp ./$(NAME)
 
 valgrind: val
 
