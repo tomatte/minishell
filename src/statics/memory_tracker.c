@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 07:23:20 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/28 09:49:42 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/23 14:48:10 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	destroy_memories(void)
 {
 	t_list	**memories;
 
+	close_pfds();
 	memories = memory_tracker();
 	ft_lstclear(memories, free);
 }
