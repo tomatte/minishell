@@ -1,36 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   export_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/03 08:58:08 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/23 10:23:46 by dbrandao         ###   ########.fr       */
+/*   Created: 2023/04/23 10:16:37 by dbrandao          #+#    #+#             */
+/*   Updated: 2023/04/23 10:22:13 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../../includes/minishell.h"
 
-int	main(int argc, char **argv, char **envp)
+static char	*get_var_name(char *full_var)
 {
-	char	*str;
-	t_list	*tokens;
+	char	*var_name;
+	int		i;
 
-	(void) argv;
-	(void) argc;
-	start_evars2(envp);
-	export_evar("TERM_PROGRAM=vscode");
-	while (1)
-	{
-		set_signals();
-		str = prompt();
-		expander(&str);
-		transformer(str);
-		tokens = lexer(str);
-		parser(tokens);
-		executor(tokens);
-		destroy_memories();
-	}
-	return (0);
+	i = 0;
+	while (full_var[i] != '=')
+		i++;
+	var_name = ft_calloc(i + 1, sizeof(char));
+	ft_strlcpy(var_name, full_var, i + 1);
+	return (var_name);
+}
+
+void	export_evar(char *full_var)
+{
+	char	*var_name;
+
+	var_name = get_var_name(full_var);
+	ft_printf("var_name: %s\n", var_name);
 }
