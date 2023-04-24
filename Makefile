@@ -29,7 +29,6 @@ SRC			=	main.c \
 				close_pipes.c \
 				get_paths.c \
 				memory_tracker.c \
-				evars.c \
 				expander.c \
 				fill_exp.c \
 				fill_exp_value.c \
