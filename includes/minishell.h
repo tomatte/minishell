@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 15:40:05 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/22 16:20:37 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/24 18:49:43 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,12 @@ void	destroy_memories(void);
 void	*talloc(size_t nmemb, size_t size);
 void	add_to_tracker(void *mem);
 t_list	*lstnew_track(void *content);
-
-//EVARS
-char	**get_evars(void);
-void	add_evar(char *var);
-void	start_evars(char **envp);
-void	destroy_evars(void);
+//pfds
+void	start_pfds(int **pfds);
+void	close_pfds(void);
+//fds
+void	add_fd(int fd);
+void	close_fds(void);
 
 //evars2
 t_list	**evars2(void);
@@ -82,10 +82,12 @@ int		is_operator(t_list *tokens, int operator);
 int		is_redirect(t_list *tokens);
 t_list	*next_pipe(t_list *tokens);
 t_list	*next_pipe2(t_list *tokens);
+t_list	*next_pipe3(t_list *tokens);
 void	mini_exit(int code);
 int		is_option(char *str);
 char	*join_and_free(char *s1, char *s2);
 int		no_command(t_list *tokens);
+void	add_var_to_evars(char *full_var);
 
 //ERROR
 void	nut_error(char *str);
@@ -115,16 +117,6 @@ int			get_redirects(t_list **tokens, int *redirects);
 t_command	*new_command(t_list *tokens, int fd_in, int fd_out);
 void		simple_exec(t_list *tokens);
 
-//TEMP
-void	print_pipedes(int **pipedes);
-void	print_commands(t_list *commands);
-void	print_command(t_command *command);
-void	print_tokens(t_list *tokens);
-void	print_args(char **args);
-void	print_asc(char *str);
-void	print_token(t_token *token);
-void	print_token_value(t_list *node);
-
 //EXPANDER
 void	expander(char **str);
 void	fill_exp(t_exp *exp, char *str);
@@ -141,8 +133,6 @@ void	export(t_command *cmd);
 void	unset(t_command *cmd);
 
 //HEREDOC
-int		get_sdoc(void);
-void	set_sdoc(int id);
 void	read_fork(char *end);
 
 //SIGNALS

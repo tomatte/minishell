@@ -1,50 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   echo.c                                             :+:      :+:    :+:   */
+/*   sfiles.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/30 18:01:06 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/23 21:09:20 by dbrandao         ###   ########.fr       */
+/*   Created: 2023/04/24 12:45:32 by dbrandao          #+#    #+#             */
+/*   Updated: 2023/04/24 18:53:59 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-static int	is_valid_option(char *str)
+static t_list	**fd_list(void)
 {
-	if (!is_option(str))
-		return (0);
-	str++;
-	while (*str)
-	{
-		if (*str != 'n')
-			return (0);
-		str++;
-	}
-	return (1);
+	static t_list	*fds = NULL;
+
+	return (&fds);
 }
 
-void	echo(t_command *cmd)
+void	add_fd(int fd)
 {
-	int	i;
-	int	n;
+	t_list	**fds;
+	int		*new_fd;
 
-	n = 0;
-	i = 0;
-	if (is_valid_option(cmd->args[1]))
+	fds = fd_list();
+	new_fd = ft_calloc(1, sizeof(int));
+	*new_fd = fd;
+	ft_lstadd_back(fds, ft_lstnew(new_fd));
+}
+
+void	close_fds(void)
+{
+	t_list	**fds;
+	t_list	*aux;
+
+	fds = fd_list();
+	if (*fds == NULL)
+		return ;
+	aux = *fds;
+	while (aux)
 	{
-		n = 1;
-		i = 1;
+		close(*((int *) aux->content));
+		aux = aux->next;
 	}
-	while (cmd->args[++i])
-	{
-		ft_putstr(cmd->args[i]);
-		if (cmd->args[i + 1] != NULL)
-			ft_putstr(" ");
-	}
-	if (n == 0)
-		ft_putstr("\n");
-	set_error(0);
+	ft_lstclear(fds, free);
+	*fds = NULL;
 }

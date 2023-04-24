@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 09:49:23 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/22 16:32:36 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/23 09:21:29 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	exec_commands(t_list *tokens, t_list *commands, int **pipedes)
 			return ;
 		if (no_command(aux))
 		{
-			aux = next_pipe(aux);
+			aux = next_pipe3(aux);
 			commands = commands->next;
 			continue ;
 		}

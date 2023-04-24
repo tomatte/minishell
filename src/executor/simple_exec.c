@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 10:40:45 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/22 18:00:02 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/23 09:03:30 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,13 @@ static int	is_simple_exec(t_list *tokens)
 {
 	if (tokens == NULL)
 		return (0);
-	while (is_redirect(next_operator(tokens)))
-		tokens = next_operator(tokens);
-	if (next_operator(tokens) == NULL)
-		return (1);
-	return (0);
+	while (tokens)
+	{
+		if (token(tokens)->id == PIPE)
+			return (0);
+		tokens = tokens->next;
+	}
+	return (1);
 }
 
 static void	dup_and_close(int *redirects)

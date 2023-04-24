@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 15:07:40 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/22 17:38:52 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/23 10:41:36 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static void	export_var(t_command *cmd)
 	{
 		if (!is_valid(cmd->args[i]))
 			continue ;
-		add_evar2(cmd->args[i]);
+		add_var_to_evars(cmd->args[i]);
 	}
 }
 

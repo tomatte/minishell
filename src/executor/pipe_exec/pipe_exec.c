@@ -6,23 +6,23 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 10:00:02 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/13 17:55:42 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/23 08:59:59 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
 
-static int	is_pipe_exec(t_list *tokens)
+static int	is_simple_exec(t_list *tokens)
 {
 	if (tokens == NULL)
 		return (0);
-	if (next_operator(tokens) == NULL)
-		return (0);
-	while (is_redirect(next_operator(tokens)))
-		tokens = next_operator(tokens);
-	if (is_operator(next_operator(tokens), PIPE))
-		return (1);
-	return (0);
+	while (tokens)
+	{
+		if (token(tokens)->id == PIPE)
+			return (0);
+		tokens = tokens->next;
+	}
+	return (1);
 }
 
 static void	wait_childs_ordered(t_list *commands)
@@ -30,6 +30,7 @@ static void	wait_childs_ordered(t_list *commands)
 	t_command	*cmd;
 	int			status;
 
+	status = 0;
 	while (commands)
 	{
 		cmd = (t_command *) commands->content;
@@ -44,7 +45,7 @@ void	pipe_exec(t_list *tokens)
 	t_list	*commands;
 	int		**pipedes;
 
-	if (!is_pipe_exec(tokens))
+	if (is_simple_exec(tokens))
 		return ;
 	pipedes = get_pipedes(tokens);
 	commands = get_commands(tokens, pipedes);

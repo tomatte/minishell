@@ -1,33 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_hereexec.c                                      :+:      :+:    :+:   */
+/*   spipes.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/06 14:47:54 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/06 14:49:19 by dbrandao         ###   ########.fr       */
+/*   Created: 2023/04/23 12:16:01 by dbrandao          #+#    #+#             */
+/*   Updated: 2023/04/23 14:38:19 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-static int	*sdoc(void)
+static int	***spipes(void)
 {
-	static int	d = 0;
+	static int	**pfds = NULL;
 
-	return (&d);
+	return (&pfds);
 }
 
-void	set_sdoc(int id)
+void	start_pfds(int **pfds)
 {
-	int	*d;
+	int	***spfds;
 
-	d = sdoc();
-	*d = id;
+	spfds = spipes();
+	*spfds = pfds;
 }
 
-int	get_sdoc(void)
+void	close_pfds(void)
 {
-	return (*sdoc());
+	int	***pfds;
+
+	pfds = spipes();
+	if (*pfds == NULL)
+		return ;
+	close_pipes(*pfds);
+	*pfds = NULL;
 }

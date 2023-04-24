@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 14:18:47 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/22 20:10:48 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/24 18:51:06 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	open_file(int id, char *name)
 	if (id == R_INPUT)
 		flag = flag | O_RDONLY;
 	if (id == R_OUTPUT)
-		flag = flag | O_WRONLY | O_CREAT;
+		flag = flag | O_WRONLY | O_CREAT | O_TRUNC;
 	if (id == R_APPEND_OUT)
 		flag = flag | O_WRONLY | O_APPEND | O_CREAT;
 	if (id == HERE_DOC)
@@ -30,6 +30,7 @@ static int	open_file(int id, char *name)
 		fd = open(name, flag, 0644);
 	if (fd <= -1)
 		redirect_error(name);
+	add_fd(fd);
 	return (fd);
 }
 

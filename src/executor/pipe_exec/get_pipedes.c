@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 10:56:05 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/05 12:25:38 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/23 14:19:50 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,6 @@ int	**get_pipedes(t_list *tokens)
 	pipes_len = get_pipes_len(tokens);
 	pipedes = alloc_pipes(pipes_len);
 	open_pipes(pipedes);
+	start_pfds(pipedes);
 	return (pipedes);
 }

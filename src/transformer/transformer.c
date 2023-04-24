@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 11:18:54 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/22 18:00:36 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/24 11:02:21 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ static void	transform_word(char **str)
 
 void	transformer(char *str)
 {
+	if (in_error())
+		return ;
 	while (*str)
 	{
 		if (!is_delimiter2(*str))
