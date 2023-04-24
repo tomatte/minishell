@@ -42,7 +42,6 @@ SRC			=	main.c \
 				simple_exec.c \
 				next_pipe.c \
 				read_doc.c \
-				is_hereexec.c \
 				cd.c \
 				mini_exit.c \
 				exitin.c \
