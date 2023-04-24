@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 14:18:47 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/23 09:28:58 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/24 18:51:06 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ static int	open_file(int id, char *name)
 		fd = open(name, flag, 0644);
 	if (fd <= -1)
 		redirect_error(name);
+	add_fd(fd);
 	return (fd);
 }
 
