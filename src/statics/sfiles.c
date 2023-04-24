@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 12:45:32 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/24 18:49:55 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/24 18:53:59 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	add_fd(int fd)
 	int		*new_fd;
 
 	fds = fd_list();
-	new_fd = ft_calloc(1,  sizeof(int));
+	new_fd = ft_calloc(1, sizeof(int));
 	*new_fd = fd;
 	ft_lstadd_back(fds, ft_lstnew(new_fd));
 }
@@ -38,7 +38,7 @@ void	close_fds(void)
 	fds = fd_list();
 	if (*fds == NULL)
 		return ;
-	aux= *fds;
+	aux = *fds;
 	while (aux)
 	{
 		close(*((int *) aux->content));
