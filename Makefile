@@ -63,6 +63,7 @@ SRC			=	main.c \
 				more_errors.c \
 				export_utils.c \
 				spipes.c \
+				sfiles.c \
 
 VPATH		=	./src \
 				./src/prompt \

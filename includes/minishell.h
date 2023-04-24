@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 15:40:05 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/23 23:15:42 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/24 18:49:43 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,9 @@ t_list	*lstnew_track(void *content);
 //pfds
 void	start_pfds(int **pfds);
 void	close_pfds(void);
+//fds
+void	add_fd(int fd);
+void	close_fds(void);
 
 //evars2
 t_list	**evars2(void);
