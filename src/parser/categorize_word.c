@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   categorize_word.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 16:53:14 by dbrandao          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2023/04/24 22:44:54 by mleonard         ###   ########.fr       */
-=======
-/*   Updated: 2023/04/24 23:33:21 by dbrandao         ###   ########.fr       */
->>>>>>> main
+/*   Updated: 2023/04/25 10:39:55 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

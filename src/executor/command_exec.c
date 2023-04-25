@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   command_exec.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 14:48:30 by dbrandao          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2023/04/24 22:44:54 by mleonard         ###   ########.fr       */
-=======
-/*   Updated: 2023/04/24 22:32:48 by dbrandao         ###   ########.fr       */
->>>>>>> main
+/*   Updated: 2023/04/25 10:40:10 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_redirects.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 14:18:47 by dbrandao          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2023/04/24 22:44:54 by mleonard         ###   ########.fr       */
-=======
-/*   Updated: 2023/04/24 23:41:06 by dbrandao         ###   ########.fr       */
->>>>>>> main
+/*   Updated: 2023/04/25 10:40:18 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
