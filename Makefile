@@ -50,7 +50,7 @@ $(OBJS_DIR):
 
 $(NAME):	$(OBJS_DIR) $(OBJS) $(LIBFT) $(HEADERS)
 	@echo "$(GREEN)All object files from $(NAME) were created!$(OFF)"
-	@$(CC) $(OBJS) $(LIBFT) $(CFLAGS) -o $@ $(INCLUDES_PATH) -lreadline
+	@$(CC) $(OBJS) $(LIBFT) $(CFLAGS) -o $@ $(INCLUDES) -lreadline
 	@echo "$(GREEN)$(NAME) files were sucessfully linked!$(OFF)"
 
 $(LIBFT):
