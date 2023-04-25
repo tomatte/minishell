@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 15:07:40 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/25 17:24:04 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/25 17:37:23 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int	is_valid(char *str)
 	int	i;
 
 	i = 0;
-	if (str[i] >= '0' && str[i] <= '9')
+	if (ft_strchr(INVALIDS2, *str))
 	{
 		invalid_identifier("export", str);
 		return (0);
