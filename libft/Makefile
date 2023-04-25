@@ -31,7 +31,7 @@ MORE_SRC	=	ft_putchar.c ft_putstr.c \
 
 GNL_SRC		=	./get_next_line/get_next_line_bonus.c \
 				./get_next_line/get_next_line_utils_bonus.c \
-				
+
 
 H_SRC		=	libft.h
 
@@ -45,29 +45,38 @@ FLAGS		=	-Wall -Wextra -Werror
 
 RM			=	rm -f
 
+# Colors
+OFF			:= \033[0m
+RED			:= \033[0;31m
+GREEN		:= \033[0;32m
+
 .c.o:
-		cc ${FLAGS} -c $< -o ${<:.c=.o} 
+		@cc ${FLAGS} -c $< -o ${<:.c=.o}
 
 $(NAME):	${OBJS} ${H_SRC}
-			ar -rcs $@ $^
+			@echo "$(GREEN)All object files from $(NAME) were created!$(OFF)"
+			@ar -rcs $@ $^
+			@echo "$(GREEN)$(NAME) files were sucessfully linked!$(OFF)"
 
 all: ${NAME}
-	make -C ./ft_printf bonus
+	@make -C ./ft_printf bonus
 
 bonus_objs: ${OBJS} ${BONUS_OBJS} ${H_SRC}
-	ar -rcs libft.a $^
+	@ar -rcs libft.a $^
 
 bonus: bonus_objs
-	make -C ./ft_printf bonus
-	
+	@make -C ./ft_printf bonus
+	@echo "$(GREEN)All bonus functions were added to the $(NAME)!$(OFF)"
 
 clean:
-		${RM} ${OBJS} ${BONUS_OBJS}
-		make -C ./ft_printf clean
+		@${RM} ${OBJS} ${BONUS_OBJS}
+		@make -C ./ft_printf clean
+		@echo "$(RED)The object files from $(NAME) were sucessfully removed!$(OFF)"
 
 fclean:	clean
-		${RM} ${NAME}
-		make -C ./ft_printf fclean
+		@${RM} ${NAME}
+		@make -C ./ft_printf fclean
+		@echo "$(RED)The $(NAME) was removed!$(OFF)"
 
 re:		fclean all
 

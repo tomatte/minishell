@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 14:30:52 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/14 12:42:23 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/24 21:23:02 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,14 @@
 
 void	pwd(t_command *cmd)
 {
-	char	dir[256];
+	char	*dir;
 
 	if (is_option(cmd->args[1]))
 	{
 		invalid_option(cmd->args[0], cmd->args[1]);
 		return ;
 	}
+	dir = talloc(256, sizeof(char));
 	getcwd(dir, 256);
 	if (dir == NULL)
 	{

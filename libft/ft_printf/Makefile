@@ -18,24 +18,35 @@ FLAGS	=	-Wall -Wextra -Werror
 
 RM		=	rm -f
 
+# Colors
+OFF			:= \033[0m
+RED			:= \033[0;31m
+GREEN		:= \033[0;32m
+
 .c.o:
-			cc ${FLAGS} -c $< -o ${<:.c=.o} -I.
+			@cc ${FLAGS} -c $< -o ${<:.c=.o} -I.
 
 $(NAME):	${OBJS} ${H_SRC}
-			mv ../libft.a ./$(NAME)
-			ar -rcs $@ $^
+			@echo "$(GREEN)All object files from $(NAME) were created!$(OFF)"
+			@mv ../libft.a ./$(NAME)
+			@ar -rcs $@ $^
+			@echo "$(GREEN)$(NAME) files were sucessfully linked!$(OFF)"
+
 
 all: 		${NAME}
-	mv ./$(NAME) ../$(NAME)
+	@mv ./$(NAME) ../$(NAME)
 
 bonus:		${NAME}
-	mv ./$(NAME) ../$(NAME)
+	@mv ./$(NAME) ../$(NAME)
 
 clean:
-			${RM} ${OBJS}
+			@${RM} ${OBJS}
+			@echo "$(RED)The object files from $(NAME) were sucessfully removed!$(OFF)"
 
 fclean:		clean
-			${RM} ../${NAME}
+			@${RM} ../${NAME}
+			@echo "$(RED)The $(NAME) was removed!$(OFF)"
+
 
 re:			fclean all
 
