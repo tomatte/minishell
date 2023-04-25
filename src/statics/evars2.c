@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 16:57:57 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/23 23:11:30 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/24 21:59:56 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	start_evars2(char **envp)
 	destroy_evars2();
 	vars = evars2();
 	i = -1;
-	while (envp[++i] && i < MAX_ENVS)
+	while (envp[++i])
 	{
 		node = ft_lstnew(ft_strdup(envp[i]));
 		ft_lstadd_back(vars, node);

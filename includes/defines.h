@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 16:50:51 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/23 21:39:57 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/24 22:05:54 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@
 # define R 0
 # define W 1
 # define PATH_START "PATH="
-# define MAX_ENVS 1024
 # define DELIMITER "'\"<|>"
 # define DELIMITER2 "<|>"
 # define EXP_DELIMITER "\"'$|<> \n"
