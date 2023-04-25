@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 18:23:07 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/25 10:40:33 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/25 16:30:53 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,15 @@ static int	is_endline(char *here_end, char *value)
 	return (0);
 }
 
+static int	null_value(char *value, char *result)
+{
+	if (value != NULL)
+		return (0);
+	if (result != NULL)
+		free(result);
+	return (1);
+}
+
 static char	*get_input(char *end)
 {
 	char	*result;
@@ -31,7 +40,7 @@ static char	*get_input(char *end)
 	{
 		ft_putstr("> ");
 		value = get_next_line(STDIN_FILENO);
-		if (value == NULL)
+		if (null_value(value, result))
 			return (NULL);
 		if (is_endline(end, value))
 		{
