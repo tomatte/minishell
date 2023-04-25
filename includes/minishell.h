@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 15:40:05 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/24 23:07:27 by mleonard         ###   ########.fr       */
+/*   Updated: 2023/04/24 23:30:26 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ t_token		*identify_word(char **str);
 
 //PARSER
 void		parser(t_list *tokens);
-void		categorize_word(t_token *token);
+void		categorize_word(t_token *token, int *has_exec);
 void		syntax(t_list *tokens);
 
 //UTILS
