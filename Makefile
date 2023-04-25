@@ -20,7 +20,7 @@ OBJS_DIR	=	./objects
 
 OBJS		:=	$(patsubst %.c,$(OBJS_DIR)/%.o, $(SRC))
 
-CFLAGS		=	-Wall -Wextra -I./ -lreadline
+CFLAGS		=	-Werror -Wall -Wextra
 
 NAME		=	minishell
 
@@ -50,7 +50,7 @@ $(OBJS_DIR):
 
 $(NAME):	$(OBJS_DIR) $(OBJS) $(LIBFT) $(HEADERS)
 	@echo "$(GREEN)All object files from $(NAME) were created!$(OFF)"
-	@$(CC) $(OBJS) $(LIBFT) $(CFLAGS) -o $@ $(INCLUDES_PATH)
+	@$(CC) $(OBJS) $(LIBFT) $(CFLAGS) -o $@ $(INCLUDES_PATH) -lreadline
 	@echo "$(GREEN)$(NAME) files were sucessfully linked!$(OFF)"
 
 $(LIBFT):
