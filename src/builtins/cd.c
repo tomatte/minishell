@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 10:38:01 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/24 22:44:54 by mleonard         ###   ########.fr       */
+/*   Updated: 2023/04/25 17:11:50 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,20 @@ static int	cd_home(void)
 static int	cd_many_args(void)
 {
 	ft_putstr_fd("cd: too many arguments\n", STDERR_FILENO);
+	return (1);
+}
+
+static int	invalid_file(char *file)
+{
+	struct stat	path_stat;
+
+	stat(file, &path_stat);
+	if (!S_ISDIR(path_stat.st_mode))
+		err_msg("cd", file, "Not a directory", 1);
+	else if (access(file, X_OK) == -1)
+		err_msg("cd", file, "Permission denied", 1);
+	else
+		return (0);
 	return (1);
 }
 
@@ -55,6 +69,8 @@ void	cd(t_command *cmd)
 		err = cd_many_args();
 	else if (i == 1)
 		err = cd_home();
+	else if (invalid_file(cmd->args[1]))
+		return ;
 	else
 		err = cd_path(cmd);
 	set_error(err);
