@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   is_redirect.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 10:24:26 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/18 19:37:13 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/24 22:44:54 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include <minishell.h>
 
 int	is_redirect(t_list *tokens)
 {

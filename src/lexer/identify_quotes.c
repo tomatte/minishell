@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   identify_quotes.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 13:34:58 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/21 16:52:06 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/24 22:44:54 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include <minishell.h>
 
 static char	*get_value2(char *str)
 {

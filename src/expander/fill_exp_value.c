@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   fill_exp_value.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 02:54:22 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/14 12:35:50 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/24 22:44:54 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include <minishell.h>
 
 static int	is_evar_eq(char *evar, char *name)
 {

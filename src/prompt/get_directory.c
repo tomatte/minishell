@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_directory.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 17:32:14 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/06 19:53:42 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/24 22:44:54 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include <minishell.h>
 
 static int	in_home(char *dir)
 {

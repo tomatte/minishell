@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   new_token.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 13:16:48 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/03/27 16:24:13 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/24 22:44:54 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include <minishell.h>
 
 t_token	*new_token(char *value, int type, int id)
 {

@@ -6,11 +6,11 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/26 19:42:01 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/24 22:26:30 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/25 10:40:02 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/minishell.h"
+#include <minishell.h>
 
 static char	*find_path(char **envp)
 {

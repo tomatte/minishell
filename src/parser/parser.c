@@ -6,11 +6,11 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 15:37:32 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/24 23:30:58 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/25 10:39:44 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include <minishell.h>
 
 static void	keep_state(t_token *token)
 {
