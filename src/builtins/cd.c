@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 10:38:01 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/25 17:11:50 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/25 17:28:40 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,11 @@ static int	cd_many_args(void)
 static int	invalid_file(char *file)
 {
 	struct stat	path_stat;
+	int			aux;
 
-	stat(file, &path_stat);
+	aux = stat(file, &path_stat);
+	if (aux == -1)
+		return (0);
 	if (!S_ISDIR(path_stat.st_mode))
 		err_msg("cd", file, "Not a directory", 1);
 	else if (access(file, X_OK) == -1)
