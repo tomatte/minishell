@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 18:23:07 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/19 00:11:16 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/24 23:53:07 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ static char	*get_input(char *end)
 	{
 		ft_putstr("> ");
 		value = get_next_line(STDIN_FILENO);
+		if (value == NULL)
+			return (NULL);
 		if (is_endline(end, value))
 		{
 			free(value);
@@ -68,7 +70,8 @@ void	read_fork(char *end)
 		fd = open(HERE_FILE, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 		set_sig_here();
 		text = get_input(end);
-		write(fd, text, ft_strlen(text));
+		if (text != NULL)
+			write(fd, text, ft_strlen(text));
 		close(fd);
 		mini_exit(0);
 	}
