@@ -6,7 +6,11 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 14:18:47 by dbrandao          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/04/24 22:44:54 by mleonard         ###   ########.fr       */
+=======
+/*   Updated: 2023/04/24 23:41:06 by dbrandao         ###   ########.fr       */
+>>>>>>> main
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +34,8 @@ static int	open_file(int id, char *name)
 		fd = open(name, flag, 0644);
 	if (fd <= -1)
 		redirect_error(name);
-	add_fd(fd);
+	else
+		add_fd(fd);
 	return (fd);
 }
 

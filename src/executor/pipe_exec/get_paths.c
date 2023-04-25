@@ -6,7 +6,11 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/26 19:42:01 by dbrandao          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/04/24 22:44:59 by mleonard         ###   ########.fr       */
+=======
+/*   Updated: 2023/04/24 22:26:30 by dbrandao         ###   ########.fr       */
+>>>>>>> main
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +73,8 @@ char	**get_paths(char *cmd)
 	char	**paths;
 
 	path = find_path(get_evars_arr());
+	if (path == NULL)
+		return (NULL);
 	paths = split_path(path);
 	put_endslash(paths);
 	put_cmd(paths, cmd);

@@ -6,7 +6,11 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 14:48:30 by dbrandao          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/04/24 22:44:54 by mleonard         ###   ########.fr       */
+=======
+/*   Updated: 2023/04/24 22:32:48 by dbrandao         ###   ########.fr       */
+>>>>>>> main
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +26,7 @@ static void	normal_exec(t_command *command)
 		return ;
 	err = execve(command->args[0], command->args, get_evars_arr());
 	normal_exec_error(err, command);
+	mini_exit(127);
 }
 
 static void	inpath_exec(t_command *command)
@@ -35,8 +40,10 @@ static void	inpath_exec(t_command *command)
 	if (first_char == '.' || first_char == '/')
 		return ;
 	paths = get_paths(command->args[0]);
+	if (paths == NULL)
+		return (no_such_file("mini", command->args[0]));
 	i = -1;
-	while (paths[++i])
+	while (paths && paths[++i])
 		err = execve(paths[i], command->args, get_evars_arr());
 	inpath_exec_error(err, command->args[0]);
 }
@@ -73,9 +80,5 @@ void	command_exec(t_command *command)
 	if (try_builtin(command))
 		mini_exit(get_error());
 	else
-	{
 		try_execve(command);
-		cmd_not_found(command->args[0]);
-		mini_exit(127);
-	}
 }

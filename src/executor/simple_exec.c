@@ -6,7 +6,11 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 10:40:45 by dbrandao          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/04/24 22:44:54 by mleonard         ###   ########.fr       */
+=======
+/*   Updated: 2023/04/25 00:05:36 by dbrandao         ###   ########.fr       */
+>>>>>>> main
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,12 +94,11 @@ void	simple_exec(t_list *tokens)
 		set_signals();
 		dup_and_close(redirects);
 		command_exec(new_command(tokens, STDIN_FILENO, STDOUT_FILENO));
+		mini_exit(get_error());
 	}
 	else if (pid == BUILTIN_CODE)
-	{
-		builtin_func(tokens);
-		return ;
-	}
+		return (builtin_func(tokens));
+	status = 0;
 	waitpid(pid, &status, WUNTRACED);
 	set_error(WEXITSTATUS(status));
 }
