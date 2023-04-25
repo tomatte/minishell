@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 15:07:40 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/24 22:44:54 by mleonard         ###   ########.fr       */
+/*   Updated: 2023/04/25 17:37:23 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,19 +33,22 @@ static void	export_print(void)
 
 static int	is_valid(char *str)
 {
-	if (ft_strchr(INVALIDS2, str[0]))
+	int	i;
+
+	i = 0;
+	if (ft_strchr(INVALIDS2, *str))
 	{
 		invalid_identifier("export", str);
 		return (0);
 	}
-	while (*str && *str != '=')
+	while (str[i] && str[i] != '=')
 	{
-		if (ft_strchr(INVALIDS1, *str))
+		if (!ft_isalnum(str[i]) && str[i] != '_')
 		{
 			invalid_identifier("export", str);
 			return (0);
 		}
-		str++;
+		i++;
 	}
 	return (1);
 }
