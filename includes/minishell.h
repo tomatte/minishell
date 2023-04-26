@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 15:40:05 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/25 21:47:09 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/26 10:06:50 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,7 +136,8 @@ void		export(t_command *cmd);
 void		unset(t_command *cmd);
 
 //HEREDOC
-void		read_fork(char *end);
+void		read_fork(char *filename, char *end);
+void		read_docs(t_list *tokens);
 
 //SIGNALS
 void		disable_signals(void);

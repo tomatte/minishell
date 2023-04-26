@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 14:18:47 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/25 10:40:18 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/26 10:25:24 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,13 @@ static int	open_file(int id, char *name)
 	int		flag;
 
 	flag = 0;
-	if (id == R_INPUT)
+	if (id == R_INPUT || id == HERE_DOC)
 		flag = flag | O_RDONLY;
 	if (id == R_OUTPUT)
 		flag = flag | O_WRONLY | O_CREAT | O_TRUNC;
 	if (id == R_APPEND_OUT)
 		flag = flag | O_WRONLY | O_APPEND | O_CREAT;
-	if (id == HERE_DOC)
-		fd = open(HERE_FILE, O_RDONLY, 0644);
-	else
-		fd = open(name, flag, 0644);
+	fd = open(name, flag, 0644);
 	if (fd <= -1)
 		redirect_error(name);
 	else
@@ -60,8 +57,6 @@ static int	get_redirect_fd(t_list *tokens)
 {
 	int		fd;
 
-	if (token(tokens)->id == HERE_DOC)
-		read_fork(token(tokens->next)->value);
 	fd = open_file(token(tokens)->id, token(tokens->next)->value);
 	return (fd);
 }

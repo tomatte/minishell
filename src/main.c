@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 08:58:08 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/24 22:44:46 by mleonard         ###   ########.fr       */
+/*   Updated: 2023/04/26 09:52:27 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	main(int argc, char **argv, char **envp)
 		transformer(str);
 		tokens = lexer(str);
 		parser(tokens);
+		read_docs(tokens);
 		executor(tokens);
 		destroy_memories();
 	}

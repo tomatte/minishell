@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 16:50:51 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/24 22:46:34 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/26 10:01:06 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@
 # define BUILTIN_CODE -6
 # define INVALIDS1 ".?+ç~-!@#$%¨&*(){}"
 # define INVALIDS2 "1234567890="
-# define HERE_FILE "/tmp/here_file.txt"
+# define HERE_FILE "/tmp/here_file"
 # define UNIT_SEPARATOR 31
 
 //ERRORS
