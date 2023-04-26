@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 15:40:05 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/26 11:03:57 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/26 12:41:49 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,9 @@ void		close_pfds(void);
 //fds
 void		add_fd(int fd);
 void		close_fds(void);
+//my_pid
+int			get_my_pid(void);
+void		set_my_pid(int pid);
 
 // //evars2
 t_list		**evars2(void);

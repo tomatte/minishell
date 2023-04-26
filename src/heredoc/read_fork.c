@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 18:23:07 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/26 10:17:23 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/26 12:46:08 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ void	read_fork(char *filename, char *end)
 	pid = fork();
 	if (pid == 0)
 	{
+		set_my_pid(pid);
 		fd = open(filename, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 		add_fd(fd);
 		text = get_input(end);

@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mini_exit.c                                        :+:      :+:    :+:   */
+/*   my_pid.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/11 12:06:09 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/26 12:47:31 by dbrandao         ###   ########.fr       */
+/*   Created: 2023/04/26 12:37:33 by dbrandao          #+#    #+#             */
+/*   Updated: 2023/04/26 12:40:42 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <minishell.h>
-
-static void	remove_files(void)
+static int	*spid(void)
 {
-	if (get_my_pid() != 0)
-		unlink_files();
+	static int	pid = 1;
+
+	return (&pid);
 }
 
-void	mini_exit(int code)
+void	set_my_pid(int pid)
 {
-	close_pfds();
-	close_fds();
-	remove_files();
-	destroy_memories();
-	destroy_evars2();
-	clear_history();
-	close(R);
-	close(W);
-	close(2);
-	exit(code);
+	int	*mypid;
+
+	mypid = spid();
+	*mypid = pid;
+}
+
+int	get_my_pid(void)
+{
+	int	*mypid;
+
+	mypid = spid();
+	return (*mypid);
 }
