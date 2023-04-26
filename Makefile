@@ -70,9 +70,4 @@ fclean:	clean
 
 re:	fclean all
 
-val:
-	make && valgrind --track-origins=yes --track-fds=yes --leak-check=full --show-leak-kinds=all --suppressions=sup.supp ./$(NAME)
-
-valgrind: val
-
 .PHONY:	all clean fclean re
