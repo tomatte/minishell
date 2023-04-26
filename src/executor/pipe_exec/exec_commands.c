@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_commands.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 09:49:23 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/24 22:44:59 by mleonard         ###   ########.fr       */
+/*   Updated: 2023/04/26 12:45:48 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ static void	exec_command(t_list *commands, int **pipedes)
 	command = (t_command *) commands->content;
 	if (command->pid == 0)
 	{
+		set_my_pid(command->pid);
 		if (get_error() || in_error())
 			mini_exit(get_error());
 		set_signals();

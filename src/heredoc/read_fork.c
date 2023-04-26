@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_doc.c                                         :+:      :+:    :+:   */
+/*   read_fork.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 18:23:07 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/25 20:16:27 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/26 12:46:08 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static int	child_err(int status)
 	return (1);
 }
 
-void	read_fork(char *end)
+void	read_fork(char *filename, char *end)
 {
 	int		pid;
 	int		fd;
@@ -76,7 +76,8 @@ void	read_fork(char *end)
 	pid = fork();
 	if (pid == 0)
 	{
-		fd = open(HERE_FILE, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+		set_my_pid(pid);
+		fd = open(filename, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 		add_fd(fd);
 		text = get_input(end);
 		if (text != NULL)

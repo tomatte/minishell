@@ -6,15 +6,15 @@ SRC			=	main.c prompt.c get_directory.c get_username.c \
 				get_pipedes.c get_commands.c exec_commands.c close_pipes.c get_paths.c memory_tracker.c \
 				expander.c  fill_exp.c fill_exp_value.c expand_str.c echo.c command_exec.c \
 				simple_errors.c get_redirects.c is_redirect.c new_command.c simple_exec.c next_pipe.c \
-				read_doc.c cd.c mini_exit.c exitin.c pwd.c env.c \
+				read_fork.c cd.c mini_exit.c exitin.c pwd.c env.c \
 				export.c evars2.c evar_utils.c unset.c error_code.c \
 				is_option.c here_signal.c set_signals.c no_command.c transformer.c transformer_utils.c \
 				transformer_utils2.c exec_errors.c more_errors.c export_utils.c spipes.c sfiles.c \
-				change_pwd_var.c
+				change_pwd_var.c read_docs.c unlink_files.c my_pid.c
 
 VPATH		=	./src ./src/prompt ./src/statics ./src/lexer ./src/parser \
 				./src/utils ./src/error ./src/executor ./src/executor/pipe_exec ./src/expander \
-				./src/builtins ./src/heredoc ./src/signals ./src/transformer
+				./src/builtins ./src/heredoc ./src/signals ./src/transformer ./src/read_docs.c
 
 
 OBJS_DIR	=	./objects
