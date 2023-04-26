@@ -6,11 +6,18 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 08:58:08 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/26 09:52:27 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/26 11:11:56 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
+
+static void	restart(void)
+{
+	close_pfds();
+	close_fds();
+	destroy_memories();
+}
 
 int	main(int argc, char **argv, char **envp)
 {
@@ -30,7 +37,7 @@ int	main(int argc, char **argv, char **envp)
 		parser(tokens);
 		read_docs(tokens);
 		executor(tokens);
-		destroy_memories();
+		restart();
 	}
 	return (0);
 }

@@ -10,7 +10,7 @@ SRC			=	main.c prompt.c get_directory.c get_username.c \
 				export.c evars2.c evar_utils.c unset.c error_code.c \
 				is_option.c here_signal.c set_signals.c no_command.c transformer.c transformer_utils.c \
 				transformer_utils2.c exec_errors.c more_errors.c export_utils.c spipes.c sfiles.c \
-				change_pwd_var.c read_docs.c
+				change_pwd_var.c read_docs.c unlink_files.c
 
 VPATH		=	./src ./src/prompt ./src/statics ./src/lexer ./src/parser \
 				./src/utils ./src/error ./src/executor ./src/executor/pipe_exec ./src/expander \
