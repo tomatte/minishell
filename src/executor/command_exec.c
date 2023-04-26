@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 14:48:30 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/25 10:40:10 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/26 16:33:43 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,10 @@ static void	inpath_exec(t_command *command)
 		return ;
 	paths = get_paths(command->args[0]);
 	if (paths == NULL)
-		return (no_such_file("mini", command->args[0]));
+	{
+		no_such_file("mini", command->args[0]);
+		mini_exit(get_error());
+	}
 	i = -1;
 	while (paths && paths[++i])
 		err = execve(paths[i], command->args, get_evars_arr());
