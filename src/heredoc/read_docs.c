@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 09:50:33 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/26 10:15:47 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/26 10:35:46 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,11 @@
 static char	*get_here_filename(int num)
 {
 	char	*filename;
+	char	*number;
 
-	filename = ft_strjoin(HERE_FILE, ft_itoa(num));
+	number = ft_itoa(num);
+	filename = ft_strjoin(HERE_FILE, number);
+	free(number);
 	add_to_tracker(filename);
 	return (filename);
 }
