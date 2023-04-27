@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 09:50:33 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/26 10:35:46 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/26 21:54:18 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,15 @@ void	read_docs(t_list *tokens)
 {
 	int	num;
 
+	signal(SIGINT, SIG_IGN);
 	num = 0;
 	while (tokens)
 	{
 		if (token(tokens)->id == HERE_DOC_END)
 			read_to_file(token(tokens), num++);
+		if (in_error())
+			break ;
 		tokens = tokens->next;
 	}
+	set_signals();
 }
