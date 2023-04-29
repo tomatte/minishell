@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 15:07:40 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/25 17:37:23 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/29 18:24:42 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,12 @@
 
 static void	print_export_env(char *env)
 {
-	ft_printf("declare -x ");
+	ft_putstr("declare -x ");
 	while (*env && *env != '=')
 		ft_putchar(*env++);
-	ft_printf("=\"%s\"\n", (env + 1));
+	ft_putstr("=\"");
+	ft_putstr(env + 1);
+	ft_putstr("\"\n");
 }
 
 static void	export_print(void)
