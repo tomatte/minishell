@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 14:30:52 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/24 22:44:54 by mleonard         ###   ########.fr       */
+/*   Updated: 2023/04/29 18:26:06 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,9 @@ void	pwd(t_command *cmd)
 		set_error(5);
 	}
 	else
-		ft_printf("%s\n", dir);
+	{
+		ft_putstr(dir);
+		ft_putchar('\n');
+	}
 	set_error(0);
 }

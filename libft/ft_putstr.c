@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 22:40:49 by dbrandao          #+#    #+#             */
-/*   Updated: 2022/07/01 22:42:15 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/29 18:16:47 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,5 @@ void	ft_putstr(char *s)
 {
 	if (!s)
 		return ;
-	while (*s)
-		write(1, s++, 1);
+	write(1, s, ft_strlen(s));
 }

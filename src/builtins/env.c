@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 14:58:26 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/24 22:44:54 by mleonard         ###   ########.fr       */
+/*   Updated: 2023/04/29 18:22:35 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ void	env(t_command *cmd)
 	vars = get_evars2();
 	while (vars)
 	{
-		ft_printf("%s\n", (char *) vars->content);
+		ft_putstr((char *) vars->content);
+		ft_putchar('\n');
 		vars = vars->next;
 	}
 	set_error(0);
