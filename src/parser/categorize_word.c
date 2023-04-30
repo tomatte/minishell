@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 16:53:14 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/25 10:39:55 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/29 21:25:20 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ static int	is_heredoc_end(t_token *token)
 
 void	categorize_word(t_token *token, int *has_exec)
 {
-	if (get_state() == OPERATOR)
+	if (get_state() == PIPE)
 		*has_exec = -1;
 	if (token->type != WORD && token->type != QUOTE)
 		return ;
