@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 10:38:01 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/25 22:09:26 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/29 21:35:29 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void	cd(t_command *cmd)
 	int	i;
 	int	err;
 
+	set_sigpipe();
 	if (is_option(cmd->args[1]))
 		return (invalid_option(cmd->args[0], cmd->args[1]));
 	change_pwd_var("OLDPWD=");

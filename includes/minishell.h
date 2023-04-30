@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 15:40:05 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/26 12:41:49 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/29 21:31:52 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,6 +147,7 @@ void		unlink_files(void);
 void		disable_signals(void);
 void		set_sig_here(void);
 void		set_signals(void);
+void		set_sigpipe(void);
 
 //TRANSFORMER
 void		transformer(char *str);

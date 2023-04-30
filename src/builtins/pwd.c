@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 14:30:52 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/29 18:26:06 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/29 21:35:54 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	pwd(t_command *cmd)
 {
 	char	*dir;
 
+	set_sigpipe();
 	if (is_option(cmd->args[1]))
 	{
 		invalid_option(cmd->args[0], cmd->args[1]);

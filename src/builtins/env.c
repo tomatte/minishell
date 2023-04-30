@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 14:58:26 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/29 18:22:35 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/29 21:33:38 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	env(t_command *cmd)
 {
 	t_list	*vars;
 
+	set_sigpipe();
 	if (verify_args(cmd))
 		return ;
 	vars = get_evars2();

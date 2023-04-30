@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 18:01:06 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/24 22:44:54 by mleonard         ###   ########.fr       */
+/*   Updated: 2023/04/29 21:35:00 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	echo(t_command *cmd)
 	int	i;
 	int	n;
 
+	set_sigpipe();
 	n = 0;
 	i = 0;
 	if (is_valid_option(cmd->args[1]))

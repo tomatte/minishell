@@ -6,7 +6,7 @@
 /*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 15:07:40 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/29 18:24:42 by dbrandao         ###   ########.fr       */
+/*   Updated: 2023/04/29 21:33:51 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ void	export(t_command *cmd)
 {
 	int	i;
 
+	set_sigpipe();
 	set_error(0);
 	i = 0;
 	while (cmd->args[i])
