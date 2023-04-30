@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exitin.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: dbrandao <dbrandao@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 13:45:36 by dbrandao          #+#    #+#             */
-/*   Updated: 2023/04/24 22:44:54 by mleonard         ###   ########.fr       */
+/*   Updated: 2023/04/29 21:35:35 by dbrandao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ void	exitin(t_command *cmd)
 {
 	int	args_len;
 
+	set_sigpipe();
 	ft_putstr("exit\n");
 	args_len = get_args_len(cmd);
 	if (args_len == 1)
